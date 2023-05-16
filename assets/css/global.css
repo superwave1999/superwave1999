@@ -1,0 +1,247 @@
+:root {
+    --text: #f4f3eb;
+    --bg: #141412;
+    --bg-menu: #292925;
+    --border-menu: #353530;
+    --border-menu-hover: #838377;
+    --transition-speed: 250ms;
+    --transition-speed-out-full: 650ms;
+    --transition-speed-out-mid: 400ms;
+    --font-thin: 400;
+    --font-thicc: 700;
+    --typeface-serif: 'Hanuman', serif;
+    --typeface-mono: 'Courier Prime', monospace;
+    --effect-1: #e1d141;
+    --effect-2: #dc41e1;
+    --effect-3: #41e1b9;
+    --effect-1-timing: 24.666s;
+    --effect-2-timing: 30.333s;
+    --effect-3-timing: 18.717s;
+    --effect-size-mul: 1;
+    --effect-opacity: 1;
+    --effect-height: 54vh;
+    --effect-blur: 30ch;
+
+    /* button colours */
+    --accent: #5bc0eb;
+    --accent-border-hover: #5bc0eb2f;
+    --accent-border-active: #5bc0ebab;
+    --enable-dark: #521ad4;
+    --enable-dark-border-hover: #521ad42f;
+    --enable-dark-border-active: #521ad4ab;
+    --enable-light: #d4a21a;
+    --enable-light-border-hover: #d4a21a2f;
+    --enable-light-border-active: #d4a21aab;
+    --error: #eb5b5b;
+    --error-border-hover: #eb5b5b2f;
+    --error-border-active: #eb5b5bab;
+    --company: #90cc1f;
+    --company2: #68e645;
+    --github: #545df0;
+    --github-border-hover: #545df02f;
+    --github-border-active: #545df0ab;
+    --linkedin: #0a66c2;
+    --linkedin-border-hover: #0a66c22f;
+    --linkedin-border-active: #0a66c2ab;
+    --portfolio: #c20a72;
+    --portfolio-border-hover: #c20a722f;
+    --portfolio-border-active: #c20a72ab;
+    --tuble: #0ac297;
+    --tuble-border-hover: #0ac2972f;
+    --tuble-border-active: #0ac297ab;
+
+    /* mobile sizes */
+    --btn-height: 6ch;
+    --btn-height-mini: 3.5ch;
+    --main-margin: 0.8ch;
+    --mid-margin: 0.4ch;
+    --title-size: 2.8rem;
+    --subtitle-size: 1.4rem;
+    --highlight-size: 1.1rem;
+    --section-size: 2rem;
+    --top-space: 14ch;
+}
+
+@media (min-width: 576px) {
+    :root {
+        --effect-size-mul: 1.33;
+        --effect-opacity: 0.4;
+        --effect-height: 77vh;
+        --effect-blur: 120rem;
+        --btn-height: 8ch;
+        --btn-height-mini: 4ch;
+        --main-margin: 1ch;
+        --mid-margin: 0.5ch;
+        --title-size: 3.4rem;
+        --subtitle-size: 1.6rem;
+        --highlight-size: 1.2rem;
+        --section-size: 2.8rem;
+        --top-space: 20ch;
+        --effect-1-timing: 47.666s;
+        --effect-2-timing: 58.121s;
+        --effect-3-timing: 33.333s;
+    }
+}
+
+:root.light-mode {
+    --text: #141412;
+    --bg: #f4f3eb;
+    --bg-menu: #eeebdf;
+    --border-menu: #a19f9f;
+    --border-menu-hover: #5e5d5d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    background-color: var(--bg);
+    transition: background-color var(--transition-speed) ease-in-out;
+    font-family: var(--typeface-mono);
+    font-weight: var(--font-thin);
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* Set global styles for elements */
+p {
+    margin: var(--main-margin) 0;
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: var(--typeface-serif);
+    font-size: var(--title-size);
+    font-weight: var(--font-thicc);
+    margin: var(--main-margin) 0;
+}
+
+h2 {
+    font-family: var(--typeface-serif);
+    font-size: var(--subtitle-size);
+    font-weight: var(--font-thin);
+    margin: var(--main-margin) 0;
+}
+
+h3 {
+    font-family: var(--typeface-mono);
+    font-size: var(--highlight-size);
+    font-weight: var(--font-thicc);
+    margin: var(--mid-margin) 0;
+}
+
+h4 {
+    font-family: var(--typeface-mono);
+    font-size: var(--highlight-size);
+    font-weight: var(--font-thin);
+    margin: var(--mid-margin) 0;
+}
+
+h5 {
+    font-family: var(--typeface-mono);
+    font-size: var(--highlight-size);
+    font-weight: var(--font-thicc);
+    margin: 0 0;
+}
+
+h6 {
+    font-family: var(--typeface-mono);
+    font-size: 1rem;
+    font-weight: var(--font-thin);
+    margin: 0 0;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-auto-inline {
+    width: auto;
+    display: inline-block;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+/* Blog post styles */
+.nuxt-content {
+    text-align: justify;
+    font-family: var(--font-thin);
+    font-size: 0.9em;
+}
+
+.nuxt-content a {
+    color: var(--accent);
+}
+
+.nuxt-content a:hover {
+    text-decoration: underline;
+}
+
+.nuxt-content p {
+    margin-top: var(--main-margin);
+    margin-bottom: var(--main-margin);
+}
+
+.nuxt-content img {
+    border-radius: var(--main-margin);
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+}
+
+.nuxt-content img:hover {
+    transform: scale(1.01);
+}
+
+.nuxt-content video {
+    border-radius: var(--main-margin);
+    aspect-ratio: 16 / 9;
+}
+
+.nuxt-content.colour-dark a {
+    color: rgb(125 177 255);
+}
+
+.nuxt-content code {
+    font-family: monospace;
+    text-shadow: none;
+}
+
+.nuxt-content p code {
+    color: rgb(202 86 78);
+    padding: 0.2em;
+}
+
+.nuxt-content pre code {
+    color: rgb(174 190 86);
+    padding: 0.1em;
+}
+
+.nuxt-content pre,
+.nuxt-content p code {
+    background-color: rgb(38 40 45);
+    border-radius: 0.4em;
+}
+
+/* Override image viewer padding */
+body {
+    padding: 0 !important;
+}
+
+/* Iconoir icons fixes */
+*[class^='iconoir-'],
+*[class*=' iconoir-'] {
+    vertical-align: middle;
+}

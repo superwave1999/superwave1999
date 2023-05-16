@@ -1,0 +1,45 @@
+{
+	"topcard": {
+		"name": "Imanol Romera",
+		"short": "Desarrollador web full stack ubicado en Granada, España."
+	},
+	"err": {
+		"top": "¡Ups! La página solicitada no ha sido encontrada.",
+		"button": "Volver al inicio"
+	},
+	"p_index": {
+		"headTitle": "Imanol Romera",
+		"headDesc": "Desarrollador web full stack ubicado en Granada, España.",
+		"btnPortfolio": "Proyectos",
+		"btnTuble": "Tuble",
+		"about": {
+			"heading": "Trabajo",
+			"text": "Imanol es un desarrollador web full stack ubicado en Granada con una pasión por crear servicios personalizados y herramientas que considera útiles. Siendo un gran trabajador en equipo, colabora en todas las etapas de desarrollo de sus proyectos, desde mock-ups, pasando por programación, y terminando con el despliegue en servidores y el lanzamiento del producto. Siendo un entusiasta por el código abierto, se esfuerza en usar tantas herramientas OSS como sea posible, y abre al público sus desarrollos personales. También es bilingüe."
+		},
+		"bio": {
+			"heading": "Biografía",
+			"n1": "Nació en Wolverhampton, Inglaterra.",
+			"n2": "Traslado a España.",
+			"n3": "Empezó a explorar el mundo de la informática. Montó su primer PC.",
+			"n4": "Completó el C.F.G.M. de Sistemas microinformáticos y redes en el I.E.S. Zaidín-Vergeles.",
+			"n5": "Completó el C.F.G.S. de Desarrollo web en el I.E.S. Zaidín-Vergeles.",
+			"n6": "Trabajó para ",
+			"n7": "Trabaja para "
+		},
+		"hobby": {
+			"heading": "Hobbies",
+			"text": "Cuando no programa, disfruta jugando a videojuegos, tocando la batería y viendo anime."
+		}
+	},
+	"p_projects": {
+		"headTitle": "Proyectos - Imanol Romera",
+		"heading": "Proyectos"
+	},
+	"p_project": {
+		"headTitleSuffix": " - Imanol Romera",
+		"website": "Página web",
+		"platform": "Plataforma",
+		"stack": "Stack",
+		"back": "Volver al listado"
+	}
+}
