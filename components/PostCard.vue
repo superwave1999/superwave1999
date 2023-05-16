@@ -7,6 +7,7 @@ const localeRoute = useLocaleRoute();
 const localePath = useLocalePath();
 const { locale } = useI18n();
 const route = useRoute();
+
 const url = computed(() => {
   if (!props.post) {
     return "";
@@ -16,7 +17,7 @@ const url = computed(() => {
     .filter((entry: string) => entry !== "");
   const localizedRoute = localeRoute(route.path, locale.value);
   const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
-  return routeSanitized + "/" + contentPaths[contentPaths.length - 1];
+  return `${routeSanitized}/${contentPaths[contentPaths.length - 1]}`;
 });
 </script>
 

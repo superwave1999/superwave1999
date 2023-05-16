@@ -1,12 +1,8 @@
-<script setup lang="ts">
-const error = false; // TODO: This.
-</script>
-
 <template>
   <div class="effect">
-    <div class="e1" :class="{ error }" />
-    <div class="e2" :class="{ error }" />
-    <div class="e3" :class="{ error }" />
+    <div class="e1" />
+    <div class="e2" />
+    <div class="e3" />
   </div>
 </template>
 
@@ -49,10 +45,6 @@ div.e3 {
   background-color: var(--effect-3);
   animation-duration: var(--effect-3-timing), var(--effect-3-timing);
   animation-name: animbase, anim3;
-}
-
-div.effect > div.error {
-  background-color: var(--error);
 }
 
 @keyframes animbase {

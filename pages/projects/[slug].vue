@@ -12,16 +12,14 @@ defineI18nRoute({
 
 const { locale } = useI18n();
 const route = useRoute();
-const section = "projects-" + locale.value;
+const section = `projects-${locale.value}`;
 const path = `/${section}/${route.params.slug}`;
 const page = await queryContent(section).where({ _path: path }).findOne();
-
 const hasAnyMeta =
   page.infoWebsite ||
   page.infoPlatform ||
   page.infoStack ||
   (page.links && page.links.length);
-
 let imageViewer: Viewer;
 
 onMounted(() => {
@@ -111,68 +109,68 @@ div.post-meta {
 
 /* Blog post styles */
 .nuxt-content {
-    text-align: justify;
-    font-family: var(--font-thin);
-    font-size: 0.9em;
+  text-align: justify;
+  font-family: var(--font-thin);
+  font-size: 0.9em;
 }
 
 .nuxt-content a {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 .nuxt-content a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .nuxt-content p {
-    margin-top: var(--main-margin);
-    margin-bottom: var(--main-margin);
+  margin-top: var(--main-margin);
+  margin-bottom: var(--main-margin);
 }
 
 .nuxt-content img {
-    border-radius: var(--main-margin);
-    cursor: zoom-in;
-    transition: transform 0.2s;
-    aspect-ratio: 21 / 9;
-    object-fit: cover;
+  border-radius: var(--main-margin);
+  cursor: zoom-in;
+  transition: transform 0.2s;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
 }
 
 .nuxt-content img:hover {
-    transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 .nuxt-content video {
-    border-radius: var(--main-margin);
-    aspect-ratio: 16 / 9;
+  border-radius: var(--main-margin);
+  aspect-ratio: 16 / 9;
 }
 
 .nuxt-content.colour-dark a {
-    color: rgb(125 177 255);
+  color: rgb(125 177 255);
 }
 
 .nuxt-content code {
-    font-family: monospace;
-    text-shadow: none;
+  font-family: monospace;
+  text-shadow: none;
 }
 
 .nuxt-content p code {
-    color: rgb(202 86 78);
-    padding: 0.2em;
+  color: rgb(202 86 78);
+  padding: 0.2em;
 }
 
 .nuxt-content pre code {
-    color: rgb(174 190 86);
-    padding: 0.1em;
+  color: rgb(174 190 86);
+  padding: 0.1em;
 }
 
 .nuxt-content pre,
 .nuxt-content p code {
-    background-color: rgb(38 40 45);
-    border-radius: 0.4em;
+  background-color: rgb(38 40 45);
+  border-radius: 0.4em;
 }
 
 /* Override image viewer padding */
 body {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 </style>
