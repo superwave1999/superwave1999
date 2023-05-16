@@ -1,12 +1,13 @@
 ---
 title: Crispythings
-description: 'Puesta en marcha de un blog Wordpress'
-endDate: '2021'
-previewImage: '/content/projects/crispy-cmp.jpg'
-infoPlatform: 'Web'
-infoStack: 'Wordpress'
-infoWebsite: 'https://crispythings.es/'
+description: "Puesta en marcha de un blog Wordpress"
+endDate: "2021"
+previewImage: "/content/projects/crispy-cmp.jpg"
+infoPlatform: "Web"
+infoStack: "Wordpress"
+infoWebsite: "https://crispythings.es/"
 ---
+
 !["Blog"](/content/projects/crispy.jpg)
 
 Una instalación sencilla de Wordpress que utiliza su funcionalidad de blog al máximo potencial.

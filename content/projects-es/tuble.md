@@ -1,19 +1,20 @@
 ---
 title: Tuble
 description: "Juego de navegador inspirado por el minijuego de hackear de Bioshock"
-startDate: '2022'
-endDate: '2022'
-previewImage: '/content/projects/tuble-cmp.jpg'
-infoPlatform: 'Web'
-infoStack: 'Go, Vue'
+startDate: "2022"
+endDate: "2022"
+previewImage: "/content/projects/tuble-cmp.jpg"
+infoPlatform: "Web"
+infoStack: "Go, Vue"
 links:
-    - title: 'Sitio web (Inactivo)'
-      href: 'https://tuble.iromera.com'
-    - title: 'Código fuente API'
-      href: 'https://github.com/superwave1999/tuble-server'
-    - title: 'Código fuente frontend'
-      href: 'https://github.com/superwave1999/tuble-front'
+  - title: "Sitio web (Inactivo)"
+    href: "https://tuble.iromera.com"
+  - title: "Código fuente API"
+    href: "https://github.com/superwave1999/tuble-server"
+  - title: "Código fuente frontend"
+    href: "https://github.com/superwave1999/tuble-front"
 ---
+
 !["Vista principal"](/content/projects/tuble.jpg)
 
 Nota: Proyecto cerrado. Hay demasiadas pocas visitas a la web para incorporar anuncios. Además, mi intención era mostrar un anuncio debajo del modal de "success", pero los proveedores que tenía en mente no permiten esto.
