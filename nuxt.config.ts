@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   // @ts-ignore TODO: Typescript doesn't like this variable
   css: [
     "@/assets/css/global.css",
-    "@fontsource/hanuman/latin.css",
-    "@fontsource/courier-prime/latin-ext.css",
+    "@fontsource/mulish/latin.css",
+    "@fontsource/courier-prime/latin.css",
   ],
   i18n: {
     vueI18n: "./i18n.config.ts",

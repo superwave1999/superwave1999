@@ -123,8 +123,7 @@ function toggleColorMode() {
 .navbar h1 span {
   color: var(--accent);
   position: absolute;
-  bottom: 0.155ch;
-  right: -0.799ch;
+  bottom: 14px;
   animation: terminal-flash 1s infinite;
 }
 

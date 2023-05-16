@@ -94,7 +94,7 @@ onUnmounted(() => {
   </article>
 </template>
 
-<style scoped>
+<style>
 article {
   margin: 0 auto;
   max-width: 72ch;
@@ -107,5 +107,72 @@ div.post-meta {
 .link-box a {
   white-space: normal;
   word-break: break-word;
+}
+
+/* Blog post styles */
+.nuxt-content {
+    text-align: justify;
+    font-family: var(--font-thin);
+    font-size: 0.9em;
+}
+
+.nuxt-content a {
+    color: var(--accent);
+}
+
+.nuxt-content a:hover {
+    text-decoration: underline;
+}
+
+.nuxt-content p {
+    margin-top: var(--main-margin);
+    margin-bottom: var(--main-margin);
+}
+
+.nuxt-content img {
+    border-radius: var(--main-margin);
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+}
+
+.nuxt-content img:hover {
+    transform: scale(1.01);
+}
+
+.nuxt-content video {
+    border-radius: var(--main-margin);
+    aspect-ratio: 16 / 9;
+}
+
+.nuxt-content.colour-dark a {
+    color: rgb(125 177 255);
+}
+
+.nuxt-content code {
+    font-family: monospace;
+    text-shadow: none;
+}
+
+.nuxt-content p code {
+    color: rgb(202 86 78);
+    padding: 0.2em;
+}
+
+.nuxt-content pre code {
+    color: rgb(174 190 86);
+    padding: 0.1em;
+}
+
+.nuxt-content pre,
+.nuxt-content p code {
+    background-color: rgb(38 40 45);
+    border-radius: 0.4em;
+}
+
+/* Override image viewer padding */
+body {
+    padding: 0 !important;
 }
 </style>
