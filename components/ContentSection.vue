@@ -4,6 +4,7 @@ defineProps({
   reverse: { type: Boolean, default: false },
 });
 </script>
+
 <template>
   <div class="section" :class="{ reverse }">
     <div class="title">

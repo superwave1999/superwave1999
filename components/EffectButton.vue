@@ -14,18 +14,37 @@ const props = defineProps({
 const cssBtnSize = computed(() => {
   return props.mini ? `var(--btn-height-mini)` : "var(--btn-height)";
 });
+
 const cssVarColour = computed(() => {
   return props.colour ? `var(${props.colour})` : "var(--accent)";
 });
+
 const cssVarColourHover = computed(() => {
   return props.colour
     ? `var(${props.colour}-border-hover)`
     : "var(--accent-border-hover)";
 });
+
 const cssVarColourActive = computed(() => {
   return props.colour
     ? `var(${props.colour}-border-active)`
     : "var(--accent-border-active)";
+});
+
+const getLink = computed(() => {
+  let link = props.href;
+  if (props.to) {
+    link = localePath(props.to);
+  }
+  return link;
+});
+
+const getTarget = computed(() => {
+  let target = "_blank";
+  if (props.to) {
+    target = "_self";
+  }
+  return target;
 });
 
 const shadowEffect = (e: MouseEvent) => {
@@ -53,22 +72,6 @@ const shadowEffect = (e: MouseEvent) => {
     linkElement as HTMLElement
   ).style.cssText = `left: ${l}px; top: ${t}px; filter: blur(${blur}px); color: ${cssVarColour.value}`;
 };
-
-const getLink = computed(() => {
-  let link = props.href;
-  if (props.to) {
-    link = localePath(props.to);
-  }
-  return link;
-});
-
-const getTarget = computed(() => {
-  let target = "_blank";
-  if (props.to) {
-    target = "_self";
-  }
-  return target;
-});
 </script>
 
 <template>

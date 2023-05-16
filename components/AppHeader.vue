@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ArrowLeft, Globe, HalfMoon, SunLight } from "@iconoir/vue";
-
+const localeRoute = useLocaleRoute();
+const { locale } = useI18n();
+const route = useRoute();
 const colorMode = useColorMode();
 
-const themeIconColour = computed(() => {
-  return colorMode.value === "dark" ? "--enable-light" : "--enable-dark";
-});
-
 const languageSelector = ref(false);
+
 onMounted(() => {
   document.addEventListener("mousedown", (e) => {
     const containers = document.getElementsByClassName("language-select-menu");
@@ -24,21 +23,21 @@ onMounted(() => {
   });
 });
 
-const localeRoute = useLocaleRoute();
-const { locale } = useI18n();
-const route = useRoute();
-
 const previousRoute = computed(() => {
   const localizedRoute = localeRoute(route.path, locale.value);
   const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
   return routeSanitized.substring(0, routeSanitized.lastIndexOf("/"));
 });
 
-function toggleColorMode() {
+const themeIconColour = computed(() => {
+  return colorMode.value === "dark" ? "--enable-light" : "--enable-dark";
+});
+
+const toggleColorMode = () => {
   colorMode.value === "light"
     ? (colorMode.preference = "dark")
     : (colorMode.preference = "light");
-}
+};
 </script>
 
 <template>

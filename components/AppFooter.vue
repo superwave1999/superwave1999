@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { toRoman } from "roman-numerals";
-
 const year = toRoman(new Date().getFullYear());
 </script>
 

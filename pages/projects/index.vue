@@ -7,7 +7,7 @@ defineI18nRoute({
 });
 
 const { locale } = useI18n();
-const section = "projects-" + locale.value;
+const section = `project-${locale.value}`;
 const fields = ["title", "description", "previewImage", "_path"];
 const posts = await queryContent(section)
   .only(fields)
