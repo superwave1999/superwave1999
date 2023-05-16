@@ -1,19 +1,20 @@
 ---
 title: Tuble
 description: "Browser-based game inspired by Bioshock's hacking minigame"
-startDate: '2022'
-endDate: '2022'
-previewImage: '/content/projects/tuble-cmp.jpg'
-infoPlatform: 'Web'
-infoStack: 'Go, Vue'
+startDate: "2022"
+endDate: "2022"
+previewImage: "/content/projects/tuble-cmp.jpg"
+infoPlatform: "Web"
+infoStack: "Go, Vue"
 links:
-    - title: 'Website (Defunct)'
-      href: 'https://tuble.iromera.com'
-    - title: 'API source code'
-      href: 'https://github.com/superwave1999/tuble-server'
-    - title: 'Frontend source code'
-      href: 'https://github.com/superwave1999/tuble-front'
+  - title: "Website (Defunct)"
+    href: "https://tuble.iromera.com"
+  - title: "API source code"
+    href: "https://github.com/superwave1999/tuble-server"
+  - title: "Frontend source code"
+    href: "https://github.com/superwave1999/tuble-front"
 ---
+
 !["Main view"](/content/projects/tuble.jpg)
 
 Note: Project discontinued. Too small number of website visits to introduce ads. Also, my intention was to show an ad below the "success" modal, but the providers I had in mind do not allow this.
