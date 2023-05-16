@@ -55,6 +55,7 @@ div.langsel > a {
 
 div.langsel > a.active {
   color: var(--accent);
+  pointer-events: none;
 }
 
 /* Desktop-only effects */
