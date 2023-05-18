@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // @ts-ignore - Typescript doesn't like this variable
   modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxtjs/color-mode"],
   colorMode: {
     preference: "system",
     fallback: "dark",
   },
-  // @ts-ignore TODO: Typescript doesn't like this variable
+  // @ts-ignore - Typescript doesn't like this variable
   css: [
     "@/assets/css/global.css",
     "@fontsource/mulish/latin.css",
@@ -36,6 +37,9 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
     differentDomains: false,
-    // skipSettingLocaleOnNavigate: true,
+    //skipSettingLocaleOnNavigate: true
+  },
+  app: {
+    pageTransition: { name: 'trans', mode: 'out-in' }
   },
 });
