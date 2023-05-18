@@ -13,8 +13,8 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js --fix"
   },
   "devDependencies": {
-    "@fontsource/mulish": "^4.5.14",
     "@fontsource/courier-prime": "^4.5.9",
+    "@fontsource/mulish": "^4.5.14",
     "@iconoir/vue": "^6.8.0",
     "@nuxt/content": "^2.6.0",
     "@nuxtjs/color-mode": "^3.2.0",
@@ -27,8 +27,13 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "^3.4.3",
+    "photoswipe": "^5.3.7",
     "prettier": "^2.8.8",
     "roman-numerals": "^0.3.2",
     "viewerjs": "^1.11.3"
+  },
+  "dependencies": {
+    "smartphoto": "^1.6.4",
+    "venobox": "^2.0.4"
   }
 }

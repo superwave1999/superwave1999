@@ -7,13 +7,11 @@ defineI18nRoute({
 });
 
 const { locale } = useI18n();
-const section = `project-${locale.value}`;
+const section = `projects-${locale.value}`;
 const fields = ["title", "description", "previewImage", "_path"];
 const posts = await queryContent(section)
   .only(fields)
-  .sort({
-    endDate: -1,
-  })
+  .sort({endDate: -1})
   .find();
 </script>
 

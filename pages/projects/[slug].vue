@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { Link } from "@iconoir/vue";
-import Viewer from "viewerjs";
-import "viewerjs/dist/viewer.css";
+import { Link, ArrowLeft, ArrowRight } from "@iconoir/vue";
+//import 'viewerjs/dist/viewer.css';
+//import Viewer from 'viewerjs';
+//import SmartPhoto from "smartphoto";
+//import 'smartphoto/css/smartphoto.min.css'
+
+import PhotoSwipeLightbox from "photoswipe/dist/photoswipe.esm.min";
 
 defineI18nRoute({
   paths: {
@@ -12,41 +16,48 @@ defineI18nRoute({
 
 const { locale } = useI18n();
 const route = useRoute();
+const localeRoute = useLocaleRoute();
+
+let page, prev, next, hasAnyMeta;
 const section = `projects-${locale.value}`;
 const path = `/${section}/${route.params.slug}`;
-const page = await queryContent(section).where({ _path: path }).findOne();
-const hasAnyMeta =
-  page.infoWebsite ||
-  page.infoPlatform ||
-  page.infoStack ||
-  (page.links && page.links.length);
-let imageViewer: Viewer;
+page = await queryContent(section).where({ _path: path }).findOne();
+[prev, next] = await queryContent(section)
+    .only(['title', '_path'])
+    .sort({ endDate: -1})
+    .findSurround(path);
+hasAnyMeta =
+    page.infoWebsite ||
+    page.infoPlatform ||
+    page.infoStack ||
+    (page.links && page.links.length);
 
-onMounted(() => {
-  nextTick(() => {
-    const domContentElement = document.getElementById("nuxt-content");
-    if (!domContentElement) {
-      return;
+const imageViewer = ref()
+
+const url = (post: any) => {
+    if (!post) {
+        return "";
     }
-    imageViewer = new Viewer(domContentElement, {
-      inline: false,
-      loading: true,
-      loop: true,
-      movable: true,
-      rotatable: false,
-      scalable: false,
-      zoomable: true,
-      fullscreen: true,
-      zIndex: 3000,
-    });
-  });
-});
+    const contentPaths = post._path
+        .split("/")
+        .filter((entry: string) => entry !== "");
+    const localizedRoute = localeRoute(route.path, locale.value);
+    const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
+    const prevRoute = routeSanitized.substring(0, routeSanitized.lastIndexOf("/"));
+    return `${prevRoute}/${contentPaths[contentPaths.length - 1]}`;
+};
 
-onUnmounted(() => {
-  if (imageViewer) {
-    imageViewer.destroy();
-  }
-});
+onMounted(async () => {
+    //await nextTick()
+    //imageViewer.value = new VenoBox({
+    //    selector: ".js-viewer"
+    //});
+})
+
+onBeforeUnmount(() => {
+    //imageViewer.value.destroy()
+    7/imageViewer.value = null;
+})
 </script>
 
 <template>
@@ -76,7 +87,7 @@ onUnmounted(() => {
       <div v-if="page.infoWebsite" class="link-box">
         <h4>
           <a :href="page.infoWebsite" target="_blank"
-            ><Link />&nbsp;{{ page.infoWebsite }}</a
+            ><Link />&nbsp;Website</a
           >
         </h4>
       </div>
@@ -88,7 +99,10 @@ onUnmounted(() => {
         </h4>
       </div>
     </div>
-    <!-- TODO: Prev/next -->
+    <div v-if="prev || next" class="prevnext">
+        <NuxtLink v-if="prev" class="post prev" :to="url(prev)"><h2><ArrowLeft />&nbsp;{{ prev.title }}</h2></NuxtLink>
+        <NuxtLink v-if="next" class="post next" :to="url(next)"><h2>{{ next.title }}&nbsp;<ArrowRight /></h2></NuxtLink>
+    </div>
   </article>
 </template>
 
@@ -105,6 +119,33 @@ div.post-meta {
 .link-box a {
   white-space: normal;
   word-break: break-word;
+}
+
+.prevnext {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: var(--section-size);
+}
+
+.prevnext > * {
+    margin: var(--mid-margin);
+}
+
+.prevnext h2 {
+    text-decoration: underline;
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.prevnext .next {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+.prevnext a:hover {
+    color: var(--accent);
 }
 
 /* Blog post styles */
