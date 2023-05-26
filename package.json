@@ -27,13 +27,8 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "^3.4.3",
-    "photoswipe": "^5.3.7",
     "prettier": "^2.8.8",
     "roman-numerals": "^0.3.2",
     "viewerjs": "^1.11.3"
-  },
-  "dependencies": {
-    "smartphoto": "^1.6.4",
-    "venobox": "^2.0.4"
   }
 }

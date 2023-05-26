@@ -8,19 +8,19 @@ const handleError = () => clearError({ redirect: localePath("/") });
 </script>
 
 <template>
-    <div class="fade-in">
-        <ErrorCode :code="error.statusCode" />
-        <br />
-        <h2>{{ $t("err.top") }}</h2>
-        <ButtonRow>
-            <EffectButton
-                    :text="$t('err.button')"
-                    colour="--error"
-                    @click="handleError"
-            ><ArrowLeft
-            /></EffectButton>
-        </ButtonRow>
-    </div>
+  <div class="fade-in">
+    <ErrorCode :code="error.statusCode" />
+    <br />
+    <h2>{{ $t("err.top") }}</h2>
+    <ButtonRow>
+      <EffectButton
+        :text="$t('err.button')"
+        colour="--error"
+        @click="handleError"
+        ><ArrowLeft
+      /></EffectButton>
+    </ButtonRow>
+  </div>
 </template>
 
 <style scoped>
