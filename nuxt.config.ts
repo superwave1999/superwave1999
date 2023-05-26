@@ -1,5 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
+  app: {
+    pageTransition: { name: "trans", mode: "out-in" },
+    head: {
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
+      ],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+      ],
+    },
+  },
   // @ts-ignore - Typescript doesn't like this variable
   modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxtjs/color-mode"],
   colorMode: {
@@ -39,7 +54,8 @@ export default defineNuxtConfig({
     differentDomains: false,
     //skipSettingLocaleOnNavigate: true
   },
-  app: {
-    pageTransition: { name: 'trans', mode: 'out-in' }
+  router: {
+    prefetchPayloads: false,
+    prefetchLinks: false,
   },
 });
