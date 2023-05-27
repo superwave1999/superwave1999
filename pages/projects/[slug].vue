@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Link, ArrowLeft, ArrowRight } from "@iconoir/vue";
 import Viewer from "viewerjs";
+import "viewerjs/dist/viewer.css";
 
 defineI18nRoute({
   paths: {
@@ -13,21 +14,18 @@ const { locale } = useI18n();
 const route = useRoute();
 const localeRoute = useLocaleRoute();
 
-let page, prev, next, hasAnyMeta;
 const section = `projects-${locale.value}`;
 const path = `/${section}/${route.params.slug}`;
-page = await queryContent(section).where({ _path: path }).findOne();
-[prev, next] = await queryContent(section)
+const page = await queryContent(section).where({ _path: path }).findOne();
+const [prev, next] = await queryContent(section)
   .only(["title", "_path"])
   .sort({ endDate: -1 })
   .findSurround(path);
-hasAnyMeta =
+const hasAnyMeta =
   page.infoWebsite ||
   page.infoPlatform ||
   page.infoStack ||
   (page.links && page.links.length);
-
-const imageViewer = ref();
 
 const url = (post: any) => {
   if (!post) {
@@ -45,16 +43,24 @@ const url = (post: any) => {
   return `${prevRoute}/${contentPaths[contentPaths.length - 1]}`;
 };
 
-onMounted(async () => {
-  //await nextTick()
-  //imageViewer.value = new VenoBox({
-  //    selector: ".js-viewer"
-  //});
+let imageViewer: Viewer;
+
+onMounted(() => {
+  imageViewer = new Viewer(document.getElementById("nuxt-content"), {
+    inline: false,
+    loading: true,
+    loop: true,
+    movable: true,
+    rotatable: false,
+    scalable: false,
+    zoomable: true,
+    fullscreen: true,
+    zIndex: 3000,
+  });
 });
 
 onBeforeUnmount(() => {
-  //imageViewer.value.destroy()
-  //imageViewer.value = null;
+  imageViewer.destroy();
 });
 </script>
 
