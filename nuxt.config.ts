@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   ssr: true,
   app: {
-    pageTransition: { name: "trans", mode: "out-in" },
     head: {
       meta: [
         { charset: "utf-8" },
@@ -23,7 +22,6 @@ export default defineNuxtConfig({
   },
   // @ts-ignore - Typescript doesn't like this variable
   css: [
-    "viewerjs/dist/viewer.css",
     "@/assets/css/global.css",
     "@fontsource/mulish/latin.css",
     "@fontsource/courier-prime/latin.css",
@@ -53,7 +51,6 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
     differentDomains: false,
-    //skipSettingLocaleOnNavigate: true
   },
   router: {
     prefetchPayloads: false,
