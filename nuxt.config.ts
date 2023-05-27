@@ -23,6 +23,7 @@ export default defineNuxtConfig({
   },
   // @ts-ignore - Typescript doesn't like this variable
   css: [
+    "viewerjs/dist/viewer.css",
     "@/assets/css/global.css",
     "@fontsource/mulish/latin.css",
     "@fontsource/courier-prime/latin.css",
