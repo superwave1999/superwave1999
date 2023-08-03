@@ -9,9 +9,9 @@ const handleError = () => clearError({ redirect: localePath("/") });
 
 <template>
   <div class="fade-in">
-    <ErrorCode :code="error.statusCode" />
+    <ErrorCode :code="error?.statusCode || 404" />
     <br />
-    <h2>{{ $t("err.top") }}</h2>
+    <h2>{{ $t ? $t("err.top") : "" }}</h2>
     <ButtonRow>
       <EffectButton
         :text="$t('err.button')"
