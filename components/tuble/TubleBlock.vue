@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import TubleBlock from "assets/js/tuble-block";
+/* eslint-disable vue/no-setup-props-destructure */
 import { SingleTapGesture, Timer } from "@iconoir/vue";
 import equal from "array-equal";
+import TubleBlock from "assets/js/tuble-block";
 
 const emit = defineEmits(["select"]);
-const props = defineProps(["properties"]);
+const props = defineProps({
+  properties: { type: TubleBlock, required: true },
+  isActiveBlock: { type: Boolean, required: true },
+  isModifiable: { type: Boolean, required: true },
+  isFrozenGame: { type: Boolean, required: true },
+});
 const properties: TubleBlock = props.properties;
 const typeIcons: { [index: string]: any } = {
   a: { icon: Timer, colour: "#518229" }, // Time benefit
@@ -25,7 +31,7 @@ const baseImage = computed(() => {
   let suffix;
   if (properties.connections.includes(-1)) {
     suffix = "h";
-  } else if (isCurved) {
+  } else if (isCurved.value) {
     suffix = "c";
   } else {
     suffix = "s";
@@ -38,7 +44,7 @@ const rotation = computed(() => {
   if (properties.connections.includes(-1)) {
     const max = Math.max(...properties.connections);
     rot = `rotate(${max * 90}deg)`;
-  } else if (!isCurved) {
+  } else if (!isCurved.value) {
     if ((properties.connections[0] || 0) % 2 === 1) {
       rot = "rotate(90deg)";
     }
@@ -64,22 +70,10 @@ const overlayColour = computed(() => {
   return typeIcons[properties.type]?.colour || "";
 });
 
-const isActiveBlock = computed(() => {
-  return true; //TODO: This.
-});
-
-const isModifiable = computed(() => {
-  return true; //TODO: This.
-});
-
-const isFrozenGame = computed(() => {
-  return false; //TODO: This.
-});
-
-const coords = [0, 1, 2, 3];
-
 const setActiveBlock = () => {
-  emit("select", [properties.x, properties.y]);
+  if (properties.isFrontendModifiable()) {
+    emit("select", [properties.x, properties.y]);
+  }
 };
 </script>
 
@@ -87,10 +81,10 @@ const setActiveBlock = () => {
   <div
     class="block"
     :class="{
-      click: isModifiable,
-      noclick: !isModifiable,
-      active: isActiveBlock,
-      frozen: isFrozenGame,
+      click: props.isModifiable,
+      noclick: !props.isModifiable,
+      active: props.isActiveBlock,
+      frozen: props.isFrozenGame,
     }"
     @click="setActiveBlock"
   >
@@ -106,6 +100,7 @@ div.block {
   aspect-ratio: 1 / 1;
   display: flex;
   position: relative;
+  width: 72px;
 }
 
 div.block > img {
@@ -126,5 +121,41 @@ div.block > div.icon {
   max-height: 2.1rem;
   align-self: center;
   margin: 0 auto;
+}
+
+div.block.click {
+  cursor: pointer;
+}
+
+div.block.click:hover {
+  background-color: #00695c2f !important; /* teal darken-3 */
+}
+
+div.block.noclick {
+  cursor: not-allowed;
+}
+
+div.block.noclick:hover {
+  background-color: #c628282f !important; /* red lighten-1 */
+}
+
+div.block.active,
+div.block.active:hover {
+  cursor: default;
+  background-color: #00695c !important; /* teal darken-3 */
+}
+
+div.block.active.noclick,
+div.block.active.noclick:hover {
+  cursor: not-allowed;
+  background-color: #c62828bb !important; /* red lighten-1 */
+}
+
+div.block.frozen:not(.active) {
+  /* Override everything */
+  pointer-events: none !important;
+  cursor: default !important;
+  opacity: 0.7 !important;
+  background-color: transparent !important;
 }
 </style>

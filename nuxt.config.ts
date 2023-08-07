@@ -43,7 +43,7 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "en",
-    lazy: true,
+    lazy: false,
     langDir: "i18n",
     strategy: "prefix",
     detectBrowserLanguage: {

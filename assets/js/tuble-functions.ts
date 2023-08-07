@@ -1,7 +1,7 @@
 export default class TubleFunctions {
   public static async newHash(message: string): Promise<number[]> {
     const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
-    const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message
+    const hashBuffer = await crypto.subtle.digest("SHA-512", msgUint8); // hash the message
     return Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
   }
 
