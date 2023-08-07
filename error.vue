@@ -14,7 +14,7 @@ const handleError = () => clearError({ redirect: localePath("/") });
     <h2>{{ $t ? $t("err.top") : "" }}</h2>
     <ButtonRow>
       <EffectButton
-        :text="$t('err.button')"
+        :text="$t ? $t('err.button') : ''"
         colour="--error"
         @click="handleError"
         ><ArrowLeft

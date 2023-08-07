@@ -8,7 +8,7 @@ export const TYPE_PENALTY_MOVES = "z";
 export const TYPE_BENEFIT_TIME = "a";
 export const TYPE_BENEFIT_MOVES = "b";
 export default class TubleBlock {
-  public readonly connections: [number, number];
+  public connections: [number, number];
   public type: string;
   public readonly x: number;
   public readonly y: number;
@@ -33,19 +33,21 @@ export default class TubleBlock {
     let fun = -1;
     const diffX = this.x - nextCoords[0];
     const diffY = this.y - nextCoords[1];
-    if (diffX > 0) {
+    if (diffY > 0) {
       fun = 3;
     }
-    if (diffX < 0) {
+    if (diffY < 0) {
       fun = 1;
     }
-    if (diffY > 0) {
+    if (diffX > 0) {
       fun = 0;
     }
-    if (diffY < 0) {
+    if (diffX < 0) {
       fun = 2;
     }
-    !isSecond ? this.setFirstConnection(fun) : this.setSecondConnection(fun);
+    if (fun !== -1) {
+      !isSecond ? this.setFirstConnection(fun) : this.setSecondConnection(fun);
+    }
   }
 
   public setRandomSpecialType(seedNumber: number) {
@@ -82,16 +84,31 @@ export default class TubleBlock {
     this.setSecondConnection(conn[secondIdx]);
   }
 
+  public rotateClockwise() {
+    for (let i = 0; i < this.connections.length; i++) {
+      // Here we increment each connection, overflowing when necessary
+      let n = this.connections[i] + 1;
+      if (n > 3) {
+        n = 0;
+      }
+      this.connections[i] = n;
+    }
+  }
+
+  public rotateCounterClockwise() {
+    for (let i = 0; i < this.connections.length; i++) {
+      // Here we decrement each connection, overflowing when necessary
+      let n = this.connections[i] - 1;
+      if (n < 0) {
+        n = 3;
+      }
+      this.connections[i] = n;
+    }
+  }
+
   public setRandomRotation(seedNumber: number) {
     for (let i = 0; i < seedNumber; i++) {
-      for (let i = 0; i < this.connections.length; i++) {
-        // Here we increment each connection, overflowing when necessary
-        let n = this.connections[i] + 1;
-        if (n > 3) {
-          n = 0;
-        }
-        this.connections[i] = n;
-      }
+      this.rotateClockwise();
     }
   }
 
@@ -114,5 +131,11 @@ export default class TubleBlock {
     );
   }
 
-  //TODO: Add map verification code.
+  public isFrontendModifiable(): boolean {
+    return (
+      this.type !== TYPE_ENDPOINT && !this.connections.includes(NO_CONNECTION)
+    );
+  }
+
+  // TODO: Add map verification code.
 }
