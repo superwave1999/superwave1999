@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { extend as dayjs } from "dayjs";
+import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
 import { Refresh } from "@iconoir/vue";
 import TubleBuilder from "assets/js/tuble-builder";
 import TubleFunctions from "assets/js/tuble-functions";
 import TubleGame from "assets/js/tuble-game";
 
-const date = dayjs(utc);
+const date = dayjs.extend(utc);
 const utcDate = date.utc().format("YYYY-MM-DD") + " 00:00:00";
 const layoutSeed = await TubleFunctions.newHash(utcDate);
 const modifierSeed = await TubleFunctions.newHash(`${utcDate} MODIFIER`);
@@ -25,13 +25,13 @@ const timerStatus = ref("--:--");
 let timerProcess: any = null;
 watch(vueTubleGame.timeLog, (newValue) => {
   if (newValue.length % 2 !== 0) {
-    timerStatus.value = String(vueTubleGame.getTime());
+    timerStatus.value = <string>vueTubleGame.getTime();
     timerProcess = setInterval(() => {
-      timerStatus.value = String(vueTubleGame.getTime());
+      timerStatus.value = <string>vueTubleGame.getTime();
     }, 1000);
   } else if (timerProcess) {
     clearInterval(timerProcess);
-    timerStatus.value = String(vueTubleGame.getTime());
+    timerStatus.value = <string>vueTubleGame.getTime();
   }
 });
 </script>

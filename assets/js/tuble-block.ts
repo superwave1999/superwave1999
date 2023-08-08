@@ -1,4 +1,6 @@
 import Chooser from "random-seed-weighted-chooser";
+import equal from "array-equal";
+import TubleFunctions from "assets/js/tuble-functions";
 
 export const NO_CONNECTION = -1;
 export const TYPE_NORMAL = "n";
@@ -137,5 +139,16 @@ export default class TubleBlock {
     );
   }
 
-  // TODO: Add map verification code.
+  public nextConnectedBlockCoords(existingCoords: [number, number]): [number, number] {
+    let use = TubleFunctions.connectionToCoords(this.connections[0], this.x, this.y);
+    if (equal(use, existingCoords)) {
+      use = TubleFunctions.connectionToCoords(this.connections[1], this.x, this.y);
+    }
+    return use;
+  }
+
+  public isConnectedFrom(prevCoords: any) {
+    return (equal(prevCoords, TubleFunctions.connectionToCoords(this.connections[0], this.x, this.y))
+        || (equal(prevCoords, TubleFunctions.connectionToCoords(this.connections[1], this.x, this.y))));
+  }
 }

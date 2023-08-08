@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import TubleBlock, { NO_CONNECTION } from "assets/js/tuble-block";
+import TubleValidator from "assets/js/tuble-validator";
 
 export default class TubleGame {
   public map: TubleBlock[][] = [];
@@ -70,5 +71,12 @@ export default class TubleGame {
         this.activeCoords[1]
       ].rotateCounterClockwise();
     }
+  }
+
+  public validate() {
+    this.stopTime();
+    const timeMs = <number>this.getTime(true, false);
+    const v = new TubleValidator(timeMs, this.moves, this.map);
+    v.validate()
   }
 }

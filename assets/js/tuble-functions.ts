@@ -1,3 +1,5 @@
+import {NO_CONNECTION} from "assets/js/tuble-block";
+
 export default class TubleFunctions {
   public static async newHash(message: string): Promise<number[]> {
     const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
@@ -15,5 +17,28 @@ export default class TubleFunctions {
       }
     }
     return n;
+  }
+
+  public static connectionToCoords(connection: number, currentX:number, currentY: number): [number, number] {
+    let coords: [number, number] = [NO_CONNECTION, NO_CONNECTION]
+    switch (connection) {
+      case 3: //To left.
+        coords = [currentX - 1, currentY]
+        break
+      case 2: //TO bottom.
+        coords = [currentX, currentY + 1]
+        break
+      case 1:
+        coords = [currentX + 1, currentY]
+        break
+      case 0:
+        coords = [currentX, currentY - 1]
+        break
+    }
+    return coords
+  }
+
+  public static includesArray(needle: [number, number], haystack: [number, number][]) {
+
   }
 }
