@@ -15,7 +15,11 @@ export default defineNuxtConfig({
     },
   },
   // @ts-ignore - Typescript doesn't like this variable
-  modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxtjs/color-mode"],
+  modules: [
+    "@nuxtjs/i18n",
+    "@nuxt/content",
+    "@nuxtjs/color-mode"
+  ],
   colorMode: {
     preference: "system",
     fallback: "dark",
@@ -43,7 +47,7 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "en",
-    lazy: false,
+    lazy: true,
     langDir: "i18n",
     strategy: "prefix",
     detectBrowserLanguage: {
@@ -51,9 +55,5 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
     differentDomains: false,
-  },
-  router: {
-    prefetchPayloads: false,
-    prefetchLinks: false,
-  },
+  }
 });
