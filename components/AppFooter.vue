@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { toRoman } from "roman-numerals";
-const year = toRoman(new Date().getFullYear());
+import romans from "romans";
+const year = romans.romanize(new Date().getFullYear());
 </script>
 
 <template>
@@ -20,7 +20,7 @@ const year = toRoman(new Date().getFullYear());
   </div>
 </template>
 
-<style scoped>
+<style lang="css" scoped>
 div.footer {
   margin-top: 10ch;
   margin-bottom: 5ch;
