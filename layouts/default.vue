@@ -3,19 +3,17 @@ import { IconoirProvider } from "@iconoir/vue";
 </script>
 
 <template>
-  <div>
-    <IconoirProvider
-      :icon-props="{ color: 'currentColor', width: '1em', height: '1em' }"
-    >
-      <EffectHeader />
-      <AppHeader />
-      <div class="container">
-        <NuxtPage />
-        <HorizontalDivider />
-        <AppFooter />
-      </div>
-    </IconoirProvider>
-  </div>
+  <IconoirProvider
+    :icon-props="{ color: 'currentColor', width: '1em', height: '1em' }"
+  >
+    <EffectHeader />
+    <AppHeader />
+    <div class="container">
+      <NuxtPage />
+      <HorizontalDivider />
+      <AppFooter />
+    </div>
+  </IconoirProvider>
 </template>
 
 <style scoped>
