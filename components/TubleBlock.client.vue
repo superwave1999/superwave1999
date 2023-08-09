@@ -95,12 +95,12 @@ const setActiveBlock = () => {
   </div>
 </template>
 
-<style scoped lang="css">
+<style scoped>
 div.block {
   aspect-ratio: 1 / 1;
   display: flex;
   position: relative;
-  width: 72px;
+  width: var(--tuble-block-width);
 }
 
 div.block > img {

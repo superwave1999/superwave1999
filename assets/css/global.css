@@ -60,14 +60,22 @@
   --highlight-size: 1.1rem;
   --section-size: 2rem;
   --top-space: 14ch;
+  --container-max-width: 100ch;
+  --container-padding: 0.8ch;
+  --tuble-max-width: 52ch;
+  --tuble-block-width: 48px;
 }
 
 @media (min-width: 576px) {
   :root {
+    --effect-1-timing: 47.666s;
+    --effect-2-timing: 58.121s;
+    --effect-3-timing: 33.333s;
     --effect-size-mul: 1.33;
     --effect-opacity: 0.4;
     --effect-height: 77vh;
     --effect-blur: 120rem;
+
     --btn-height: 8ch;
     --btn-height-mini: 4ch;
     --main-margin: 1ch;
@@ -77,9 +85,8 @@
     --highlight-size: 1.2rem;
     --section-size: 2.8rem;
     --top-space: 20ch;
-    --effect-1-timing: 47.666s;
-    --effect-2-timing: 58.121s;
-    --effect-3-timing: 33.333s;
+    --container-padding: 2ch;
+    --tuble-block-width: 72px;
   }
 }
 
@@ -178,15 +185,23 @@ svg {
   vertical-align: middle;
 }
 
-/* Page transition */
-.trans-enter-active,
-.trans-leave-active {
-  transition: transform 0.25s, opacity 0.25s;
+/* popup and modal design */
+div.popup {
+  margin: var(--main-margin);
+  border-radius: var(--main-margin);
+  background-color: var(--bg-menu);
+  border: 1px solid var(--border-menu-hover);
+  padding: var(--main-margin);
+  z-index: 10;
 }
 
-.trans-enter-from,
-.trans-leave-to {
-  opacity: 0;
-  transform: translateY(0.2rem);
-  pointer-events: none;
+@media (hover: hover) {
+  div.popup {
+    border: 1px solid var(--border-menu);
+  }
+
+  div.popup:hover {
+    border: 1px solid var(--border-menu-hover);
+    transition: border var(--transition-speed) ease-in-out;
+  }
 }

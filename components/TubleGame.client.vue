@@ -72,7 +72,7 @@ watch(vueTubleGame.timeLog, (newValue) => {
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 div.controls,
 div.stats {
   width: 100%;

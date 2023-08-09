@@ -138,7 +138,7 @@ const shadowEffect = (e: MouseEvent) => {
 .link.text {
   height: v-bind(cssBtnSize);
   width: auto;
-  padding: 2ch 4ch;
+  padding: 2ch 3ch;
 
   display: flex;
   flex-direction: row;
@@ -147,7 +147,7 @@ const shadowEffect = (e: MouseEvent) => {
 }
 
 .link.text.mini {
-  padding: 1ch 2ch;
+  padding: 1ch 1.5ch;
 }
 
 .link span {
