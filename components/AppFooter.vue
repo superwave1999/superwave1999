@@ -20,7 +20,7 @@ const year = romans.romanize(new Date().getFullYear());
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 div.footer {
   margin-top: 10ch;
   margin-bottom: 5ch;

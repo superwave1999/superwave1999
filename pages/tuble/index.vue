@@ -4,9 +4,15 @@
   </section>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 section.game-container {
-  max-width: 52ch;
-  margin: -12ch auto 0;
+  max-width: var(--tuble-max-width);
+  margin: calc(-0.5 * var(--top-space)) auto 0;
+}
+
+@media (min-width: 576px) {
+  section.game-container {
+    margin: calc(-1 * var(--top-space) + var(--main-margin)) auto 0;
+  }
 }
 </style>

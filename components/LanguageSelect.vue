@@ -9,7 +9,7 @@ const switchLocalePath = useSwitchLocalePath();
 </script>
 
 <template>
-  <div class="langsel language-select-menu" :class="{ open }">
+  <div class="popup langsel language-select-menu" :class="{ open }">
     <NuxtLink
       v-for="i in locales"
       :key="i.code"
@@ -27,17 +27,11 @@ div.langsel {
   position: absolute;
   top: 100%;
   right: 0;
-  margin: var(--main-margin);
-  border-radius: var(--main-margin);
   overflow: hidden;
-  z-index: 10;
   opacity: 0;
   transition: opacity var(--transition-speed) ease-in-out,
     transform var(--transition-speed) ease-in-out,
     border var(--transition-speed-out-full) ease-in-out;
-  background-color: var(--bg-menu);
-  border: 1px solid var(--border-menu-hover);
-  padding: var(--main-margin);
 }
 
 div.langsel.open {
@@ -56,18 +50,5 @@ div.langsel > a {
 div.langsel > a.active {
   color: var(--accent);
   pointer-events: none;
-}
-
-/* Desktop-only effects */
-@media (hover: hover) {
-  div.langsel {
-    border: 1px solid var(--border-menu);
-    opacity: 0;
-  }
-
-  div.langsel:hover {
-    border: 1px solid var(--border-menu-hover);
-    transition: border var(--transition-speed) ease-in-out;
-  }
 }
 </style>

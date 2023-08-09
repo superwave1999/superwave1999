@@ -21,10 +21,10 @@ import { IconoirProvider } from "@iconoir/vue";
 <style scoped>
 div.container {
   width: 100%;
-  max-width: 100ch;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding-left: 2ch;
-  padding-right: 2ch;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
   padding-top: var(--top-space);
 }
 </style>
