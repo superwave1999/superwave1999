@@ -2,7 +2,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
-import { Refresh } from "@iconoir/vue";
+import { Refresh, SingleTapGesture, Timer } from "@iconoir/vue";
 import TubleBuilder from "assets/js/tuble-builder";
 import TubleFunctions from "assets/js/tuble-functions";
 import TubleGame from "assets/js/tuble-game";
@@ -41,8 +41,8 @@ watch(vueTubleGame.timeLog, (newValue) => {
 <template>
   <h2 class="title">Tuble</h2>
   <div class="stats">
-    <h4>{{ timerStatus }}</h4>
-    <h4>{{ vueTubleGame.moves }}</h4>
+    <h4><Timer />&nbsp;{{ timerStatus }}</h4>
+    <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
   </div>
   <table class="map">
     <tr v-for="(xitems, xidx) in vueTubleGame.map" :key="xidx">
