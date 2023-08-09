@@ -1,4 +1,3 @@
-import { NO_CONNECTION } from "assets/js/tuble-block";
 import equal from "array-equal";
 
 export default class TubleFunctions {
