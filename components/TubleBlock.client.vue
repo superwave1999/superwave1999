@@ -1,17 +1,16 @@
 <script setup lang="ts">
-/* eslint-disable vue/no-setup-props-destructure */
 import { SingleTapGesture, Timer } from "@iconoir/vue";
 import equal from "array-equal";
 import TubleBlock from "assets/js/tuble-block";
 
 const emit = defineEmits(["select"]);
 const props = defineProps({
-  properties: { type: TubleBlock, required: true },
+  properties: { type: Object, required: true },
   isActiveBlock: { type: Boolean, required: true },
   isModifiable: { type: Boolean, required: true },
   isFrozenGame: { type: Boolean, required: true },
 });
-const properties: TubleBlock = props.properties;
+const properties = props.properties as TubleBlock;
 const typeIcons: { [index: string]: any } = {
   a: { icon: Timer, colour: "#518229" }, // Time benefit
   b: { icon: SingleTapGesture, colour: "#518229" }, // Moves benefit
