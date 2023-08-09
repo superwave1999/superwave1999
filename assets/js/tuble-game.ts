@@ -15,7 +15,7 @@ export default class TubleGame {
     this.map = map;
   }
 
-  public getTime(asTimestamp = false, current = true) {
+  public getTime(asTimestamp = false, current = true): string | number {
     let total = 0;
     for (let i = 0; i < this.timeLog.length; i++) {
       if (i % 2 !== 0) {
@@ -53,15 +53,15 @@ export default class TubleGame {
     return false;
   }
 
-  private addMove() {
+  private addMove(): void {
     this.moves++;
   }
 
-  public actionSelectBlock(coords: [number, number]) {
+  public actionSelectBlock(coords: [number, number]): void {
     this.activeCoords = coords;
   }
 
-  public actionRotate(isClockwise: boolean) {
+  public actionRotate(isClockwise: boolean): void {
     this.addMove();
     this.startTime();
     if (isClockwise) {
@@ -73,7 +73,7 @@ export default class TubleGame {
     }
   }
 
-  public validate() {
+  public validate(): void {
     this.stopTime();
     const timeMs = <number>this.getTime(true, false);
     const v = new TubleValidator(timeMs, this.moves, this.map);
@@ -81,6 +81,7 @@ export default class TubleGame {
       console.log(v);
     } else {
       this.startTime();
+      this.moves++;
     }
   }
 }

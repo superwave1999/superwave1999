@@ -7,7 +7,7 @@ export default class TubleFunctions {
     return Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
   }
 
-  public static overflow(max: number, num: number) {
+  public static overflow(max: number, num: number): number {
     let n = 0;
     for (let i = 0; i < num; i++) {
       if (n + 1 > max) {
@@ -22,7 +22,7 @@ export default class TubleFunctions {
   public static includesArray(
     needle: [number, number],
     haystack: [number, number][]
-  ) {
+  ): boolean {
     return haystack.findIndex((coords) => equal(coords, needle)) !== -1;
   }
 }
