@@ -139,16 +139,40 @@ export default class TubleBlock {
     );
   }
 
-  public nextConnectedBlockCoords(existingCoords: [number, number]): [number, number] {
-    let use = TubleFunctions.connectionToCoords(this.connections[0], this.x, this.y);
-    if (equal(use, existingCoords)) {
-      use = TubleFunctions.connectionToCoords(this.connections[1], this.x, this.y);
+  private connectedBlockCoords(connection: number): [number, number] {
+    switch (connection) {
+      case 3: // to left
+        return [this.x, this.y - 1];
+      case 2: // down
+        return [this.x + 1, this.y];
+      case 1: // to right
+        return [this.x, this.y + 1];
+      case 0: // up
+        return [this.x - 1, this.y];
+      default:
+        return [NO_CONNECTION, NO_CONNECTION]
     }
-    return use;
   }
 
-  public isConnectedFrom(prevCoords: any) {
-    return (equal(prevCoords, TubleFunctions.connectionToCoords(this.connections[0], this.x, this.y))
-        || (equal(prevCoords, TubleFunctions.connectionToCoords(this.connections[1], this.x, this.y))));
+  public nextConnectedBlockCoords(existingCoordsToAvoid: [number, number] | null): [number, number] {
+    const candidates = [
+      this.connectedBlockCoords(this.connections[1]),
+      this.connectedBlockCoords(this.connections[0])
+    ]
+    if (existingCoordsToAvoid === null) {
+      return candidates[0]
+    }
+    // @ts-ignore
+    return candidates.find((coords) => !equal(coords, existingCoordsToAvoid))
+  }
+
+  public isConnectedFrom(coords: [number, number]): boolean {
+    const coordOptions: [number, number][] = [
+      [coords[0], coords[1] - 1], // Towards top
+      [coords[0] + 1, coords[1]], // Towards right
+      [coords[0], coords[1] + 1], // Towards bottom
+      [coords[0] - 1, coords[1]], // Towards left
+    ];
+    return TubleFunctions.includesArray([this.x, this.y], coordOptions);
   }
 }
