@@ -58,6 +58,7 @@ export default class TubleGame {
   }
 
   public actionSelectBlock(coords: [number, number]) {
+    console.log(coords)
     this.activeCoords = coords;
   }
 
@@ -77,6 +78,10 @@ export default class TubleGame {
     this.stopTime();
     const timeMs = <number>this.getTime(true, false);
     const v = new TubleValidator(timeMs, this.moves, this.map);
-    v.validate()
+    if (v.validate()) {
+      console.log(v);
+    } else {
+      this.startTime();
+    }
   }
 }

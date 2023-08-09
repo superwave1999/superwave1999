@@ -1,12 +1,11 @@
-import TubleBlock, { NO_CONNECTION, TYPE_ENDPOINT } from "./tuble-block";
 import TubleFunctions from "assets/js/tuble-functions";
+import TubleBlock, { NO_CONNECTION, TYPE_ENDPOINT } from "./tuble-block";
 
 export default class TubleBuilder {
   private readonly mapSize: number = 6;
   private validPath: [number, number][] = [];
-  private readonly creatorEdgesX: [number, number];
-  private readonly creatorEdgesY: [number, number];
-  private creatorEdges: [number, number][] = [];
+  private readonly creatorEdgeLimits: [number, number];
+  private creatorEdgeCoords: [number, number][] = [];
   private gameMap: TubleBlock[][] = [];
 
   private readonly validPathSeed: number[];
@@ -29,15 +28,14 @@ export default class TubleBuilder {
     this.validPathSeed = validPathSeed;
     this.modifierSeed = modifierSeed;
     this.rotationSeed = rotationSeed;
-    this.creatorEdgesX = [0, this.mapSize - 1];
-    this.creatorEdgesY = [0, this.mapSize - 1];
+    this.creatorEdgeLimits = [0, this.mapSize - 1];
     for (let valueX = 0; valueX < this.mapSize; valueX++) {
       for (let valueY = 0; valueY < this.mapSize; valueY++) {
         if (
-          this.creatorEdgesX.includes(valueX) ||
-          this.creatorEdgesY.includes(valueY)
+          this.creatorEdgeLimits.includes(valueX) ||
+          this.creatorEdgeLimits.includes(valueY)
         ) {
-          this.creatorEdges.push([valueX, valueY]);
+          this.creatorEdgeCoords.push([valueX, valueY]);
         }
         if (!this.gameMap[valueX]) {
           this.gameMap[valueX] = [];
@@ -68,12 +66,12 @@ export default class TubleBuilder {
   }
 
   private createValidPath() {
-    const minConnected = this.mapSize + 3;
+    const minConnected = this.mapSize + 5;
     const mustFinishOnEdge = true;
     let coords =
-      this.creatorEdges[
+      this.creatorEdgeCoords[
         TubleFunctions.overflow(
-          this.creatorEdges.length - 1,
+          this.creatorEdgeCoords.length - 1,
           this.getValidPathSeedNumber()
         )
       ]; // Starting edge block
@@ -82,8 +80,8 @@ export default class TubleBuilder {
       if (
         minConnected <= this.validPath.length &&
         (!mustFinishOnEdge ||
-          this.creatorEdgesX.includes(coords[0]) ||
-          this.creatorEdgesY.includes(coords[1]))
+          this.creatorEdgeLimits.includes(coords[0]) ||
+          this.creatorEdgeLimits.includes(coords[1]))
       ) {
         // Halt if current coords are finished (on edge or anywhere)
         return;
@@ -114,22 +112,19 @@ export default class TubleBuilder {
       [coords[0], coords[1] + 1], // Towards bottom
       [coords[0] - 1, coords[1]], // Towards left
     ];
-    return coordOptions.filter((testCoords: [number, number]) => {
-      return (
+    return coordOptions.filter(
+      (testCoords: [number, number]) =>
         this.coordsAreWithinLimits(testCoords) &&
-        this.validPath.findIndex(
-          (entry) => entry[0] === testCoords[0] && entry[1] === testCoords[1]
-        ) === -1
-      ); // Only options within map borders, and not been stepped on
-    });
+        !TubleFunctions.includesArray(testCoords, this.validPath) // Only options within map borders, and not been stepped on
+    );
   }
 
   private coordsAreWithinLimits(coords: [number, number]): boolean {
     return (
-      coords[0] >= this.creatorEdgesX[0] &&
-      coords[0] <= this.creatorEdgesX[1] &&
-      coords[1] >= this.creatorEdgesY[0] &&
-      coords[1] <= this.creatorEdgesY[1]
+      coords[0] >= this.creatorEdgeLimits[0] &&
+      coords[0] <= this.creatorEdgeLimits[1] &&
+      coords[1] >= this.creatorEdgeLimits[0] &&
+      coords[1] <= this.creatorEdgeLimits[1]
     );
   }
 
