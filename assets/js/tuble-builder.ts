@@ -45,14 +45,14 @@ export default class TubleBuilder {
     }
   }
 
-  public build() {
+  public build(): void {
     this.createValidPath();
     this.randomizeBlocks(); // Set random initial state
     this.connectBlocksOnPath(); // Connect blocks using coords in validPath
     this.randomRotatePathBlocks(); // Rotate the connected blocks using seed
   }
 
-  private randomizeBlocks() {
+  private randomizeBlocks(): void {
     for (let valueX = 0; valueX < this.mapSize; valueX++) {
       for (let valueY = 0; valueY < this.mapSize; valueY++) {
         this.gameMap[valueX][valueY].setRandomConnections(
@@ -65,7 +65,11 @@ export default class TubleBuilder {
     }
   }
 
-  private createValidPath() {
+  /**
+   * Create start and finish blocks, making sure that the map can always be completed.
+   * @private
+   */
+  private createValidPath(): void {
     const minConnected = this.mapSize + 5;
     const mustFinishOnEdge = true;
     let coords =
@@ -128,6 +132,10 @@ export default class TubleBuilder {
     );
   }
 
+  /**
+   * If the map generator reaches a dead-end, rewind until a different connection can be made.
+   * @private
+   */
   private rewindPathUntilValid(): [number, number] {
     const prevValidCoords = this.validPath[this.validPath.length - 2]; // -1 is current, -2 is previous
     const coordinateCandidates =
@@ -145,7 +153,11 @@ export default class TubleBuilder {
     }
   }
 
-  private connectBlocksOnPath() {
+  /**
+   * Connect block connections together following the path in validPath.
+   * @private
+   */
+  private connectBlocksOnPath(): void {
     const lastKey = this.validPath.length - 1;
     let prevKey = 0;
     for (let key = 1; key <= lastKey; key++) {
@@ -174,10 +186,10 @@ export default class TubleBuilder {
   }
 
   /**
-   * Rotate the blocks of the valid block path by salt value
+   * Rotate the blocks of the valid block path by salt value.
    * @private
    */
-  private randomRotatePathBlocks() {
+  private randomRotatePathBlocks(): void {
     for (const coords of this.validPath) {
       if (this.gameMap[coords[0]][coords[1]].isMovable()) {
         this.gameMap[coords[0]][coords[1]].setRandomRotation(
@@ -232,7 +244,7 @@ export default class TubleBuilder {
     return n;
   }
 
-  public getMap() {
+  public getMap(): TubleBlock[][] {
     return this.gameMap;
   }
 }

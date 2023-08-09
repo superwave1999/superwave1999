@@ -22,7 +22,7 @@ export default class TubleBlock {
     this.connections = [NO_CONNECTION, NO_CONNECTION];
   }
 
-  public setStartingBlock(nextCoords: [number, number]) {
+  public setStartingBlock(nextCoords: [number, number]): void {
     this.type = TYPE_ENDPOINT;
     this.setFirstConnection(NO_CONNECTION);
     this.setConnectionToCoords(nextCoords, true);
@@ -31,7 +31,7 @@ export default class TubleBlock {
   public setConnectionToCoords(
     nextCoords: [number, number],
     isSecond: boolean
-  ) {
+  ): void {
     let fun = -1;
     const diffX = this.x - nextCoords[0];
     const diffY = this.y - nextCoords[1];
@@ -52,7 +52,7 @@ export default class TubleBlock {
     }
   }
 
-  public setRandomSpecialType(seedNumber: number) {
+  public setRandomSpecialType(seedNumber: number): void {
     const weights = [56, 4, 4, 3, 3];
     const options = [
       TYPE_NORMAL,
@@ -69,7 +69,7 @@ export default class TubleBlock {
     this.type = options[pickedIdx];
   }
 
-  public setRandomConnections(seedNumber: number) {
+  public setRandomConnections(seedNumber: number): void {
     const conn = [0, 1, 2, 3];
     const firstIdx = Chooser.chooseWeightedIndex(
       [1, 1, 1, 1],
@@ -86,7 +86,7 @@ export default class TubleBlock {
     this.setSecondConnection(conn[secondIdx]);
   }
 
-  public rotateClockwise() {
+  public rotateClockwise(): void {
     for (let i = 0; i < this.connections.length; i++) {
       // Here we increment each connection, overflowing when necessary
       let n = this.connections[i] + 1;
@@ -97,7 +97,7 @@ export default class TubleBlock {
     }
   }
 
-  public rotateCounterClockwise() {
+  public rotateCounterClockwise(): void {
     for (let i = 0; i < this.connections.length; i++) {
       // Here we decrement each connection, overflowing when necessary
       let n = this.connections[i] - 1;
@@ -108,21 +108,21 @@ export default class TubleBlock {
     }
   }
 
-  public setRandomRotation(seedNumber: number) {
+  public setRandomRotation(seedNumber: number): void {
     for (let i = 0; i < seedNumber; i++) {
       this.rotateClockwise();
     }
   }
 
-  public setFirstConnection(c: number) {
+  public setFirstConnection(c: number): void {
     this.connections[0] = c;
   }
 
-  public setSecondConnection(c: number) {
+  public setSecondConnection(c: number): void {
     this.connections[1] = c;
   }
 
-  public setType(t: "n" | "e" | "x" | "z" | "a" | "b") {
+  public setType(t: "n" | "e" | "x" | "z" | "a" | "b"): void {
     this.type = t;
   }
 
