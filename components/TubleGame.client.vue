@@ -36,7 +36,6 @@ watch(vueTubleGame.timeLog, (newValue) => {
     timerStatus.value = String(vueTubleGame.getTime());
   }
 });
-console.log('TUBLE LOADED')
 </script>
 
 <template>

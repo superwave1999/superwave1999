@@ -71,7 +71,6 @@ const overlayColour = computed(() => {
 });
 
 const setActiveBlock = () => {
-  console.log(properties)
   if (properties.isFrontendModifiable()) {
     emit("select", [properties.x, properties.y]);
   }

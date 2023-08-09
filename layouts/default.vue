@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ModalsContainer } from "vue-final-modal";
 import { IconoirProvider } from "@iconoir/vue";
 </script>
 
@@ -13,6 +14,7 @@ import { IconoirProvider } from "@iconoir/vue";
       <HorizontalDivider />
       <AppFooter />
     </div>
+    <ModalsContainer />
   </IconoirProvider>
 </template>
 

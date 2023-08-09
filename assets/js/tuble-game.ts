@@ -58,7 +58,6 @@ export default class TubleGame {
   }
 
   public actionSelectBlock(coords: [number, number]) {
-    console.log(coords)
     this.activeCoords = coords;
   }
 

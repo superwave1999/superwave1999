@@ -150,20 +150,22 @@ export default class TubleBlock {
       case 0: // up
         return [this.x - 1, this.y];
       default:
-        return [NO_CONNECTION, NO_CONNECTION]
+        return [NO_CONNECTION, NO_CONNECTION];
     }
   }
 
-  public nextConnectedBlockCoords(existingCoordsToAvoid: [number, number] | null): [number, number] {
+  public nextConnectedBlockCoords(
+    existingCoordsToAvoid: [number, number] | null
+  ): [number, number] {
     const candidates = [
       this.connectedBlockCoords(this.connections[1]),
-      this.connectedBlockCoords(this.connections[0])
-    ]
+      this.connectedBlockCoords(this.connections[0]),
+    ];
     if (existingCoordsToAvoid === null) {
-      return candidates[0]
+      return candidates[0];
     }
     // @ts-ignore
-    return candidates.find((coords) => !equal(coords, existingCoordsToAvoid))
+    return candidates.find((coords) => !equal(coords, existingCoordsToAvoid));
   }
 
   public isConnectedFrom(coords: [number, number]): boolean {
