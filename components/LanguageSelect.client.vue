@@ -2,10 +2,27 @@
 defineProps({
   open: Boolean,
 });
-defineEmits(["close"]);
+const emit = defineEmits(["close"]);
 
-const { locale, locales } = useI18n();
+const { locale, locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
+const route = useRoute();
+const getRouteBaseName = useRouteBaseName();
+const baseRouteName = computed(() => {
+  return getRouteBaseName(route);
+});
+
+const isTuble = computed(() => {
+  return baseRouteName.value === "tuble";
+});
+
+function doClick(code: string) {
+  if (isTuble.value) {
+    setLocale(code);
+    history.pushState({}, "", `${window.location.origin}/${code}/tuble`);
+  }
+  emit("close");
+}
 </script>
 
 <template>
@@ -13,9 +30,9 @@ const switchLocalePath = useSwitchLocalePath();
     <NuxtLink
       v-for="i in locales"
       :key="i.code"
-      :to="switchLocalePath(i.code)"
+      :to="!isTuble ? switchLocalePath(i.code) : undefined"
       :class="{ active: i.code === locale }"
-      @click="$emit('close')"
+      @click="() => doClick(i.code)"
       >{{ i.name }}</NuxtLink
     >
   </div>
@@ -29,9 +46,9 @@ div.langsel {
   right: 0;
   overflow: hidden;
   opacity: 0;
+  transform: translateY(-6px);
   transition: opacity var(--transition-speed) ease-in-out,
-    transform var(--transition-speed) ease-in-out,
-    border var(--transition-speed-out-full) ease-in-out;
+    transform var(--transition-speed) ease-in-out;
 }
 
 div.langsel.open {
@@ -45,6 +62,7 @@ div.langsel > a {
   margin: calc(var(--main-margin) * 2);
   margin-left: calc(var(--main-margin) * 4);
   margin-right: calc(var(--main-margin) * 4);
+  cursor: pointer;
 }
 
 div.langsel > a.active {

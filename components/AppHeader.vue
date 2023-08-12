@@ -4,7 +4,10 @@ const localeRoute = useLocaleRoute();
 const { locale } = useI18n();
 const route = useRoute();
 const colorMode = useColorMode();
-
+const getRouteBaseName = useRouteBaseName();
+const baseRouteName = computed(() => {
+  return getRouteBaseName(route);
+});
 const languageSelector = ref(false);
 
 onMounted(() => {
@@ -24,7 +27,15 @@ onMounted(() => {
 });
 
 const previousRoute = computed(() => {
-  const localizedRoute = localeRoute(route.path, locale.value);
+  let localizedRoute;
+  if (baseRouteName.value === "index") {
+    return "";
+  } else if (baseRouteName.value === "tuble") {
+    localizedRoute = localeRoute(`index`, locale.value);
+    return localizedRoute?.path;
+  } else {
+    localizedRoute = localeRoute(route.path, locale.value);
+  }
   const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
   return routeSanitized.substring(0, routeSanitized.lastIndexOf("/"));
 });
