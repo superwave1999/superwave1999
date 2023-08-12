@@ -111,6 +111,6 @@ table td.red {
 }
 
 table td.green {
-  color: #6eeb83;
+  color: #439a86;
 }
 </style>
