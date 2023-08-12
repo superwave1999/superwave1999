@@ -205,3 +205,47 @@ div.popup {
     transition: border var(--transition-speed) ease-in-out;
   }
 }
+
+div.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.popup.modalcontent {
+  margin: 0 auto;
+  max-width: 52ch;
+  padding: calc(var(--main-margin) * 2);
+}
+
+div.popup.modalcontent > .title {
+  text-align: center;
+  margin-bottom: var(--main-margin);
+}
+
+div.popup.modalcontent > div.button-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+div.popup.modalcontent > div.button-row > *:last-child {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+div.popup.modalcontent > div.button-row > button.confirm {
+  border: 1px solid transparent;
+  border-radius: var(--main-margin);
+  background-color: transparent;
+  color: var(--text);
+  font-family: var(--typeface-mono);
+  height: var(--btn-height-mini);
+}
+
+div.popup.modalcontent > div.button-row > button.confirm:hover {
+  border: 1px solid var(--accent-border-active);
+  background-color: var(--border-menu);
+  cursor: pointer;
+}

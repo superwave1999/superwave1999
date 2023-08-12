@@ -13,7 +13,7 @@ export default class TubleValidator {
   public moves;
 
   public netTimeMs;
-  private netMoves;
+  public netMoves;
 
   public timeBenefitBlocks = 0;
   public timePenaltyBlocks = 0;
@@ -108,6 +108,9 @@ export default class TubleValidator {
       const prevCoordsToAvoid = prevCoords;
       prevCoords = coords;
       coords = activeBlock.nextConnectedBlockCoords(prevCoordsToAvoid);
+      if (coords.includes(-1)) {
+        return false; // Not connected
+      }
       activeBlock = this.map[coords[0]][coords[1]];
     }
   }

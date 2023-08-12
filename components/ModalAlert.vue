@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { VueFinalModal } from "vue-final-modal";
+
+defineProps<{
+  title?: string;
+}>();
+
+const emit = defineEmits<{
+  (e: "confirm"): void;
+}>();
+</script>
+
+<template>
+  <VueFinalModal
+    class="modal"
+    content-class="popup modalcontent"
+    overlay-transition="vfm-fade"
+    content-transition="vfm-fade"
+  >
+    <h5>{{ title }}</h5>
+    <slot />
+    <div class="button-row">
+      <button class="confirm" @click="emit('confirm')">Confirm</button>
+    </div>
+  </VueFinalModal>
+</template>

@@ -1,12 +1,16 @@
 <script setup lang="ts">
 /* eslint-disable import/no-named-as-default-member */
+import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
 import { Refresh, SingleTapGesture, Timer } from "@iconoir/vue";
 import TubleBuilder from "assets/js/tuble-builder";
 import TubleFunctions from "assets/js/tuble-functions";
 import TubleGame from "assets/js/tuble-game";
+import TubleValidator from "assets/js/tuble-validator";
 import equal from "array-equal";
+import ModalAlert from "@/components/ModalAlert.vue";
+import ModalTubleComplete from "@/components/ModalTubleComplete.vue";
 
 const date = dayjs.extend(utc);
 const utcDate = date.utc().format("YYYY-MM-DD") + " 00:00:00";
@@ -36,6 +40,44 @@ watch(vueTubleGame.timeLog, (newValue) => {
     timerStatus.value = String(vueTubleGame.getTime());
   }
 });
+
+const validate = async () => {
+  const validator = vueTubleGame.validate();
+  if (validator !== false) {
+    const { open, close } = useModal({
+      component: ModalTubleComplete,
+      attrs: {
+        title: "Pipe connected!",
+        stats: validator as TubleValidator,
+        onConfirm() {
+          close();
+        },
+        onClosed() {
+          // vueTubleGame.finish(); //TODO: This.
+        },
+      },
+    });
+    await open();
+  } else {
+    const { open, close } = useModal({
+      component: ModalAlert,
+      attrs: {
+        title: "Pipe not connected",
+        onConfirm() {
+          close();
+        },
+        onClosed() {
+          vueTubleGame.addMove();
+          vueTubleGame.startTime();
+        },
+      },
+      slots: {
+        default: "<p>A move has been added to the counter</p>",
+      },
+    });
+    await open();
+  }
+};
 </script>
 
 <template>
@@ -64,7 +106,7 @@ watch(vueTubleGame.timeLog, (newValue) => {
     <EffectButton
       colour="--tuble"
       text="VALIDATE"
-      @click="vueTubleGame.validate()"
+      @click="validate"
     ></EffectButton>
     <EffectButton colour="--tuble" @click="vueTubleGame.actionRotate(true)"
       ><Refresh
