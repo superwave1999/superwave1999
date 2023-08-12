@@ -17,7 +17,7 @@ const emit = defineEmits<{
     overlay-transition="vfm-fade"
     content-transition="vfm-fade"
   >
-    <h5>{{ title }}</h5>
+    <h3 class="title">{{ title }}</h3>
     <slot />
     <div class="button-row">
       <button class="confirm" @click="emit('confirm')">Confirm</button>
