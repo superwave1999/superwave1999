@@ -53,7 +53,7 @@ export default class TubleGame {
     return false;
   }
 
-  private addMove(): void {
+  public addMove(): void {
     this.moves++;
   }
 
@@ -73,15 +73,14 @@ export default class TubleGame {
     }
   }
 
-  public validate(): void {
+  public validate(): TubleValidator | boolean {
     this.stopTime();
     const timeMs = <number>this.getTime(true, false);
     const v = new TubleValidator(timeMs, this.moves, this.map);
     if (v.validate()) {
-      console.log(v);
+      return v;
     } else {
-      this.startTime();
-      this.moves++;
+      return false;
     }
   }
 }
