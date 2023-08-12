@@ -3,7 +3,6 @@
   --bg: #141412;
   --bg-menu: #292925;
   --border-menu: #353530;
-  --border-menu-hover: #838377;
   --transition-speed: 250ms;
   --transition-speed-out-full: 650ms;
   --transition-speed-out-mid: 400ms;
@@ -95,7 +94,6 @@
   --bg: #f4f3eb;
   --bg-menu: #eeebdf;
   --border-menu: #a19f9f;
-  --border-menu-hover: #5e5d5d;
 }
 
 * {
@@ -190,20 +188,9 @@ div.popup {
   margin: var(--main-margin);
   border-radius: var(--main-margin);
   background-color: var(--bg-menu);
-  border: 1px solid var(--border-menu-hover);
+  border: 1px solid var(--border-menu);
   padding: var(--main-margin);
   z-index: 10;
-}
-
-@media (hover: hover) {
-  div.popup {
-    border: 1px solid var(--border-menu);
-  }
-
-  div.popup:hover {
-    border: 1px solid var(--border-menu-hover);
-    transition: border var(--transition-speed) ease-in-out;
-  }
 }
 
 div.modal {
