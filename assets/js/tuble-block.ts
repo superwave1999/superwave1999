@@ -177,4 +177,10 @@ export default class TubleBlock {
     ];
     return TubleFunctions.includesArray([this.x, this.y], coordOptions);
   }
+
+  public load(saved: any) {
+    this.type = saved.type;
+    this.connections = saved.connections;
+    return this;
+  }
 }

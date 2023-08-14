@@ -4,8 +4,6 @@ import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
 import { Refresh, SingleTapGesture, Timer } from "@iconoir/vue";
-import TubleBuilder from "assets/js/tuble-builder";
-import TubleFunctions from "assets/js/tuble-functions";
 import TubleGame from "assets/js/tuble-game";
 import TubleValidator from "assets/js/tuble-validator";
 import equal from "array-equal";
@@ -15,18 +13,10 @@ const { t } = useI18n();
 
 const date = dayjs.extend(utc);
 const utcDate = date.utc().format("YYYY-MM-DD") + " 00:00:00";
-const layoutSeed = await TubleFunctions.newHash(utcDate);
-const modifierSeed = await TubleFunctions.newHash(`${utcDate} MODIFIER`);
-const rotationSeed = await TubleFunctions.newHash(`${utcDate} ROTOR`);
 
-const tubleBuilder = new TubleBuilder(
-  6,
-  layoutSeed,
-  modifierSeed,
-  rotationSeed
-);
-tubleBuilder.build();
-const vueTubleGame = reactive(new TubleGame(tubleBuilder.getMap()));
+const tubleGame = new TubleGame(utcDate);
+await tubleGame.build();
+const vueTubleGame = reactive(tubleGame);
 
 const timerStatus = ref("--:--");
 let timerProcess: any = null;
@@ -45,6 +35,7 @@ watch(vueTubleGame.timeLog, (newValue) => {
 async function validate() {
   const validator = vueTubleGame.validate();
   if (validator !== false) {
+    vueTubleGame.finish();
     const { open, close } = useModal({
       component: ModalTubleComplete,
       attrs: {
@@ -52,9 +43,6 @@ async function validate() {
         stats: validator as TubleValidator,
         onConfirm() {
           close();
-        },
-        onClosed() {
-          // vueTubleGame.finish(); //TODO: This.
         },
       },
     });
@@ -87,29 +75,42 @@ async function validate() {
     <h4><Timer />&nbsp;{{ timerStatus }}</h4>
     <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
   </div>
+  <p v-if="vueTubleGame.isFrozen" class="next">
+    Return tomorrow for a new challenge!
+  </p>
   <table class="map">
     <tr v-for="(xitems, xidx) in vueTubleGame.map" :key="xidx">
       <td v-for="(item, yidx) in xitems" :key="xidx + ',' + yidx">
         <TubleBlock
           :properties="item"
-          :is-active-block="equal(vueTubleGame.activeCoords, [item.x, item.y])"
+          :is-active-block="
+            !vueTubleGame.isFrozen &&
+            equal(vueTubleGame.activeCoords, [item.x, item.y])
+          "
           :is-modifiable="item.isFrontendModifiable()"
-          :is-frozen-game="false"
+          :is-frozen-game="vueTubleGame.isFrozen"
           @select="(e) => vueTubleGame.actionSelectBlock(e)"
         ></TubleBlock>
       </td>
     </tr>
   </table>
   <div class="controls">
-    <EffectButton colour="--tuble" @click="vueTubleGame.actionRotate(false)"
+    <EffectButton
+      colour="--tuble"
+      :disabled="vueTubleGame.isFrozen"
+      @click="vueTubleGame.actionRotate(false)"
       ><Refresh class="mirror"
     /></EffectButton>
     <EffectButton
       colour="--tuble"
       :text="$t('tuble.hud.submit')"
+      :disabled="vueTubleGame.isFrozen"
       @click="validate"
     ></EffectButton>
-    <EffectButton colour="--tuble" @click="vueTubleGame.actionRotate(true)"
+    <EffectButton
+      colour="--tuble"
+      :disabled="vueTubleGame.isFrozen"
+      @click="vueTubleGame.actionRotate(true)"
       ><Refresh
     /></EffectButton>
   </div>
@@ -135,6 +136,10 @@ table.map {
 
 .title {
   font-size: calc(var(--section-size) - 0.6em);
+  text-align: center;
+}
+
+p.next {
   text-align: center;
 }
 </style>
