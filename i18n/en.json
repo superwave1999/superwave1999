@@ -45,5 +45,21 @@
     "platform": "Platform",
     "stack": "Stack",
     "back": "Return to list"
+  },
+  "tuble": {
+    "hud": {
+      "submit": "Validate"
+    },
+    "modal": {
+      "confirm": "Confirm",
+      "successTitle": "Pipe connected!",
+      "statTitleBase": "Base",
+      "statTitleMod": "Penalty / Benefit",
+      "statTitleFinal": "Final",
+      "statTitleTime": "Time",
+      "statTitleMoves": "Moves",
+      "failTitle": "Pipe not connected",
+      "failText": "A move has been added to the counter"
+    }
   }
 }

@@ -41,5 +41,21 @@
     "platform": "Plataforma",
     "stack": "Stack",
     "back": "Volver al listado"
+  },
+  "tuble": {
+    "hud": {
+      "submit": "Validar"
+    },
+    "modal": {
+      "confirm": "Cerrar",
+      "successTitle": "¡Tubería conectada!",
+      "statTitleBase": "Base",
+      "statTitleMod": "Penalización / Beneficio",
+      "statTitleFinal": "Final",
+      "statTitleTime": "Tiempo",
+      "statTitleMoves": "Movimientos",
+      "failTitle": "Tubería no conectada",
+      "failText": "Se ha añadido un movimiento al contador"
+    }
   }
 }

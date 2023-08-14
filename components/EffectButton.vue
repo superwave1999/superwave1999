@@ -47,7 +47,7 @@ const getTarget = computed(() => {
   return target;
 });
 
-const shadowEffect = (e: MouseEvent) => {
+function shadowEffect(e: MouseEvent) {
   if (!e.target) {
     return false;
   }
@@ -71,7 +71,7 @@ const shadowEffect = (e: MouseEvent) => {
   (
     linkElement as HTMLElement
   ).style.cssText = `left: ${l}px; top: ${t}px; filter: blur(${blur}px); color: ${cssVarColour.value}`;
-};
+}
 </script>
 
 <template>
