@@ -48,7 +48,8 @@
   },
   "tuble": {
     "hud": {
-      "submit": "Validate"
+      "submit": "Validate",
+      "finish": "Return tomorrow for a new challenge!"
     },
     "modal": {
       "confirm": "Confirm",

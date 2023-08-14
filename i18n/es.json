@@ -44,7 +44,8 @@
   },
   "tuble": {
     "hud": {
-      "submit": "Validar"
+      "submit": "Validar",
+      "finish": "Vuelve mañana para tener un nuevo desafío"
     },
     "modal": {
       "confirm": "Cerrar",
