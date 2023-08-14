@@ -76,7 +76,7 @@ async function validate() {
     <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
   </div>
   <p v-if="vueTubleGame.isFrozen" class="next">
-    Return tomorrow for a new challenge!
+    {{ $t("tuble.hud.finish") }}
   </p>
   <table class="map">
     <tr v-for="(xitems, xidx) in vueTubleGame.map" :key="xidx">
