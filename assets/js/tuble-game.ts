@@ -1,8 +1,14 @@
 import dayjs, { Dayjs } from "dayjs";
 import TubleBlock, { NO_CONNECTION } from "assets/js/tuble-block";
 import TubleValidator from "assets/js/tuble-validator";
+import TubleFunctions from "assets/js/tuble-functions";
+import TubleBuilder from "assets/js/tuble-builder";
 
 export default class TubleGame {
+  public isFrozen = false;
+
+  private readonly dateString;
+
   public map: TubleBlock[][] = [];
 
   public moves = 0;
@@ -11,8 +17,29 @@ export default class TubleGame {
 
   public activeCoords: [number, number] = [NO_CONNECTION, NO_CONNECTION];
 
-  public constructor(map: TubleBlock[][]) {
-    this.map = map;
+  public constructor(dateString: string) {
+    this.dateString = dateString;
+  }
+
+  public async build() {
+    if (!this.loadFromStorage()) {
+      // Generate new map
+      const layoutSeed = await TubleFunctions.newHash(this.dateString);
+      const modifierSeed = await TubleFunctions.newHash(
+        `${this.dateString} MODIFIER`
+      );
+      const rotationSeed = await TubleFunctions.newHash(
+        `${this.dateString} ROTOR`
+      );
+      const tubleBuilder = new TubleBuilder(
+        6,
+        layoutSeed,
+        modifierSeed,
+        rotationSeed
+      );
+      tubleBuilder.build();
+      this.map = tubleBuilder.getMap();
+    }
   }
 
   public getTime(asTimestamp = false, current = true): string | number {
@@ -82,5 +109,37 @@ export default class TubleGame {
     } else {
       return false;
     }
+  }
+
+  public finish() {
+    this.isFrozen = true;
+    const data = {
+      mapDate: this.dateString,
+      map: this.map,
+      moves: this.moves,
+      time: this.getTime(false, false),
+    };
+    localStorage.setItem("_tbl_state", JSON.stringify(data));
+  }
+
+  private loadFromStorage(): boolean {
+    const state = localStorage.getItem("_tbl_state");
+    if (state) {
+      try {
+        const obj = JSON.parse(state);
+        if (obj.mapDate === this.dateString) {
+          this.isFrozen = true;
+          this.timeLog = obj.time;
+          this.moves = obj.moves;
+          this.map = obj.map.map((x: any[], valueX: number) =>
+            x.map((y: any, valueY: number) =>
+              new TubleBlock(valueX, valueY).load(y)
+            )
+          );
+          return true;
+        }
+      } catch (e) {}
+    }
+    return false;
   }
 }
