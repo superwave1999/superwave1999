@@ -27,7 +27,7 @@ const hasAnyMeta =
   page.infoStack ||
   (page.links && page.links.length);
 
-const url = (post: any) => {
+function url(post: any) {
   if (!post) {
     return "";
   }
@@ -41,7 +41,7 @@ const url = (post: any) => {
     routeSanitized.lastIndexOf("/")
   );
   return `${prevRoute}/${contentPaths[contentPaths.length - 1]}`;
-};
+}
 
 let imageViewer: Viewer;
 

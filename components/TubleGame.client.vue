@@ -11,6 +11,7 @@ import TubleValidator from "assets/js/tuble-validator";
 import equal from "array-equal";
 import ModalAlert from "@/components/ModalAlert.vue";
 import ModalTubleComplete from "@/components/ModalTubleComplete.vue";
+const { t } = useI18n();
 
 const date = dayjs.extend(utc);
 const utcDate = date.utc().format("YYYY-MM-DD") + " 00:00:00";
@@ -41,13 +42,13 @@ watch(vueTubleGame.timeLog, (newValue) => {
   }
 });
 
-const validate = async () => {
+async function validate() {
   const validator = vueTubleGame.validate();
   if (validator !== false) {
     const { open, close } = useModal({
       component: ModalTubleComplete,
       attrs: {
-        title: "Pipe connected!",
+        title: t("tuble.modal.successTitle"),
         stats: validator as TubleValidator,
         onConfirm() {
           close();
@@ -62,7 +63,7 @@ const validate = async () => {
     const { open, close } = useModal({
       component: ModalAlert,
       attrs: {
-        title: "Pipe not connected",
+        title: t("tuble.modal.failTitle"),
         onConfirm() {
           close();
         },
@@ -72,16 +73,16 @@ const validate = async () => {
         },
       },
       slots: {
-        default: "<p>A move has been added to the counter</p>",
+        default: `<p>${t("tuble.modal.failText")}</p>`,
       },
     });
     await open();
   }
-};
+}
 </script>
 
 <template>
-  <h2 class="title">Tuble</h2>
+  <h2 class="title">{{ $t("p_index.btnTuble") }}</h2>
   <div class="stats">
     <h4><Timer />&nbsp;{{ timerStatus }}</h4>
     <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
@@ -105,7 +106,7 @@ const validate = async () => {
     /></EffectButton>
     <EffectButton
       colour="--tuble"
-      text="VALIDATE"
+      :text="$t('tuble.hud.submit')"
       @click="validate"
     ></EffectButton>
     <EffectButton colour="--tuble" @click="vueTubleGame.actionRotate(true)"

@@ -44,11 +44,11 @@ const themeIconColour = computed(() => {
   return colorMode.value === "dark" ? "--enable-light" : "--enable-dark";
 });
 
-const toggleColorMode = () => {
+function toggleColorMode() {
   colorMode.value === "light"
     ? (colorMode.preference = "dark")
     : (colorMode.preference = "light");
-};
+}
 </script>
 
 <template>

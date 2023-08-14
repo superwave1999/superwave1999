@@ -20,7 +20,9 @@ const emit = defineEmits<{
     <h3 class="title">{{ title }}</h3>
     <slot />
     <div class="button-row">
-      <button class="confirm" @click="emit('confirm')">Confirm</button>
+      <button class="confirm" @click="emit('confirm')">
+        {{ $t("tuble.modal.confirm") }}
+      </button>
     </div>
   </VueFinalModal>
 </template>

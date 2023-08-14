@@ -27,7 +27,8 @@ function formatMoveStat(amount: number, blockMultiplier: number, sign = "+") {
   const total = amount * blockMultiplier;
   return `${sign}${total} (${amount} x${blockMultiplier})`;
 }
-function formattedNetTime() {
+
+const formattedNetTime = computed(() => {
   let prefix = "";
   const val = props.stats.netTimeMs;
   if (val < 0) {
@@ -35,7 +36,7 @@ function formattedNetTime() {
   }
   const timeStr = dayjs(val).format("mm:ss");
   return `${prefix}${timeStr}`;
-}
+});
 </script>
 
 <template>
@@ -50,18 +51,20 @@ function formattedNetTime() {
       <thead>
         <tr>
           <td></td>
-          <td><Timer />&nbsp;Time</td>
-          <td><SingleTapGesture />&nbsp;Moves</td>
+          <td><Timer />&nbsp;{{ $t("tuble.modal.statTitleTime") }}</td>
+          <td>
+            <SingleTapGesture />&nbsp;{{ $t("tuble.modal.statTitleMoves") }}
+          </td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Base</td>
+          <td>{{ $t("tuble.modal.statTitleBase") }}</td>
           <td>{{ formattedBaseTime }}</td>
           <td>{{ stats.moves }}</td>
         </tr>
         <tr>
-          <td>Penalty / Benefit</td>
+          <td>{{ $t("tuble.modal.statTitleMod") }}</td>
           <td v-if="stats.timeBenefitBlocks" class="green">
             {{ formatTimeStat(4000, stats.timeBenefitBlocks, "-") }}
           </td>
@@ -75,17 +78,19 @@ function formattedNetTime() {
           <td v-else-if="stats.movePenaltyBlocks" class="red">
             {{ formatMoveStat(3, stats.movePenaltyBlocks, "+") }}
           </td>
-          <td v-else>N/A</td>
+          <td v-else>-</td>
         </tr>
         <tr>
-          <td>Final</td>
-          <td>{{ formattedNetTime() }}</td>
+          <td>{{ $t("tuble.modal.statTitleFinal") }}</td>
+          <td>{{ formattedNetTime }}</td>
           <td>{{ stats.netMoves }}</td>
         </tr>
       </tbody>
     </table>
     <div class="button-row">
-      <button class="confirm" @click="emit('confirm')">Confirm</button>
+      <button class="confirm" @click="emit('confirm')">
+        {{ $t("tuble.modal.confirm") }}
+      </button>
     </div>
   </VueFinalModal>
 </template>

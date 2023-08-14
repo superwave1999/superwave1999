@@ -69,11 +69,11 @@ const overlayColour = computed(() => {
   return typeIcons[properties.type]?.colour || "";
 });
 
-const setActiveBlock = () => {
+function setActiveBlock() {
   if (properties.isFrontendModifiable()) {
     emit("select", [properties.x, properties.y]);
   }
-};
+}
 </script>
 
 <template>
