@@ -21,7 +21,7 @@ const vueTubleGame = reactive(tubleGame);
 
 const timerStatus = ref("--:--");
 if (tubleGame.isFrozen) {
-  timerStatus.value = String(tubleGame.getTime())
+  timerStatus.value = String(tubleGame.getTime());
 }
 let timerProcess: any = null;
 watch(vueTubleGame.timeLog, (newValue) => {
