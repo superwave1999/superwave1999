@@ -50,7 +50,7 @@ export default class TubleGame {
       }
       const nextIndex = i + 1;
       if (this.timeLog[nextIndex]) {
-        total += this.timeLog[nextIndex].diff(this.timeLog[i]);
+        total += dayjs(this.timeLog[nextIndex]).diff(this.timeLog[i]);
       } else if (current) {
         total += dayjs().diff(this.timeLog[i]);
       }
@@ -117,7 +117,7 @@ export default class TubleGame {
       mapDate: this.dateString,
       map: this.map,
       moves: this.moves,
-      time: this.getTime(false, false),
+      time: this.timeLog,
     };
     localStorage.setItem("_tbl_state", JSON.stringify(data));
   }

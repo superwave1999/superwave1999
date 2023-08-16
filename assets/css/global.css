@@ -201,9 +201,10 @@ div.modal {
 }
 
 div.popup.modalcontent {
-  margin: 0 auto;
+  margin: 2rem auto;
   max-width: 52ch;
   padding: calc(var(--main-margin) * 2);
+  overflow: auto;
 }
 
 div.popup.modalcontent > .title {
@@ -220,19 +221,4 @@ div.popup.modalcontent > div.button-row {
 div.popup.modalcontent > div.button-row > *:last-child {
   margin-left: auto;
   margin-right: 0;
-}
-
-div.popup.modalcontent > div.button-row > button.confirm {
-  border: 1px solid transparent;
-  border-radius: var(--main-margin);
-  background-color: transparent;
-  color: var(--text);
-  font-family: var(--typeface-mono);
-  height: var(--btn-height-mini);
-}
-
-div.popup.modalcontent > div.button-row > button.confirm:hover {
-  border: 1px solid var(--accent-border-active);
-  background-color: var(--border-menu);
-  cursor: pointer;
 }
