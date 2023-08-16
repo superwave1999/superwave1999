@@ -3,12 +3,13 @@
 import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
-import { Refresh, SingleTapGesture, Timer } from "@iconoir/vue";
+import { Refresh, SingleTapGesture, Timer, HelpCircle } from "@iconoir/vue";
 import TubleGame from "assets/js/tuble-game";
 import TubleValidator from "assets/js/tuble-validator";
 import equal from "array-equal";
 import ModalAlert from "@/components/ModalAlert.vue";
 import ModalTubleComplete from "@/components/ModalTubleComplete.vue";
+import ModalTubleHelp from "@/components/ModalTubleHelp.vue";
 const { t } = useI18n();
 
 const date = dayjs.extend(utc);
@@ -19,6 +20,9 @@ await tubleGame.build();
 const vueTubleGame = reactive(tubleGame);
 
 const timerStatus = ref("--:--");
+if (tubleGame.isFrozen) {
+  timerStatus.value = String(tubleGame.getTime())
+}
 let timerProcess: any = null;
 watch(vueTubleGame.timeLog, (newValue) => {
   if (newValue.length % 2 !== 0) {
@@ -67,6 +71,25 @@ async function validate() {
     await open();
   }
 }
+
+async function openHelp() {
+  const playing = vueTubleGame.timeLog.length > 0 && !vueTubleGame.isFrozen;
+  const { open, close } = useModal({
+    component: ModalTubleHelp,
+    attrs: {
+      onConfirm() {
+        close();
+        if (playing) {
+          vueTubleGame.startTime();
+        }
+      },
+    },
+  });
+  if (playing) {
+    vueTubleGame.stopTime();
+  }
+  await open();
+}
 </script>
 
 <template>
@@ -74,6 +97,9 @@ async function validate() {
   <div class="stats">
     <h4><Timer />&nbsp;{{ timerStatus }}</h4>
     <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
+    <EffectButton colour="--tuble" mini circle @click="openHelp"
+      ><HelpCircle
+    /></EffectButton>
   </div>
   <p v-if="vueTubleGame.isFrozen" class="next">
     {{ $t("tuble.hud.finish") }}
@@ -123,6 +149,7 @@ div.stats {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .mirror {

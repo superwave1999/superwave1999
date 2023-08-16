@@ -8,6 +8,7 @@ const props = defineProps({
   text: { type: String, default: "" },
   colour: { type: String, default: "" },
   mini: { type: Boolean, default: false },
+  circle: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
 });
 
@@ -80,6 +81,7 @@ function shadowEffect(e: MouseEvent) {
     :target="getTarget"
     class="link"
     :class="{
+      circle,
       mini,
       text: Boolean(text),
       'icon-right': iconRight,
@@ -173,6 +175,14 @@ function shadowEffect(e: MouseEvent) {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2em;
+}
+
+.link.mini div.logo.solo {
+  font-size: 1.5em;
+}
+
+.link.circle {
+  border-radius: 999ch;
 }
 
 a {
