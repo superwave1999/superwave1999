@@ -4,8 +4,13 @@ import { IconoirProvider } from "@iconoir/vue";
 
 const route = useRoute();
 const { t } = useI18n();
+
+const title = computed(() => (route.meta.title ? t(route.meta.title) : ""));
+const desc = computed(() =>
+  route.meta.description ? t(route.meta.description) : ""
+);
 useSeoMeta({
-  description: t(route.meta.description),
+  description: desc,
 });
 
 const head = useLocaleHead({
@@ -13,7 +18,6 @@ const head = useLocaleHead({
   identifierAttribute: "id",
   addSeoAttributes: true,
 });
-const title = computed(() => t(route.meta.title ?? ""));
 </script>
 
 <template>
