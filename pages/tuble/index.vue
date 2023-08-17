@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 definePageMeta({
-  title: 'tuble.headTitle',
-  description: 'tuble.headDescription'
-})
+  title: "tuble.headTitle",
+  description: "tuble.headDesc",
+});
 </script>
 
 <template>

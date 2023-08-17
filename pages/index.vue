@@ -2,9 +2,9 @@
 import { Gamepad, LargeSuitcase, LinkedIn, GitHub } from "@iconoir/vue";
 
 definePageMeta({
-  title: 'p_index.headTitle',
-  description: 'p_index.headDesc'
-})
+  title: "p_index.headTitle",
+  description: "p_index.headDesc",
+});
 </script>
 
 <template>
