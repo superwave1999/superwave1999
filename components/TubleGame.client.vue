@@ -90,6 +90,67 @@ async function openHelp() {
   }
   await open();
 }
+
+function keyboardListener(event: KeyboardEvent) {
+  event.preventDefault()
+  if (vueTubleGame.isFrozen) {
+    return false;
+  }
+  const arrowKeys = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
+  if (arrowKeys.includes(event.key)) {
+    const topCoords = vueTubleGame.map.length;
+    let coords: [number, number] = vueTubleGame.activeCoords;
+    if (equal(coords, [-1, -1])) {
+      coords = [0, 0];
+    } else {
+      const key = arrowKeys.findIndex((v) => v === event.key);
+      switch (key) {
+        case 0:
+          coords[0]--;
+          break;
+        case 1:
+          coords[1]++;
+          break;
+        case 2:
+          coords[0]++;
+          break;
+        case 3:
+          coords[1]--;
+          break;
+        default:
+          return;
+      }
+      coords = coords.map((c) => {
+        if (c < 0) {
+          c = 0;
+        }
+        if (c >= topCoords) {
+          c = topCoords - 1;
+        }
+        return c;
+      }) as [number, number];
+    }
+    vueTubleGame.actionSelectBlock([coords[0], coords[1]]);
+  } else if (event.key === "x") {
+    document.getElementById("action-rotate-left")?.click();
+  } else if (event.key === "c") {
+    document.getElementById("action-rotate-right")?.click();
+  } else if (event.key === " ") {
+    document.getElementById("action-submit")?.click();
+  }
+}
+
+// Keyboard controls
+onMounted(() => {
+  window.addEventListener("keydown", keyboardListener);
+});
+
+onBeforeUnmount(() => {
+  if (timerProcess) {
+    clearInterval(timerProcess);
+  }
+  window.removeEventListener("keydown", keyboardListener);
+});
 </script>
 
 <template>
@@ -122,18 +183,21 @@ async function openHelp() {
   </table>
   <div class="controls">
     <EffectButton
+      id="action-rotate-left"
       colour="--tuble"
       :disabled="vueTubleGame.isFrozen"
       @click="vueTubleGame.actionRotate(false)"
       ><Refresh class="mirror"
     /></EffectButton>
     <EffectButton
+      id="action-submit"
       colour="--tuble"
       :text="$t('tuble.hud.submit')"
       :disabled="vueTubleGame.isFrozen"
       @click="validate"
     ></EffectButton>
     <EffectButton
+      id="action-rotate-right"
       colour="--tuble"
       :disabled="vueTubleGame.isFrozen"
       @click="vueTubleGame.actionRotate(true)"

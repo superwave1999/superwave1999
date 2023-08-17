@@ -89,6 +89,9 @@ export default class TubleGame {
   }
 
   public actionRotate(isClockwise: boolean): void {
+    if (!this.map[this.activeCoords[0]][this.activeCoords[1]].isMovable()) {
+      return;
+    }
     this.addMove();
     this.startTime();
     if (isClockwise) {
