@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+definePageMeta({
+  title: 'tuble.headTitle',
+  description: 'tuble.headDescription'
+})
+</script>
+
 <template>
   <section class="game-container">
     <TubleGame />

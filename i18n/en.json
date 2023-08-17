@@ -47,6 +47,8 @@
     "back": "Return to list"
   },
   "tuble": {
+    "headTitle": "Tuble - Imanol Romera",
+    "headDesc": "Browser-based game inspired by Bioshock's hacking minigame.",
     "hud": {
       "submit": "Validate",
       "finish": "Return tomorrow for a new challenge!"

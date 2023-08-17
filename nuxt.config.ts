@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     vueI18n: "./i18n.config.ts",
     locales: [
       {
+        isCatchallLocale: true,
         code: "en",
         iso: "en-GB",
         file: "en.json",
