@@ -92,7 +92,7 @@ async function openHelp() {
 }
 
 function keyboardListener(event: KeyboardEvent) {
-  event.preventDefault()
+  event.preventDefault();
   if (vueTubleGame.isFrozen) {
     return false;
   }

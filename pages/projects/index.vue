@@ -7,8 +7,8 @@ defineI18nRoute({
 });
 
 definePageMeta({
-  title: 'p_projects.headTitle'
-})
+  title: "p_projects.headTitle",
+});
 
 const { locale } = useI18n();
 const section = `projects-${locale.value}`;
