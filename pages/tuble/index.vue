@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-definePageMeta({
-  title: "tuble.headTitle",
-  description: "tuble.headDesc",
+const { t } = useI18n();
+useHead({
+  title: t("tuble.headTitle"),
+  meta: [{ name: "description", content: t("tuble.headDesc") }],
 });
 </script>
 

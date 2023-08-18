@@ -6,11 +6,10 @@ defineI18nRoute({
   },
 });
 
-definePageMeta({
-  title: "p_projects.headTitle",
+const { locale, t } = useI18n();
+useHead({
+  title: t("p_projects.headTitle"),
 });
-
-const { locale } = useI18n();
 const { data: posts } = await useFetch(`/api/index/${locale.value}`);
 </script>
 

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Gamepad, LargeSuitcase, LinkedIn, GitHub } from "@iconoir/vue";
-
-definePageMeta({
-  title: "p_index.headTitle",
-  description: "p_index.headDesc",
+const { t } = useI18n();
+useHead({
+  title: t("p_index.headTitle"),
+  meta: [{ name: "description", content: t("p_index.headDesc") }],
 });
 </script>
 

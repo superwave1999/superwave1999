@@ -2,17 +2,6 @@
 import { ModalsContainer } from "vue-final-modal";
 import { IconoirProvider } from "@iconoir/vue";
 
-const route = useRoute();
-const { t } = useI18n();
-
-const title = computed(() => (route.meta.title ? t(route.meta.title) : ""));
-const desc = computed(() =>
-  route.meta.description ? t(route.meta.description) : ""
-);
-useSeoMeta({
-  description: desc,
-});
-
 const head = useLocaleHead({
   addDirAttribute: true,
   identifierAttribute: "id",
@@ -21,42 +10,36 @@ const head = useLocaleHead({
 </script>
 
 <template>
-  <div>
-    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
-      <Head>
-        <Title>{{ title }}</Title>
-        <template v-for="link in head.link" :key="link.id">
-          <Link
-            :id="link.id"
-            :rel="link.rel"
-            :href="link.href"
-            :hreflang="link.hreflang"
-          />
-        </template>
-        <template v-for="meta in head.meta" :key="meta.id">
-          <Meta
-            :id="meta.id"
-            :property="meta.property"
-            :content="meta.content"
-          />
-        </template>
-      </Head>
-      <Body>
-        <IconoirProvider
-          :icon-props="{ color: 'currentColor', width: '1em', height: '1em' }"
-        >
-          <EffectHeader />
-          <AppHeader />
-          <div class="container">
-            <NuxtPage />
-            <HorizontalDivider />
-            <AppFooter />
-          </div>
-          <ModalsContainer />
-        </IconoirProvider>
-      </Body>
-    </Html>
-  </div>
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+    <Head>
+      <Title></Title>
+      <template v-for="link in head.link" :key="link.id">
+        <Link
+          :id="link.id"
+          :rel="link.rel"
+          :href="link.href"
+          :hreflang="link.hreflang"
+        />
+      </template>
+      <template v-for="meta in head.meta" :key="meta.id">
+        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      </template>
+    </Head>
+    <Body>
+      <IconoirProvider
+        :icon-props="{ color: 'currentColor', width: '1em', height: '1em' }"
+      >
+        <EffectHeader />
+        <AppHeader />
+        <div class="container">
+          <NuxtPage />
+          <HorizontalDivider />
+          <AppFooter />
+        </div>
+        <ModalsContainer />
+      </IconoirProvider>
+    </Body>
+  </Html>
 </template>
 
 <style scoped>

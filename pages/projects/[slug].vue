@@ -10,12 +10,17 @@ defineI18nRoute({
   },
 });
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const route = useRoute();
 const localeRoute = useLocaleRoute();
 const { data: post } = await useFetch(
   `/api/view/${route.params.slug}+${locale.value}`
 );
+useHead({
+  title: `${post.value.title}${t("p_project.headTitleSuffix")}`,
+  meta: [{ name: "description", content: post.value.description }],
+});
+
 const { data: surrounding } = await useFetch(
   `/api/surrounding/${route.params.slug}+${locale.value}`
 );
