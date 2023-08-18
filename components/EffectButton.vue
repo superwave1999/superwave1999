@@ -71,7 +71,7 @@ function shadowEffect(e: MouseEvent) {
   }
   (
     linkElement as HTMLElement
-  ).style.cssText = `left: ${l}px; top: ${t}px; filter: blur(${blur}px); color: ${cssVarColour.value}`;
+  ).style.cssText = `left: ${l}px; top: ${t}px; filter: blur(${blur}px)`; // blur is calculated here because width is variable
 }
 </script>
 
@@ -89,7 +89,6 @@ function shadowEffect(e: MouseEvent) {
     }"
     @mouseenter="shadowEffect"
     @mousemove="shadowEffect"
-    @mouseup="shadowEffect"
   >
     <svg
       class="decoration"
@@ -134,7 +133,7 @@ function shadowEffect(e: MouseEvent) {
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity var(--transition-speed-out-mid) ease-in-out;
-  color: transparent; /* avoid uglies before full load */
+  color: v-bind(cssVarColour);
 }
 
 .link.text {
