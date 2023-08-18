@@ -12,7 +12,7 @@ links:
     href: "https://telegraf.js.org/"
 ---
 
-!["Lista principal"](/content/projects/juliana.jpg)
+![Mensaje de Telegram con un listado de nabos](/content/projects/juliana.jpg)
 
 Un proyecto personal creado para amigos que administran un grupo de Telegram dedicado al intercambio de nabos con el personaje Juliana en el videojuego Animal Crossing del 2020.
 

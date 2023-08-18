@@ -8,7 +8,7 @@ infoStack: "Wordpress"
 infoWebsite: "https://crispythings.es/"
 ---
 
-!["Blog"](/content/projects/crispy.jpg)
+![Home page](/content/projects/crispy.jpg)
 
 A simple Wordpress install that uses the blogging features to it's full potential.
 

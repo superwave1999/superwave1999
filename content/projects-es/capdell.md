@@ -8,7 +8,7 @@ infoStack: "Magento 2"
 infoWebsite: "https://capdell.com/"
 ---
 
-!["Home"](/content/projects/capdell-main.jpg)
+![Home de Capdell](/content/projects/capdell-main.jpg)
 
 Para este proyecto se me encargó crear un generador de imágenes para las distintas combinaciones de atributos de producto en una tienda Magento.
 
