@@ -153,10 +153,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <h2 class="title">{{ $t("p_index.btnTuble") }}</h2>
+  <SectionTitle class="title" :name="$t('p_index.btnTuble')" />
   <div class="stats">
-    <h4><Timer />&nbsp;{{ timerStatus }}</h4>
-    <h4><SingleTapGesture />&nbsp;{{ vueTubleGame.moves }}</h4>
+    <h4><Timer />&nbsp;<TextSeparator />{{ timerStatus }}</h4>
+    <h4><SingleTapGesture />&nbsp;<TextSeparator />{{ vueTubleGame.moves }}</h4>
     <EffectButton colour="--tuble" mini circle @click="openHelp"
       ><HelpCircle
     /></EffectButton>
