@@ -15,7 +15,12 @@ export default defineNuxtConfig({
     },
   },
   // @ts-ignore - Typescript doesn't like this variable
-  modules: ["@nuxtjs/i18n", "@nuxtjs/color-mode"],
+  modules: [
+    "@nuxtjs/i18n",
+    "@nuxtjs/color-mode",
+    "nuxt-simple-sitemap",
+    "nuxt-simple-robots",
+  ],
   plugins: ["@/plugins/vue-final-modal.ts"],
   colorMode: {
     preference: "system",
@@ -54,5 +59,14 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
     differentDomains: false,
+  },
+  sitemap: {
+    cacheTtl: 1000 * 60 * 60 * 24 * 7, // 7 day - content is very static
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true, // Add dynamic urls to sitemap.xml automatically
+      routes: ["/"],
+    },
   },
 });
