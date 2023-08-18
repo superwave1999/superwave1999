@@ -1,6 +1,5 @@
 import Chooser from "random-seed-weighted-chooser";
 import equal from "array-equal";
-import TubleFunctions from "assets/js/tuble-functions";
 
 export const NO_CONNECTION = -1;
 export const TYPE_NORMAL = "n";
@@ -168,14 +167,12 @@ export default class TubleBlock {
     return candidates.find((coords) => !equal(coords, existingCoordsToAvoid));
   }
 
-  public isConnectedFrom(coords: [number, number]): boolean {
-    const coordOptions: [number, number][] = [
-      [coords[0], coords[1] - 1], // Towards top
-      [coords[0] + 1, coords[1]], // Towards right
-      [coords[0], coords[1] + 1], // Towards bottom
-      [coords[0] - 1, coords[1]], // Towards left
+  public isConnectedFrom(prevCoords: [number, number]): boolean {
+    const candidates = [
+      this.connectedBlockCoords(this.connections[1]),
+      this.connectedBlockCoords(this.connections[0]),
     ];
-    return TubleFunctions.includesArray([this.x, this.y], coordOptions);
+    return candidates.findIndex((coords) => equal(coords, prevCoords)) !== -1;
   }
 
   public load(saved: any) {
