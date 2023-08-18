@@ -30,6 +30,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
     "nuxt": "^3.6.5",
+    "nuxt-simple-robots": "^3.1.1",
+    "nuxt-simple-sitemap": "^3.1.7",
     "prettier": "^2.8.8",
     "random-seed-weighted-chooser": "^1.1.5",
     "romans": "^2.0.8",
