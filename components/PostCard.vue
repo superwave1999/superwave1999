@@ -12,12 +12,9 @@ const url = computed(() => {
   if (!props.post) {
     return "";
   }
-  const contentPaths = props.post._path
-    .split("/")
-    .filter((entry: string) => entry !== "");
   const localizedRoute = localeRoute(route.path, locale.value);
   const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
-  return `${routeSanitized}/${contentPaths[contentPaths.length - 1]}`;
+  return `${routeSanitized}/${props.post.slug}`;
 });
 </script>
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-/* eslint-disable import/no-named-as-default-member */
 import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";

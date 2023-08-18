@@ -11,4 +11,14 @@ module.exports = {
   extends: ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
   plugins: [],
   rules: {},
+  overrides: [
+    {
+      files: ["*.js", "*.vue", "*.ts"],
+      rules: {
+        "vue/no-v-html": ["off"],
+        "import/no-named-as-default-member": ["off"],
+        "import/default": ["off"],
+      },
+    },
+  ],
 };

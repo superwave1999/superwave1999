@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     },
   },
   // @ts-ignore - Typescript doesn't like this variable
-  modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxtjs/color-mode"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/color-mode"],
   plugins: ["@/plugins/vue-final-modal.ts"],
   colorMode: {
     preference: "system",
