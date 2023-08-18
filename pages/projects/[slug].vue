@@ -13,34 +13,35 @@ defineI18nRoute({
 const { locale } = useI18n();
 const route = useRoute();
 const localeRoute = useLocaleRoute();
-
-const section = `projects-${locale.value}`;
-const path = `/${section}/${route.params.slug}`;
-const page = await queryContent(section).where({ _path: path }).findOne();
-const [prev, next] = await queryContent(section)
-  .only(["title", "_path"])
-  .sort({ endDate: -1 })
-  .findSurround(path);
-const hasAnyMeta =
-  page.infoWebsite ||
-  page.infoPlatform ||
-  page.infoStack ||
-  (page.links && page.links.length);
+const { data: post } = await useFetch(
+  `/api/view/${route.params.slug}+${locale.value}`
+);
+const { data: surrounding } = await useFetch(
+  `/api/surrounding/${route.params.slug}+${locale.value}`
+);
+const hasAnyMeta = computed(() => {
+  if (!post.value) {
+    return false;
+  }
+  return (
+    post.value.infoWebsite ||
+    post.value.infoPlatform ||
+    post.value.infoStack ||
+    (post.value.links && post.value.links.length)
+  );
+});
 
 function url(post: any) {
   if (!post) {
     return "";
   }
-  const contentPaths = post._path
-    .split("/")
-    .filter((entry: string) => entry !== "");
   const localizedRoute = localeRoute(route.path, locale.value);
   const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
   const prevRoute = routeSanitized.substring(
     0,
     routeSanitized.lastIndexOf("/")
   );
-  return `${prevRoute}/${contentPaths[contentPaths.length - 1]}`;
+  return `${prevRoute}/${post.slug}`;
 }
 
 let imageViewer: Viewer;
@@ -67,46 +68,52 @@ onBeforeUnmount(() => {
 <template>
   <article>
     <div class="w-100">
-      <h1 class="w-auto-inline">{{ page.title }}</h1>
-      <span v-if="page.startDate || page.endDate">
+      <h1 class="w-auto-inline">{{ post.title }}</h1>
+      <span v-if="post.startDate || post.endDate">
         &nbsp;
         <TextSeparator />
-        {{ page.startDate || ""
-        }}{{ page.startDate && page.endDate ? " - " : ""
-        }}{{ page.endDate ?? "" }}
+        {{ post.startDate || ""
+        }}{{ post.startDate && post.endDate ? " - " : ""
+        }}{{ post.endDate ?? "" }}
       </span>
     </div>
-    <ContentRenderer id="nuxt-content" :value="page" class="nuxt-content" />
+    <div id="nuxt-content" class="nuxt-content" v-html="post.content" />
     <HorizontalDivider v-if="hasAnyMeta" />
     <div v-if="hasAnyMeta" class="post-meta">
-      <div v-if="page.infoPlatform">
-        <h4>Platform: <TextSeparator />{{ page.infoPlatform }}</h4>
+      <div v-if="post.infoPlatform">
+        <h4>Platform: <TextSeparator />{{ post.infoPlatform }}</h4>
       </div>
-      <div v-if="page.infoStack" class="stack-box">
+      <div v-if="post.infoStack" class="stack-box">
         <h4>
           Stack:
-          <TextSeparator />{{ page.infoStack }}
+          <TextSeparator />{{ post.infoStack }}
         </h4>
       </div>
-      <div v-if="page.infoWebsite" class="link-box">
+      <div v-if="post.infoWebsite" class="link-box">
         <h4>
-          <a :href="page.infoWebsite" target="_blank"><Link />&nbsp;Website</a>
+          <a :href="post.infoWebsite" target="_blank"><Link />&nbsp;Website</a>
         </h4>
       </div>
-      <div v-if="page.links && page.links.length" class="link-box">
-        <h4 v-for="link of page.links" :key="link.href">
+      <div v-if="post.links && post.links.length" class="link-box">
+        <h4 v-for="link of post.links" :key="link.href">
           <a :href="link.href" target="_blank"
             ><Link />&nbsp;{{ link.title }}</a
           >
         </h4>
       </div>
     </div>
-    <div v-if="prev || next" class="prevnext">
-      <NuxtLink v-if="prev" class="post prev" :to="url(prev)"
-        ><h2><ArrowLeft />&nbsp;{{ prev.title }}</h2></NuxtLink
+    <div v-if="surrounding.prev || surrounding.next" class="prevnext">
+      <NuxtLink
+        v-if="surrounding.prev"
+        class="post prev"
+        :to="url(surrounding.prev)"
+        ><h2><ArrowLeft />&nbsp;{{ surrounding.prev.title }}</h2></NuxtLink
       >
-      <NuxtLink v-if="next" class="post next" :to="url(next)"
-        ><h2>{{ next.title }}&nbsp;<ArrowRight /></h2
+      <NuxtLink
+        v-if="surrounding.next"
+        class="post next"
+        :to="url(surrounding.next)"
+        ><h2>{{ surrounding.next.title }}&nbsp;<ArrowRight /></h2
       ></NuxtLink>
     </div>
   </article>
