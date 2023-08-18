@@ -4,7 +4,10 @@
       <h1>{{ $t("topcard.name") }}</h1>
       <h2>{{ $t("topcard.short") }}</h2>
     </div>
-    <img src="https://avatars.githubusercontent.com/u/37277561" alt="me" />
+    <img
+      src="https://avatars.githubusercontent.com/u/37277561"
+      :alt="$t('topcard.name')"
+    />
   </div>
 </template>
 

@@ -8,7 +8,7 @@ infoStack: "Magento 2"
 infoWebsite: "https://capdell.com/"
 ---
 
-!["Home"](/content/projects/capdell-main.jpg)
+![Capdell home page](/content/projects/capdell-main.jpg)
 
 For this project I was tasked to create an image generator for the different combination of product attributes of a Magento store.
 

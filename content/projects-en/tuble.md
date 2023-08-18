@@ -1,5 +1,5 @@
 ---
-title: Tuble
+title: Tuble (v1)
 description: "Browser-based game inspired by Bioshock's hacking minigame"
 startDate: "2022"
 endDate: "2022"
@@ -15,7 +15,7 @@ links:
     href: "https://github.com/superwave1999/tuble-front"
 ---
 
-!["Main view"](/content/projects/tuble.jpg)
+![Main view](/content/projects/tuble.jpg)
 
 Note: Project discontinued. Too small number of website visits to introduce ads. Also, my intention was to show an ad below the "success" modal, but the providers I had in mind do not allow this.
 

@@ -9,7 +9,7 @@ infoStack: "MariaDB, Laravel, Angular"
 infoWebsite: "https://kalma.es/tiendaonline"
 ---
 
-!["Marketplace"](/content/projects/kalma-mp.jpg)
+![Kalma marketplace](/content/projects/kalma-mp.jpg)
 
 Kalma are a wholesaler of all the items a dentist may need.
 
@@ -23,10 +23,10 @@ The API supports multiple stores, one being Kalma itself, and the rest are manag
 
 The frontend can be configured to use different themes and layouts depending on the store configuration.
 
-!["Checkout"](/content/projects/kalma-ck.jpg)
+![Checkout process](/content/projects/kalma-ck.jpg)
 
-!["User panel, bank remittances"](/content/projects/kalma-priv1.jpg)
+![User account page, bank remittances](/content/projects/kalma-priv1.jpg)
 
-!["User panel, order info"](/content/projects/kalma-priv2.jpg)
+![User account page, order info](/content/projects/kalma-priv2.jpg)
 
-!["Customer storefront example"](/content/projects/kalma-kmp.jpg)
+![Different theme example](/content/projects/kalma-kmp.jpg)

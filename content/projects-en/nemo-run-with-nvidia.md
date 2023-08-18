@@ -11,7 +11,7 @@ links:
     href: "https://github.com/rapgenic/nemo-run-with-nvidia"
 ---
 
-!["Context menu"](/content/projects/nemo-run-with-nvidia.jpg)
+![Context menu](/content/projects/nemo-run-with-nvidia.jpg)
 
 Small utility to add to the Nemo file manager in Linux.
 

@@ -12,7 +12,7 @@ links:
     href: "https://telegraf.js.org/"
 ---
 
-!["Main list"](/content/projects/juliana.jpg)
+![Turnip listing Telegram message](/content/projects/juliana.jpg)
 
 A personal project created for friends of mine that administrate a Telegram group based around the trading of turnips with the character Daisy May in the 2020 Animal Crossing game.
 
