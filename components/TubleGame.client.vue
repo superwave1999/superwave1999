@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
-import * as utc from "dayjs/plugin/utc";
+import utc from "dayjs/plugin/utc";
 import { Refresh, SingleTapGesture, Timer, HelpCircle } from "@iconoir/vue";
 import TubleGame from "assets/js/tuble-game";
 import TubleValidator from "assets/js/tuble-validator";
