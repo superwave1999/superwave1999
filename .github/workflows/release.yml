@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: 18
       - name: Run npm install
-        run: npm install
+        run: npm install --only=dev
 
       # Generate static version of website
       - name: Run nuxt generate
