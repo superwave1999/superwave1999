@@ -7,7 +7,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  NODE_ENV: production
   NUXT_PUBLIC_SITE_URL: https://www.iromera.com
 
 jobs:
