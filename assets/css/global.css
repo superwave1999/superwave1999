@@ -17,9 +17,9 @@
   --effect-2-timing: 30.333s;
   --effect-3-timing: 18.717s;
   --effect-size-mul: 1;
-  --effect-opacity: 1;
-  --effect-height: 54vh;
-  --effect-blur: 30ch;
+  --effect-opacity: 0.7;
+  --effect-height: 72vh;
+  --effect-blur: 96px;
 
   /* button colours */
   --accent: #5bc0eb;
@@ -73,7 +73,7 @@
     --effect-size-mul: 1.33;
     --effect-opacity: 0.4;
     --effect-height: 77vh;
-    --effect-blur: 120rem;
+    --effect-blur: 192px;
 
     --btn-height: 8ch;
     --btn-height-mini: 4ch;
