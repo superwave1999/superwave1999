@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+import { InputConfig } from "c12";
+import { NuxtConfig } from "@nuxt/schema";
+
+const input: InputConfig<NuxtConfig> = {
   ssr: true,
   app: {
     head: {
@@ -69,4 +72,14 @@ export default defineNuxtConfig({
       routes: ["/"],
     },
   },
-});
+};
+
+if (process.env.NUXT_PUBLIC_UMAMI_HOST) {
+  input.extends = ["nuxt-umami"];
+  input.umami = {
+    version: 2,
+    ignoreLocalhost: true,
+  };
+}
+
+export default defineNuxtConfig(input);

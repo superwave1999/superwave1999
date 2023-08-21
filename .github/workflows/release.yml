@@ -9,6 +9,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   NUXT_PUBLIC_SITE_URL: https://www.iromera.com
+  NUXT_PUBLIC_UMAMI_HOST: https://umami.iromera.com
+  NUXT_PUBLIC_UMAMI_ID: 35c46a17-23c9-4ede-831b-65ef6803ceb9
 
 jobs:
   ### MULTI-ARCH DOCKER BUILDS ###
