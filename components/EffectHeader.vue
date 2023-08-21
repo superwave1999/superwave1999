@@ -13,7 +13,6 @@ div.effect {
   width: 100%;
   z-index: -1;
   filter: blur(var(--effect-blur));
-  -webkit-filter: blur(calc(var(--effect-blur) / 20));
   overflow: hidden;
   opacity: var(--effect-opacity);
 }
