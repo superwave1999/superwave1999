@@ -13,6 +13,7 @@ div.effect {
   width: 100%;
   z-index: -1;
   filter: blur(var(--effect-blur));
+  -webkit-filter: blur(calc(var(--effect-blur) / 20));
   overflow: hidden;
   opacity: var(--effect-opacity);
 }
@@ -71,7 +72,7 @@ div.e3 {
     width: calc(78ch * var(--effect-size-mul));
     height: calc(47ch * var(--effect-size-mul));
   }
-  50% {
+  20% {
     width: calc(101ch * var(--effect-size-mul));
     height: calc(118ch * var(--effect-size-mul));
   }
@@ -101,7 +102,7 @@ div.e3 {
     width: calc(100ch * var(--effect-size-mul));
     height: calc(100ch * var(--effect-size-mul));
   }
-  50% {
+  30% {
     width: calc(120ch * var(--effect-size-mul));
     height: calc(75ch * var(--effect-size-mul));
   }
