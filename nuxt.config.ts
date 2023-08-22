@@ -79,6 +79,7 @@ if (process.env.NUXT_PUBLIC_UMAMI_HOST) {
   input.umami = {
     version: 2,
     ignoreLocalhost: true,
+    customEndpoint: '/api/send',
   };
 }
 
