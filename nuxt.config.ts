@@ -76,10 +76,11 @@ const input: InputConfig<NuxtConfig> = {
 
 if (process.env.NUXT_PUBLIC_UMAMI_HOST) {
   input.extends = ["nuxt-umami"];
-  input.umami = {
-    version: 2,
-    ignoreLocalhost: true,
-    customEndpoint: '/api/send',
+  input.appConfig = {
+    umami: {
+      version: 2,
+      ignoreLocalhost: true,
+    },
   };
 }
 
