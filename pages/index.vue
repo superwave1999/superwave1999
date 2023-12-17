@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Gamepad, LargeSuitcase, LinkedIn, GitHub } from "@iconoir/vue";
+import { Gamepad, Suitcase, Linkedin, Github } from "@iconoir/vue";
 const { t } = useI18n();
 useHead({
   title: t("p_index.headTitle"),
@@ -15,7 +15,7 @@ useHead({
         :text="$t('p_index.btnPortfolio')"
         to="projects"
         colour="--portfolio"
-        ><LargeSuitcase
+        ><Suitcase
       /></EffectButton>
       <EffectButton :text="$t('p_index.btnTuble')" to="tuble" colour="--tuble"
         ><Gamepad
@@ -36,13 +36,13 @@ useHead({
         text="LinkedIn"
         href="https://www.linkedin.com/in/imanol-romera-lockhart-841803188/"
         colour="--linkedin"
-        ><LinkedIn
+        ><Linkedin
       /></EffectButton>
       <EffectButton
         text="GitHub"
         href="https://github.com/superwave1999"
         colour="--github"
-        ><GitHub
+        ><Github
       /></EffectButton>
     </ButtonRow>
     <HorizontalDivider />

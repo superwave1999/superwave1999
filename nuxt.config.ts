@@ -1,12 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { InputConfig } from "c12";
-import { NuxtConfig } from "@nuxt/schema";
+import { type InputConfig } from "c12";
+import { type NuxtConfig } from "@nuxt/schema";
 
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
   app: {
-    baseURL: '/',
-    buildAssetsDir: 'assets',
+    baseURL: "/",
+    buildAssetsDir: "assets",
     head: {
       meta: [
         { charset: "utf-8" },
@@ -66,7 +66,7 @@ const input: InputConfig<NuxtConfig> = {
     differentDomains: false,
   },
   sitemap: {
-    hostname: 'https://www.iromera.com',
+    hostname: "https://www.iromera.com",
     i18n: true,
     xslUrl: undefined,
     cacheTtl: 1000 * 60 * 60 * 24 * 7, // 7 day - content is very static
@@ -78,15 +78,5 @@ const input: InputConfig<NuxtConfig> = {
     },
   },
 };
-
-if (process.env.NUXT_PUBLIC_UMAMI_HOST) {
-  input.extends = ["nuxt-umami"];
-  input.appConfig = {
-    umami: {
-      version: 2,
-      ignoreLocalhost: true,
-    },
-  };
-}
 
 export default defineNuxtConfig(input);

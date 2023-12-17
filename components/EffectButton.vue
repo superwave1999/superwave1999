@@ -69,9 +69,8 @@ function shadowEffect(e: MouseEvent) {
   if (!linkElement) {
     return;
   }
-  (
-    linkElement as HTMLElement
-  ).style.cssText = `left: ${l}px; top: ${t}px; filter: blur(${blur}px)`; // blur is calculated here because width is variable
+  (linkElement as HTMLElement).style.cssText =
+    `left: ${l}px; top: ${t}px; filter: blur(${blur}px)`; // blur is calculated here because width is variable
 }
 </script>
 

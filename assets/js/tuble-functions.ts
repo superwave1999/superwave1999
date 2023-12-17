@@ -21,7 +21,7 @@ export default class TubleFunctions {
 
   public static includesArray(
     needle: [number, number],
-    haystack: [number, number][]
+    haystack: [number, number][],
   ): boolean {
     return haystack.findIndex((coords) => equal(coords, needle)) !== -1;
   }

@@ -47,7 +47,8 @@ div.langsel {
   overflow: hidden;
   opacity: 0;
   transform: translateY(-6px);
-  transition: opacity var(--transition-speed) ease-in-out,
+  transition:
+    opacity var(--transition-speed) ease-in-out,
     transform var(--transition-speed) ease-in-out;
 }
 
