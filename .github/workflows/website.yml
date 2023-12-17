@@ -1,0 +1,55 @@
+# Sample workflow for building and deploying a Nuxt site to GitHub Pages
+#
+# To get started with Nuxt see: https://nuxtjs.org/docs/get-started/installation
+#
+name: Deploy Nuxt site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Install dependencies
+        run: npm install
+      - name: Check code cleanliness
+        run: npm run lint
+      - name: Static HTML export with Nuxt
+        run: npm run generate
+        env:
+          NODE_ENV: production
+          NUXT_SITE_URL: https://www.iromera.com
+          NUXT_SITE_NAME: "Imanol Romera"
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
