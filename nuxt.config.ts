@@ -5,8 +5,7 @@ import { type NuxtConfig } from "@nuxt/schema";
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
   app: {
-    baseURL: "/",
-    buildAssetsDir: "assets",
+    buildAssetsDir: "output",
     head: {
       meta: [
         { charset: "utf-8" },
@@ -23,8 +22,10 @@ const input: InputConfig<NuxtConfig> = {
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
+    "nuxt-site-config",
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
+    "nuxt-link-checker",
   ],
   plugins: ["@/plugins/vue-final-modal.ts"],
   colorMode: {
@@ -58,7 +59,7 @@ const input: InputConfig<NuxtConfig> = {
     defaultLocale: "en",
     lazy: true,
     langDir: "i18n",
-    strategy: "prefix",
+    strategy: "prefix_and_default",
     detectBrowserLanguage: {
       useCookie: false,
       redirectOn: "root",
@@ -66,12 +67,16 @@ const input: InputConfig<NuxtConfig> = {
     differentDomains: false,
   },
   sitemap: {
-    hostname: "https://www.iromera.com",
-    i18n: true,
-    xslUrl: undefined,
-    cacheTtl: 1000 * 60 * 60 * 24 * 7, // 7 day - content is very static
+    enabled: true,
+    autoI18n: true,
+    xsl: false,
+    cacheMaxAgeSeconds: 1000 * 60 * 60 * 24 * 7, // 7 day - content is very static
+  },
+  linkChecker: {
+    failOnError: true,
   },
   nitro: {
+    logLevel: +999,
     prerender: {
       crawlLinks: true, // Add dynamic urls to sitemap.xml automatically
       routes: ["/"],

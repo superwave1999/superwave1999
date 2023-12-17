@@ -24,6 +24,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NODE_ENV: production
+  NUXT_SITE_URL: https://www.iromera.com
+  NUXT_SITE_NAME: "Imanol Romera"
+
 jobs:
   # Build job
   build:
