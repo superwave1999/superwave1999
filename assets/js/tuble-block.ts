@@ -29,7 +29,7 @@ export default class TubleBlock {
 
   public setConnectionToCoords(
     nextCoords: [number, number],
-    isSecond: boolean
+    isSecond: boolean,
   ): void {
     let fun = -1;
     const diffX = this.x - nextCoords[0];
@@ -63,7 +63,7 @@ export default class TubleBlock {
     const pickedIdx = Chooser.chooseWeightedIndex(
       weights,
       `${seedNumber.toString(10)} TYPE`,
-      10
+      10,
     );
     this.type = options[pickedIdx];
   }
@@ -73,14 +73,14 @@ export default class TubleBlock {
     const firstIdx = Chooser.chooseWeightedIndex(
       [1, 1, 1, 1],
       `${seedNumber.toString(10)} C1`,
-      1
+      1,
     );
     this.setFirstConnection(conn[firstIdx]);
     conn.splice(firstIdx, 1);
     const secondIdx = Chooser.chooseWeightedIndex(
       [1, 1, 1],
       `${seedNumber.toString(10)} C2`,
-      1
+      1,
     );
     this.setSecondConnection(conn[secondIdx]);
   }
@@ -154,7 +154,7 @@ export default class TubleBlock {
   }
 
   public nextConnectedBlockCoords(
-    existingCoordsToAvoid: [number, number] | null
+    existingCoordsToAvoid: [number, number] | null,
   ): [number, number] {
     const candidates = [
       this.connectedBlockCoords(this.connections[1]),

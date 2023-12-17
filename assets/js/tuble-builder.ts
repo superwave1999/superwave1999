@@ -1,5 +1,5 @@
-import TubleFunctions from "assets/js/tuble-functions";
 import TubleBlock, { NO_CONNECTION, TYPE_ENDPOINT } from "./tuble-block";
+import TubleFunctions from "assets/js/tuble-functions";
 
 export default class TubleBuilder {
   private readonly mapSize: number = 6;
@@ -22,7 +22,7 @@ export default class TubleBuilder {
     mapSize: number,
     validPathSeed: number[],
     modifierSeed: number[],
-    rotationSeed: number[]
+    rotationSeed: number[],
   ) {
     this.mapSize = mapSize;
     this.validPathSeed = validPathSeed;
@@ -56,10 +56,10 @@ export default class TubleBuilder {
     for (let valueX = 0; valueX < this.mapSize; valueX++) {
       for (let valueY = 0; valueY < this.mapSize; valueY++) {
         this.gameMap[valueX][valueY].setRandomConnections(
-          this.getRotationSeedNumber()
+          this.getRotationSeedNumber(),
         );
         this.gameMap[valueX][valueY].setRandomSpecialType(
-          this.getModifierSeedNumber()
+          this.getModifierSeedNumber(),
         );
       }
     }
@@ -76,7 +76,7 @@ export default class TubleBuilder {
       this.creatorEdgeCoords[
         TubleFunctions.overflow(
           this.creatorEdgeCoords.length - 1,
-          this.getValidPathSeedNumber()
+          this.getValidPathSeedNumber(),
         )
       ]; // Starting edge block
     while (true) {
@@ -100,7 +100,7 @@ export default class TubleBuilder {
           coordinateCandidates[
             TubleFunctions.overflow(
               coordinateCandidates.length - 1,
-              this.getValidPathSeedNumber()
+              this.getValidPathSeedNumber(),
             )
           ];
       }
@@ -108,7 +108,7 @@ export default class TubleBuilder {
   }
 
   private getValidSurroundingCoords(
-    coords: [number, number]
+    coords: [number, number],
   ): [number, number][] {
     const coordOptions: [number, number][] = [
       [coords[0], coords[1] - 1], // Towards top
@@ -119,7 +119,7 @@ export default class TubleBuilder {
     return coordOptions.filter(
       (testCoords: [number, number]) =>
         this.coordsAreWithinLimits(testCoords) &&
-        !TubleFunctions.includesArray(testCoords, this.validPath) // Only options within map borders, and not been stepped on
+        !TubleFunctions.includesArray(testCoords, this.validPath), // Only options within map borders, and not been stepped on
     );
   }
 
@@ -147,7 +147,7 @@ export default class TubleBuilder {
       return coordinateCandidates[
         TubleFunctions.overflow(
           coordinateCandidates.length - 1,
-          this.getValidPathSeedNumber()
+          this.getValidPathSeedNumber(),
         )
       ];
     }
@@ -170,12 +170,12 @@ export default class TubleBuilder {
       } else {
         this.gameMap[prevCoords[0]][prevCoords[1]].setConnectionToCoords(
           coords,
-          true
+          true,
         );
       }
       this.gameMap[coords[0]][coords[1]].setConnectionToCoords(
         prevCoords,
-        false
+        false,
       );
       if (key === lastKey) {
         this.gameMap[coords[0]][coords[1]].setType(TYPE_ENDPOINT);
@@ -193,7 +193,7 @@ export default class TubleBuilder {
     for (const coords of this.validPath) {
       if (this.gameMap[coords[0]][coords[1]].isMovable()) {
         this.gameMap[coords[0]][coords[1]].setRandomRotation(
-          this.getRotationSeedNumber()
+          this.getRotationSeedNumber(),
         );
       }
     }

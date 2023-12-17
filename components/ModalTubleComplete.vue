@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
-import TubleValidator from "assets/js/tuble-validator";
 import { SingleTapGesture, Timer } from "@iconoir/vue";
 import dayjs from "dayjs";
+import TubleValidator from "assets/js/tuble-validator";
 
 const props = defineProps<{
   title?: string;

@@ -26,16 +26,16 @@ export default class TubleGame {
       // Generate new map
       const layoutSeed = await TubleFunctions.newHash(this.dateString);
       const modifierSeed = await TubleFunctions.newHash(
-        `${this.dateString} MODIFIER`
+        `${this.dateString} MODIFIER`,
       );
       const rotationSeed = await TubleFunctions.newHash(
-        `${this.dateString} ROTOR`
+        `${this.dateString} ROTOR`,
       );
       const tubleBuilder = new TubleBuilder(
         6,
         layoutSeed,
         modifierSeed,
-        rotationSeed
+        rotationSeed,
       );
       tubleBuilder.build();
       this.map = tubleBuilder.getMap();
@@ -136,8 +136,8 @@ export default class TubleGame {
           this.moves = obj.moves;
           this.map = obj.map.map((x: any[], valueX: number) =>
             x.map((y: any, valueY: number) =>
-              new TubleBlock(valueX, valueY).load(y)
-            )
+              new TubleBlock(valueX, valueY).load(y),
+            ),
           );
           return true;
         }
