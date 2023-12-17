@@ -43,6 +43,8 @@ jobs:
           NODE_ENV: production
           NUXT_SITE_URL: https://www.iromera.com
           NUXT_SITE_NAME: "Imanol Romera"
+      - name: Disable GitHub Pages Jekyll
+        run: "touch .output/public/.nojekyll"
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
