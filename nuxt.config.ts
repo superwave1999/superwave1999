@@ -5,6 +5,8 @@ import { NuxtConfig } from "@nuxt/schema";
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
   app: {
+    baseURL: '/',
+    buildAssetsDir: 'assets',
     head: {
       meta: [
         { charset: "utf-8" },
@@ -64,6 +66,9 @@ const input: InputConfig<NuxtConfig> = {
     differentDomains: false,
   },
   sitemap: {
+    hostname: 'https://www.iromera.com',
+    i18n: true,
+    xslUrl: undefined,
     cacheTtl: 1000 * 60 * 60 * 24 * 7, // 7 day - content is very static
   },
   nitro: {
