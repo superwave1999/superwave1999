@@ -5,7 +5,7 @@ import { type NuxtConfig } from "@nuxt/schema";
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
   experimental: {
-    payloadExtraction: false, //TODO: Remove in future nuxt update.
+    payloadExtraction: false, // TODO: Remove in future nuxt update.
   },
   app: {
     buildAssetsDir: "output",
@@ -79,7 +79,7 @@ const input: InputConfig<NuxtConfig> = {
     failOnError: true,
   },
   nitro: {
-    inlineDynamicImports: true, //TODO: Remove in future nuxt update.
+    inlineDynamicImports: true, // TODO: Remove in future nuxt update.
     logLevel: +999,
     prerender: {
       crawlLinks: true, // Add dynamic urls to sitemap.xml automatically
