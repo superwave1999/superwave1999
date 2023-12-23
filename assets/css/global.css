@@ -58,7 +58,7 @@
   --subtitle-size: 1.4rem;
   --highlight-size: 1.1rem;
   --section-size: 2rem;
-  --top-space: 14ch;
+  --top-space: 8ch;
   --container-max-width: 100ch;
   --container-padding: 0.8ch;
   --tuble-max-width: 52ch;
@@ -221,4 +221,18 @@ div.popup.modalcontent > div.button-row {
 div.popup.modalcontent > div.button-row > *:last-child {
   margin-left: auto;
   margin-right: 0;
+}
+
+/* Page transition */
+.page-enter-active,
+.page-leave-active {
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(0.2rem);
 }
