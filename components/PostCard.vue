@@ -3,23 +3,18 @@ const props = defineProps({
   post: { type: Object, default: null },
 });
 
-const localeRoute = useLocaleRoute();
-const localePath = useLocalePath();
-const { locale } = useI18n();
 const route = useRoute();
 
 const url = computed(() => {
   if (!props.post) {
     return "";
   }
-  const localizedRoute = localeRoute(route.path, locale.value);
-  const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
-  return `${routeSanitized}/${props.post.slug}`;
+  return `${route.path}/${props.post.slug}`;
 });
 </script>
 
 <template>
-  <NuxtLink class="post" :to="localePath(url)">
+  <NuxtLink class="post" :to="url">
     <img :src="post.previewImage" :alt="post.title" />
     <div class="post-text">
       <h2>{{ post.title }}</h2>
