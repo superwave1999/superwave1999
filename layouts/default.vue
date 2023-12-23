@@ -33,6 +33,8 @@ const head = useLocaleHead({
         <AppHeader />
         <div class="container">
           <NuxtPage />
+        </div>
+        <div class="bottom">
           <HorizontalDivider />
           <AppFooter />
         </div>
@@ -43,12 +45,16 @@ const head = useLocaleHead({
 </template>
 
 <style scoped>
-div.container {
+div.container,
+div.bottom {
   width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+}
+
+div.container {
   padding-top: var(--top-space);
 }
 </style>

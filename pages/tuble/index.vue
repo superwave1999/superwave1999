@@ -15,7 +15,7 @@ useHead({
 <style scoped>
 section.game-container {
   max-width: var(--tuble-max-width);
-  margin: calc(-0.5 * var(--top-space)) auto 0;
+  margin: calc(var(--top-space) / 10) auto 0;
 }
 
 @media (min-width: 576px) {
