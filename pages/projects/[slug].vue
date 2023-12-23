@@ -12,7 +12,6 @@ defineI18nRoute({
 
 const { locale, t } = useI18n();
 const route = useRoute();
-const localeRoute = useLocaleRoute();
 const { data: post } = await useFetch(
   `/api/view/${route.params.slug}+${locale.value}`,
 );
@@ -40,12 +39,7 @@ function url(post: any) {
   if (!post) {
     return "";
   }
-  const localizedRoute = localeRoute(route.path, locale.value);
-  const routeSanitized = localizedRoute != null ? localizedRoute.path : "/";
-  const prevRoute = routeSanitized.substring(
-    0,
-    routeSanitized.lastIndexOf("/"),
-  );
+  const prevRoute = route.path.substring(0, route.path.lastIndexOf("/"));
   return `${prevRoute}/${post.slug}`;
 }
 
