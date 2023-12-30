@@ -2,27 +2,10 @@
 defineProps({
   open: Boolean,
 });
-const emit = defineEmits(["close"]);
+defineEmits(["close"]);
 
-const { locale, locales, setLocale } = useI18n();
+const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
-const route = useRoute();
-const getRouteBaseName = useRouteBaseName();
-const baseRouteName = computed(() => {
-  return getRouteBaseName(route);
-});
-
-const isTuble = computed(() => {
-  return baseRouteName.value === "tuble";
-});
-
-function doClick(code: string) {
-  if (isTuble.value) {
-    setLocale(code);
-    history.pushState({}, "", `${window.location.origin}/${code}/tuble`);
-  }
-  emit("close");
-}
 </script>
 
 <template>
@@ -30,9 +13,9 @@ function doClick(code: string) {
     <NuxtLink
       v-for="i in locales"
       :key="i.code"
-      :to="!isTuble ? switchLocalePath(i.code) : undefined"
+      :to="switchLocalePath(i.code)"
       :class="{ active: i.code === locale }"
-      @click="() => doClick(i.code)"
+      @click="$emit('close')"
       >{{ i.name }}</NuxtLink
     >
   </div>
