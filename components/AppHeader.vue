@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeft, Globe, HalfMoon, SunLight } from "@iconoir/vue";
 
+const { locale } = useI18n();
 const route = useRoute();
 const colorMode = useColorMode();
 const languageSelector = ref(false);
@@ -22,7 +23,11 @@ onMounted(() => {
 });
 
 const previousRoute = computed(() => {
-  return route.path.substring(0, route.path.lastIndexOf("/"));
+  if (route.path === `/${locale.value}` || route.path === "/") {
+    return "";
+  }
+  const newpath = route.path.substring(0, route.path.lastIndexOf("/"));
+  return newpath || "/";
 });
 
 const themeIconColour = computed(() => {
