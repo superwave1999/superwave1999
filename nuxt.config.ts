@@ -90,6 +90,7 @@ const input: InputConfig<NuxtConfig> = {
     detectBrowserLanguage: {
       useCookie: false,
       redirectOn: "root",
+      alwaysRedirect: true,
     },
     differentDomains: false,
   },
