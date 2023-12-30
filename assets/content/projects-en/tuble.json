@@ -1,0 +1,23 @@
+{
+  "title": "Tuble (v1)",
+  "description": "Browser-based game inspired by Bioshock's hacking minigame",
+  "startDate": "2022",
+  "endDate": "2022",
+  "previewImage": "/content/projects/tuble-cmp.jpg",
+  "infoPlatform": "Web",
+  "infoStack": "Go, Vue",
+  "links": [
+    {
+      "title": "Website (Defunct)",
+      "href": "https://tuble.iromera.com"
+    },
+    {
+      "title": "API source code",
+      "href": "https://github.com/superwave1999/tuble-server"
+    },
+    {
+      "title": "Frontend source code",
+      "href": "https://github.com/superwave1999/tuble-front"
+    }
+  ]
+}

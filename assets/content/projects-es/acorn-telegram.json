@@ -1,0 +1,16 @@
+{
+  "title": "Acorn",
+  "description": "Un bot de Telegram para Animal Crossing",
+  "startDate": "2020",
+  "endDate": "2021",
+  "previewImage": "/content/projects/juliana-cmp.jpg",
+  "infoPlatform": "Telegram",
+  "infoStack": "MariaDB, Node.js",
+  "infoWebsite": "https://github.com/superwave1999/acorn-telegram",
+  "links": [
+    {
+      "title": "Framework Telegraf.js",
+      "href": "https://telegraf.js.org/"
+    }
+  ]
+}

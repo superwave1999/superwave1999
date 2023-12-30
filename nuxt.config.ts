@@ -107,6 +107,9 @@ const input: InputConfig<NuxtConfig> = {
       failOnError: false, // i18n module compat
     },
   },
+  vite: {
+    assetsInclude: ["**/*.md"],
+  },
 };
 
 export default defineNuxtConfig(input);
