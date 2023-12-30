@@ -15,14 +15,25 @@ const route = useRoute();
 const { data: post } = await useFetch(
   `/api/view/${route.params.slug}+${locale.value}`,
 );
-useHead({
-  title: `${post.value.title}${t("p_project.headTitleSuffix")}`,
-  meta: [{ name: "description", content: post.value.description }],
-});
-
 const { data: surrounding } = await useFetch(
   `/api/surrounding/${route.params.slug}+${locale.value}`,
 );
+
+watch(locale, async (newLocale) => {
+  const postRequest = await useFetch(
+    `/api/view/${route.params.slug}+${newLocale}`,
+  );
+  post.value = postRequest.data.value;
+  const surroundingRequest = await useFetch(
+    `/api/surrounding/${route.params.slug}+${newLocale}`,
+  );
+  surrounding.value = surroundingRequest.data.value;
+  window.scrollTo(0, 0);
+  await nextTick(() => {
+    refreshImageViewer();
+  });
+});
+
 const hasAnyMeta = computed(() => {
   if (!post.value) {
     return false;
@@ -35,6 +46,11 @@ const hasAnyMeta = computed(() => {
   );
 });
 
+useHead({
+  title: `${post.value.title}${t("p_project.headTitleSuffix")}`,
+  meta: [{ name: "description", content: post.value.description }],
+});
+
 function url(post: any) {
   if (!post) {
     return "";
@@ -43,9 +59,12 @@ function url(post: any) {
   return `${prevRoute}/${post.slug}`;
 }
 
+onMounted(refreshImageViewer);
 let imageViewer: Viewer;
-
-onMounted(() => {
+function refreshImageViewer() {
+  if (imageViewer) {
+    imageViewer.destroy();
+  }
   imageViewer = new Viewer(document.getElementById("nuxt-content"), {
     inline: false,
     loading: true,
@@ -57,11 +76,7 @@ onMounted(() => {
     fullscreen: true,
     zIndex: 3000,
   });
-});
-
-onBeforeUnmount(() => {
-  imageViewer.destroy();
-});
+}
 </script>
 
 <template>

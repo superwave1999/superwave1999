@@ -66,6 +66,7 @@ const input: InputConfig<NuxtConfig> = {
     "@fontsource/courier-prime/latin.css",
   ],
   i18n: {
+    skipSettingLocaleOnNavigate: true,
     vueI18n: "./i18n.config.ts",
     locales: [
       {
