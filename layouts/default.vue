@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ModalsContainer } from "vue-final-modal";
 import { IconoirProvider } from "@iconoir/vue";
+const { finalizePendingLocaleChange } = useI18n();
 
 const head = useLocaleHead({
   addDirAttribute: true,
   identifierAttribute: "id",
   addSeoAttributes: true,
 });
+
+const onBeforeEnter = async () => {
+  await finalizePendingLocaleChange();
+};
 </script>
 
 <template>
@@ -32,7 +37,13 @@ const head = useLocaleHead({
         <EffectHeader />
         <AppHeader />
         <div class="container">
-          <NuxtPage />
+          <NuxtPage
+            :transition="{
+              name: 'page',
+              mode: 'out-in',
+              onBeforeEnter,
+            }"
+          />
         </div>
         <div class="bottom">
           <HorizontalDivider />
