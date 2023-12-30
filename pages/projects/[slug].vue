@@ -12,23 +12,26 @@ defineI18nRoute({
 
 const { locale, t } = useI18n();
 const route = useRoute();
-const { data: post } = await useFetch(
-  `/api/view/${route.params.slug}+${locale.value}`,
-);
-const { data: surrounding } = await useFetch(
-  `/api/surrounding/${route.params.slug}+${locale.value}`,
-);
 
-watch(locale, async (newLocale) => {
-  const postRequest = await useFetch(
-    `/api/view/${route.params.slug}+${newLocale}`,
-  );
-  post.value = postRequest.data.value;
-  const surroundingRequest = await useFetch(
-    `/api/surrounding/${route.params.slug}+${newLocale}`,
-  );
-  surrounding.value = surroundingRequest.data.value;
-  window.scrollTo(0, 0);
+const postUrl = computed(() => `/api/post/${route.params.slug}`);
+const { data: post } = await useFetch(postUrl, {
+  query: { locale },
+});
+
+const surroundingUrl = computed(
+  () => `/api/post-surrounding/${route.params.slug}`,
+);
+const { data: surrounding } = await useFetch(surroundingUrl, {
+  query: { locale },
+});
+
+watch(locale, () => {
+  if (process.client) {
+    window.scrollTo(0, 0);
+  }
+});
+
+watch(post, async () => {
   await nextTick(() => {
     refreshImageViewer();
   });

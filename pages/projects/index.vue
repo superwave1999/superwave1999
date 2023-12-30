@@ -10,11 +10,14 @@ useHead({
   title: t("p_projects.headTitle"),
 });
 
-const { data: posts } = await useFetch(`/api/index/${locale.value}`);
-watch(locale, async (newLocale) => {
-  const { data } = await useFetch(`/api/index/${newLocale}`);
-  posts.value = data.value;
-  window.scrollTo(0, 0);
+const { data: posts } = await useFetch("/api/posts", {
+  query: { locale },
+});
+
+watch(locale, () => {
+  if (process.client) {
+    window.scrollTo(0, 0);
+  }
 });
 </script>
 
