@@ -1,17 +1,3 @@
----
-title: Acorn
-description: "Un bot de Telegram para Animal Crossing"
-startDate: "2020"
-endDate: "2021"
-previewImage: "/content/projects/juliana-cmp.jpg"
-infoPlatform: "Telegram"
-infoStack: "MariaDB, Node.js"
-infoWebsite: "https://github.com/superwave1999/acorn-telegram"
-links:
-  - title: "Framework Telegraf.js"
-    href: "https://telegraf.js.org/"
----
-
 ![Mensaje de Telegram con un listado de nabos](/content/projects/juliana.jpg)
 
 Un proyecto personal creado para amigos que administran un grupo de Telegram dedicado al intercambio de nabos con el personaje Juliana en el videojuego Animal Crossing del 2020.

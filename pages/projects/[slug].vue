@@ -2,6 +2,7 @@
 import { Link, ArrowLeft, ArrowRight } from "@iconoir/vue";
 import Viewer from "viewerjs";
 import "viewerjs/dist/viewer.css";
+import ContentLoader from "assets/js/content-loader";
 
 defineI18nRoute({
   paths: {
@@ -13,23 +14,20 @@ defineI18nRoute({
 const { locale, t } = useI18n();
 const route = useRoute();
 
-const postUrl = computed(() => `/api/post/${route.params.slug}`);
-const { data: post } = await useFetch(postUrl, {
-  query: { locale },
-});
+let content = new ContentLoader(locale.value);
+const post = ref(await content.single(route.params.slug as string));
+const surrounding = ref(await content.surrounding(route.params.slug as string));
 
-const surroundingUrl = computed(
-  () => `/api/post-surrounding/${route.params.slug}`,
-);
-const { data: surrounding } = await useFetch(surroundingUrl, {
-  query: { locale },
-});
-
-watch(locale, () => {
+watch(locale, async (newLocale) => {
+  content = new ContentLoader(newLocale);
+  post.value = await content.single(route.params.slug as string);
+  surrounding.value = await content.surrounding(route.params.slug as string);
   if (process.client) {
     window.scrollTo(0, 0);
   }
 });
+
+onMounted(refreshImageViewer);
 
 watch(post, async () => {
   await nextTick(() => {
@@ -63,6 +61,7 @@ function url(post: any) {
 }
 
 onMounted(refreshImageViewer);
+
 let imageViewer: Viewer;
 function refreshImageViewer() {
   if (imageViewer) {

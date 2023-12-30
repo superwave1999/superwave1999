@@ -1,14 +1,3 @@
----
-title: Kalma
-description: "Storefront for a wholesaler of dental products"
-startDate: "2019"
-endDate: "2022"
-previewImage: "/content/projects/kalma-mp-cmp.jpg"
-infoPlatform: "Web"
-infoStack: "MariaDB, Laravel, Angular"
-infoWebsite: "https://kalma.es/tiendaonline"
----
-
 ![Kalma marketplace](/content/projects/kalma-mp.jpg)
 
 Kalma are a wholesaler of all the items a dentist may need.

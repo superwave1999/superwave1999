@@ -1,14 +1,3 @@
----
-title: Kalma
-description: "Marketplace para un mayorista de productos dentales"
-startDate: "2019"
-endDate: "2022"
-previewImage: "/content/projects/kalma-mp-cmp.jpg"
-infoPlatform: "Web"
-infoStack: "MariaDB, Laravel, Angular"
-infoWebsite: "https://kalma.es/tiendaonline"
----
-
 ![Kalma marketplace](/content/projects/kalma-mp.jpg)
 
 Kalma son mayoristas de productos dentales.

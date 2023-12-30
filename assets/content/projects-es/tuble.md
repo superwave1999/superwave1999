@@ -1,20 +1,3 @@
----
-title: Tuble (v1)
-description: "Juego de navegador inspirado por el minijuego de hackear de Bioshock"
-startDate: "2022"
-endDate: "2022"
-previewImage: "/content/projects/tuble-cmp.jpg"
-infoPlatform: "Web"
-infoStack: "Go, Vue"
-links:
-  - title: "Sitio web (Inactivo)"
-    href: "https://tuble.iromera.com"
-  - title: "Código fuente API"
-    href: "https://github.com/superwave1999/tuble-server"
-  - title: "Código fuente frontend"
-    href: "https://github.com/superwave1999/tuble-front"
----
-
 ![Vista principal](/content/projects/tuble.jpg)
 
 Tuble es un juego de navegador inspirado por el minijuego de hackear de Bioshock.

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ContentLoader from "assets/js/content-loader";
+
 defineI18nRoute({
   paths: {
     en: "/projects",
@@ -10,11 +12,9 @@ useHead({
   title: t("p_projects.headTitle"),
 });
 
-const { data: posts } = await useFetch("/api/posts", {
-  query: { locale },
-});
-
-watch(locale, () => {
+const posts = ref(await new ContentLoader(locale.value).list());
+watch(locale, async (newLocale) => {
+  posts.value = await new ContentLoader(newLocale).list();
   if (process.client) {
     window.scrollTo(0, 0);
   }
@@ -25,7 +25,7 @@ watch(locale, () => {
   <section>
     <SectionTitle :name="$t('p_projects.heading')" />
     <div class="posts">
-      <PostCard v-for="post of posts" :key="post.slug" :post="post" />
+      <PostCard v-for="post in posts" :key="post.slug" :post="post" />
     </div>
   </section>
 </template>
