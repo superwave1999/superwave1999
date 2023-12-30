@@ -4,15 +4,15 @@ import matter from "gray-matter";
 import showdown from "showdown";
 
 export default defineEventHandler((event: H3Event) => {
-  const params = getRouterParam(event, "slug");
-  if (params === undefined) {
+  const query = getQuery(event);
+  const slug = getRouterParam(event, "slug");
+  if (slug === undefined) {
     throw createError({
       statusCode: 400,
       statusMessage: "Invalid slug",
     });
   }
-  const [slug, lang] = params.split("+");
-  const path = `content/projects-${lang}/${slug}.md`;
+  const path = `content/projects-${query.locale}/${slug}.md`;
   if (!fs.existsSync(path)) {
     throw createError({
       statusCode: 404,
