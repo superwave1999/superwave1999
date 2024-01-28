@@ -55,8 +55,18 @@
         <TextSeparator />
       </p>
       <p class="text">
-        {{ $t("p_index.bio.n7")
+        {{ $t("p_index.bio.n6")
         }}<a class="company2" href="https://www.getronics.com/">Getronics</a>.
+      </p>
+    </div>
+    <div class="entry">
+      <p class="date">
+        2024
+        <TextSeparator />
+      </p>
+      <p class="text">
+        {{ $t("p_index.bio.n7")
+        }}<a class="company3" href="https://mralfred.com/">Mr. Alfred</a>.
       </p>
     </div>
     <div class="v-decorator" />
@@ -103,5 +113,13 @@ a.company2 {
 
 a.company2:hover {
   color: var(--company2);
+}
+
+a.company3 {
+  text-decoration-color: var(--company3);
+}
+
+a.company3:hover {
+  color: var(--company3);
 }
 </style>
