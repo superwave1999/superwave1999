@@ -26,16 +26,16 @@ const isCurved = computed(() => {
   return Boolean(diff % 2);
 });
 
-const baseImage = computed(() => {
-  let suffix;
+const imageType = computed(() => {
+  let type;
   if (properties.connections.includes(-1)) {
-    suffix = "h";
+    type = "end";
   } else if (isCurved.value) {
-    suffix = "c";
+    type = "curve";
   } else {
-    suffix = "s";
+    type = "straight";
   }
-  return "/tuble/block_" + suffix + ".svg";
+  return type;
 });
 
 const rotation = computed(() => {
@@ -87,7 +87,54 @@ function setActiveBlock() {
     }"
     @click="setActiveBlock"
   >
-    <img :src="baseImage" />
+    <svg v-if="imageType === 'end'" viewBox="0 0 512 512">
+      <path fill="#4fc3f7" d="M194.205 28.962V236.72h123.586V28.962z" />
+      <path
+        fill="#8d6e63"
+        d="M353.104 0v18.962a10 10 0 0 1-10.002 10.002H168.898a10.01 10.01 0 0 1-10.002-10.002V0"
+      />
+      <path
+        fill="#ff3d00"
+        d="M370.759 332.902c0 63.382-51.377 114.759-114.759 114.759s-114.758-51.377-114.758-114.759 51.377-114.759 114.759-114.759 114.758 51.377 114.758 114.759"
+      />
+      <path
+        fill="#d84315"
+        d="M344.276 332.902c0 48.75-39.525 88.276-88.276 88.276s-88.275-39.526-88.275-88.276 39.525-88.276 88.276-88.276 88.275 39.526 88.275 88.276"
+      />
+      <path
+        fill="#6d4c41"
+        d="M256 315.247c-9.737 0-17.655 7.918-17.655 17.655s7.918 17.655 17.655 17.655 17.655-7.918 17.655-17.655-7.918-17.655-17.655-17.655m0 52.965c-19.474 0-35.31-15.837-35.31-35.31s15.837-35.31 35.31-35.31 35.31 15.837 35.31 35.31-15.836 35.31-35.31 35.31"
+      />
+      <path
+        fill="#ff3d00"
+        d="M256 244.281c-2.993 0-5.932.419-8.828.781v87.357c0 4.873 4.666 8.828 8.828 8.828s8.828-3.955 8.828-8.828v-87.357c-2.896-.362-5.835-.781-8.828-.781"
+      />
+    </svg>
+    <svg
+      v-if="imageType === 'curve'"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512.002 512.002"
+    >
+      <path
+        fill="#8d6e63"
+        d="M512.002 353.105H493.04a10 10 0 0 1-10.002-10.002V168.899a10.01 10.01 0 0 1 10.002-10.002h18.962M353.105 0v18.962a10 10 0 0 1-10.002 10.002H168.899a10.01 10.01 0 0 1-10.002-10.002V0"
+      />
+      <path
+        fill="#4fc3f7"
+        d="M194.207 28.965v165.224h147.588c-24.01.004-24 .002-24-23.509V28.965zm.002 165.226c0 68.246 55.328 123.572 123.58 123.576h165.248V194.19H317.789z"
+      />
+    </svg>
+    <svg
+      v-if="imageType === 'straight'"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path fill="#4fc3f7" d="M317.791 483.033V28.959H194.205v454.074z" />
+      <path
+        fill="#8d6e63"
+        d="M158.896 511.998v-18.962a10 10 0 0 1 10.002-10.002h174.204a10.01 10.01 0 0 1 10.002 10.002v18.962m0-511.998v18.962a10 10 0 0 1-10.002 10.002H168.898a10.01 10.01 0 0 1-10.002-10.002V0"
+      />
+    </svg>
     <div v-if="overlayIcon" class="icon">
       <component :is="overlayIcon"></component>
     </div>
@@ -102,7 +149,7 @@ div.block {
   width: var(--tuble-block-width);
 }
 
-div.block > img {
+div.block > svg {
   transform: v-bind(rotation);
   position: absolute;
   z-index: 1;
