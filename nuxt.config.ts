@@ -50,7 +50,7 @@ const input: InputConfig<NuxtConfig> = {
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
     "nuxt-site-config",
-    "nuxt-simple-sitemap",
+    "@nuxtjs/sitemap",
     "nuxt-simple-robots",
   ],
   plugins: ["@/plugins/vue-final-modal.ts"],
