@@ -4,6 +4,7 @@ import { type NuxtConfig } from "@nuxt/schema";
 
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
+  compatibilityDate: "2024-07-09",
   app: {
     buildAssetsDir: "output",
     head: {
