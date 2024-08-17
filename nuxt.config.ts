@@ -52,7 +52,7 @@ const input: InputConfig<NuxtConfig> = {
     "@nuxtjs/color-mode",
     "nuxt-site-config",
     "@nuxtjs/sitemap",
-    "nuxt-simple-robots",
+    "@nuxtjs/robots",
   ],
   plugins: ["@/plugins/vue-final-modal.ts"],
   colorMode: {
@@ -87,7 +87,7 @@ const input: InputConfig<NuxtConfig> = {
     defaultLocale: "en",
     lazy: true,
     langDir: "i18n",
-    strategy: "prefix_and_default",
+    strategy: "prefix",
     detectBrowserLanguage: {
       useCookie: true,
       alwaysRedirect: true,
