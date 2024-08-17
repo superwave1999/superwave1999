@@ -2,7 +2,13 @@
 import { useModal } from "vue-final-modal";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { Refresh, SingleTapGesture, Timer, HelpCircle } from "@iconoir/vue";
+import {
+  PhHandTap,
+  PhTimer,
+  PhQuestion,
+  PhArrowClockwise,
+  PhArrowCounterClockwise,
+} from "@phosphor-icons/vue";
 import equal from "array-equal";
 import TubleGame from "assets/js/tuble-game";
 import TubleValidator from "assets/js/tuble-validator";
@@ -155,10 +161,18 @@ onBeforeUnmount(() => {
 <template>
   <SectionTitle class="title" :name="$t('p_index.btnTuble')" />
   <div class="stats">
-    <h4><Timer />&nbsp;<TextSeparator />{{ timerStatus }}</h4>
-    <h4><SingleTapGesture />&nbsp;<TextSeparator />{{ vueTubleGame.moves }}</h4>
+    <h4>
+      <PhTimer size="1em" color="currentColor" />&nbsp;<TextSeparator />{{
+        timerStatus
+      }}
+    </h4>
+    <h4>
+      <PhHandTap size="1em" color="currentColor" />&nbsp;<TextSeparator />{{
+        vueTubleGame.moves
+      }}
+    </h4>
     <EffectButton colour="--tuble" mini circle @click="openHelp"
-      ><HelpCircle
+      ><PhQuestion size="1em" color="currentColor"
     /></EffectButton>
   </div>
   <p v-if="vueTubleGame.isFrozen" class="next">
@@ -186,7 +200,7 @@ onBeforeUnmount(() => {
       colour="--tuble"
       :disabled="vueTubleGame.isFrozen"
       @click="vueTubleGame.actionRotate(false)"
-      ><Refresh class="mirror"
+      ><PhArrowCounterClockwise size="1em" color="currentColor"
     /></EffectButton>
     <EffectButton
       id="action-submit"
@@ -200,7 +214,7 @@ onBeforeUnmount(() => {
       colour="--tuble"
       :disabled="vueTubleGame.isFrozen"
       @click="vueTubleGame.actionRotate(true)"
-      ><Refresh
+      ><PhArrowClockwise size="1em" color="currentColor"
     /></EffectButton>
   </div>
 </template>
@@ -213,10 +227,6 @@ div.stats {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.mirror {
-  transform: scale(-1, 1);
 }
 
 table.map {

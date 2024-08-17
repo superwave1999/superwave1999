@@ -1,6 +1,20 @@
 {
-  "name": "nuxt-app",
+  "name": "homepage",
   "private": true,
+  "homepage": "www.iromera.com",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Imanol Romera",
+    "url": "https://github.com/superwave1999/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superwave1999/superwave1999"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -15,12 +29,12 @@
   "devDependencies": {
     "@fontsource/courier-prime": "^5.0.20",
     "@fontsource/mulish": "^5.0.18",
-    "@iconoir/vue": "^7.5.0",
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "^8.4.0",
     "@nuxtjs/robots": "^4.0.2",
     "@nuxtjs/sitemap": "^5.0.5",
+    "@phosphor-icons/vue": "^2.2.1",
     "@types/array-equal": "^1.0.2",
     "@types/node": "^20",
     "@types/showdown": "^2.0.6",

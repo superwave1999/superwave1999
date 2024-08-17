@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
-import { SingleTapGesture, Timer } from "@iconoir/vue";
+import { PhHandTap, PhTimer } from "@phosphor-icons/vue";
 
 const emit = defineEmits<{
   (e: "confirm"): void;
@@ -38,13 +38,13 @@ const active = false;
       <tbody>
         <tr>
           <td>
-            <Timer />
+            <PhTimer size="1em" color="currentColor" />
           </td>
           <td>{{ $t("tuble.help.s2d1") }}</td>
         </tr>
         <tr>
           <td>
-            <SingleTapGesture />
+            <PhHandTap size="1em" color="currentColor" />
           </td>
           <td>{{ $t("tuble.help.s2d2") }}</td>
         </tr>

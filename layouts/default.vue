@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ModalsContainer } from "vue-final-modal";
-import { IconoirProvider } from "@iconoir/vue";
 const { finalizePendingLocaleChange } = useI18n();
 
 const head = useLocaleHead({
@@ -31,26 +30,22 @@ const onBeforeEnter = async () => {
       </template>
     </Head>
     <Body>
-      <IconoirProvider
-        :icon-props="{ color: 'currentColor', width: '1em', height: '1em' }"
-      >
-        <EffectHeader />
-        <AppHeader />
-        <div class="container">
-          <NuxtPage
-            :transition="{
-              name: 'page',
-              mode: 'out-in',
-              onBeforeEnter,
-            }"
-          />
-        </div>
-        <div class="bottom">
-          <HorizontalDivider />
-          <AppFooter />
-        </div>
-        <ModalsContainer />
-      </IconoirProvider>
+      <EffectHeader />
+      <AppHeader />
+      <div class="container">
+        <NuxtPage
+          :transition="{
+            name: 'page',
+            mode: 'out-in',
+            onBeforeEnter,
+          }"
+        />
+      </div>
+      <div class="bottom">
+        <HorizontalDivider />
+        <AppFooter />
+      </div>
+      <ModalsContainer />
     </Body>
   </Html>
 </template>

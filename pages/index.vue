@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { Gamepad, Suitcase, Linkedin, Github } from "@iconoir/vue";
+import {
+  PhGameController,
+  PhBriefcase,
+  PhLinkedinLogo,
+  PhGithubLogo,
+} from "@phosphor-icons/vue";
 const { t } = useI18n();
 useHead({
   title: t("p_index.headTitle"),
@@ -15,10 +20,10 @@ useHead({
         :text="$t('p_index.btnPortfolio')"
         to="projects"
         colour="--portfolio"
-        ><Suitcase
+        ><PhBriefcase size="1em" color="currentColor"
       /></EffectButton>
       <EffectButton :text="$t('p_index.btnTuble')" to="tuble" colour="--tuble"
-        ><Gamepad
+        ><PhGameController size="1em" color="currentColor"
       /></EffectButton>
     </ButtonRow>
     <HorizontalDivider />
@@ -36,13 +41,13 @@ useHead({
         text="LinkedIn"
         href="https://www.linkedin.com/in/imanol-romera-lockhart-841803188/"
         colour="--linkedin"
-        ><Linkedin
+        ><PhLinkedinLogo size="1em" color="currentColor"
       /></EffectButton>
       <EffectButton
         text="GitHub"
         href="https://github.com/superwave1999"
         colour="--github"
-        ><Github
+        ><PhGithubLogo size="1em" color="currentColor"
       /></EffectButton>
     </ButtonRow>
     <HorizontalDivider />

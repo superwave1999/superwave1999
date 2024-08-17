@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, Globe, HalfMoon, SunLight } from "@iconoir/vue";
+import { PhArrowLeft, PhTranslate, PhMoon, PhSun } from "@phosphor-icons/vue";
 
 const { locale } = useI18n();
 const route = useRoute();
@@ -45,20 +45,28 @@ function toggleColorMode() {
   <nav class="navbar">
     <div class="items" :class="{ shift: !previousRoute }">
       <EffectButton class="back-arrow" :to="previousRoute"
-        ><ArrowLeft
+        ><PhArrowLeft size="1em" color="currentColor"
       /></EffectButton>
       <h1>IR<span>_</span></h1>
     </div>
     <div class="spacer" />
     <EffectButton :colour="themeIconColour" @click="toggleColorMode">
-      <HalfMoon v-if="colorMode.value === 'light'" />
-      <SunLight v-if="colorMode.value === 'dark'" />
+      <PhMoon
+        v-if="colorMode.value === 'light'"
+        size="1em"
+        color="currentColor"
+      />
+      <PhSun
+        v-if="colorMode.value === 'dark'"
+        size="1em"
+        color="currentColor"
+      />
     </EffectButton>
     <div class="spacer-mini" />
     <EffectButton
       :disabled="languageSelector"
       @click="languageSelector = !languageSelector"
-      ><Globe
+      ><PhTranslate size="1em" color="currentColor"
     /></EffectButton>
     <LanguageSelect
       :open="languageSelector"

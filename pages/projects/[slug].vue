@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link, ArrowLeft, ArrowRight } from "@iconoir/vue";
+import { PhLink, PhArrowLeft, PhArrowRight } from "@phosphor-icons/vue";
 import Viewer from "viewerjs";
 import "viewerjs/dist/viewer.css";
 import ContentLoader from "assets/js/content-loader";
@@ -107,13 +107,15 @@ function refreshImageViewer() {
       </div>
       <div v-if="post.infoWebsite" class="link-box">
         <h4>
-          <a :href="post.infoWebsite" target="_blank"><Link />&nbsp;Website</a>
+          <a :href="post.infoWebsite" target="_blank"
+            ><PhLink size="1em" color="currentColor" />&nbsp;Website</a
+          >
         </h4>
       </div>
       <div v-if="post.links && post.links.length" class="link-box">
         <h4 v-for="link of post.links" :key="link.href">
           <a :href="link.href" target="_blank"
-            ><Link />&nbsp;{{ link.title }}</a
+            ><PhLink size="1em" color="currentColor" />&nbsp;{{ link.title }}</a
           >
         </h4>
       </div>
@@ -123,13 +125,21 @@ function refreshImageViewer() {
         v-if="surrounding.prev"
         class="post prev"
         :to="url(surrounding.prev)"
-        ><h2><ArrowLeft />&nbsp;{{ surrounding.prev.title }}</h2></NuxtLink
+        ><h2>
+          <PhArrowLeft size="1em" color="currentColor" />&nbsp;{{
+            surrounding.prev.title
+          }}
+        </h2></NuxtLink
       >
       <NuxtLink
         v-if="surrounding.next"
         class="post next"
         :to="url(surrounding.next)"
-        ><h2>{{ surrounding.next.title }}&nbsp;<ArrowRight /></h2
+        ><h2>
+          {{ surrounding.next.title }}&nbsp;<PhArrowRight
+            size="1em"
+            color="currentColor"
+          /></h2
       ></NuxtLink>
     </div>
   </article>

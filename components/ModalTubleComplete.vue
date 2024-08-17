@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
-import { SingleTapGesture, Timer } from "@iconoir/vue";
+import { PhHandTap, PhTimer } from "@phosphor-icons/vue";
 import dayjs from "dayjs";
 import TubleValidator from "assets/js/tuble-validator";
 
@@ -51,9 +51,15 @@ const formattedNetTime = computed(() => {
       <thead>
         <tr>
           <td></td>
-          <td><Timer />&nbsp;{{ $t("tuble.modal.statTitleTime") }}</td>
           <td>
-            <SingleTapGesture />&nbsp;{{ $t("tuble.modal.statTitleMoves") }}
+            <PhTimer size="1em" color="currentColor" />&nbsp;{{
+              $t("tuble.modal.statTitleTime")
+            }}
+          </td>
+          <td>
+            <PhHandTap size="1em" color="currentColor" />&nbsp;{{
+              $t("tuble.modal.statTitleMoves")
+            }}
           </td>
         </tr>
       </thead>

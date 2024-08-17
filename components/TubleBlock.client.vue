@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SingleTapGesture, Timer } from "@iconoir/vue";
+import { PhHandTap, PhTimer } from "@phosphor-icons/vue";
 import equal from "array-equal";
 import TubleBlock from "assets/js/tuble-block";
 
@@ -12,10 +12,10 @@ const props = defineProps({
 });
 const properties = props.properties as TubleBlock;
 const typeIcons: { [index: string]: any } = {
-  a: { icon: Timer, colour: "#518229" }, // Time benefit
-  b: { icon: SingleTapGesture, colour: "#518229" }, // Moves benefit
-  x: { icon: Timer, colour: "#b31552" }, // Time penalty
-  z: { icon: SingleTapGesture, colour: "#b31552" }, // Moves penalty
+  a: { icon: PhTimer, colour: "#518229" }, // Time benefit
+  b: { icon: PhHandTap, colour: "#518229" }, // Moves benefit
+  x: { icon: PhTimer, colour: "#b31552" }, // Time penalty
+  z: { icon: PhHandTap, colour: "#b31552" }, // Moves penalty
 };
 
 const isCurved = computed(() => {
@@ -136,7 +136,7 @@ function setActiveBlock() {
       />
     </svg>
     <div v-if="overlayIcon" class="icon">
-      <component :is="overlayIcon"></component>
+      <component :is="overlayIcon" size="1em" color="currentColor"></component>
     </div>
   </div>
 </template>

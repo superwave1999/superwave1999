@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft } from "@iconoir/vue";
+import { PhArrowLeft } from "@phosphor-icons/vue";
 defineProps({
   error: { type: Object, default: null },
 });
@@ -17,7 +17,7 @@ const handleError = () => clearError({ redirect: localePath("/") });
         :text="$t('err.button')"
         colour="--error"
         @click="handleError"
-        ><ArrowLeft
+        ><PhArrowLeft size="1em" color="currentColor"
       /></EffectButton>
     </ButtonRow>
   </div>
