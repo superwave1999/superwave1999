@@ -87,7 +87,7 @@ const input: InputConfig<NuxtConfig> = {
     defaultLocale: "en",
     lazy: true,
     langDir: "i18n",
-    strategy: "prefix",
+    strategy: "prefix_and_default",
     detectBrowserLanguage: {
       useCookie: true,
       alwaysRedirect: true,

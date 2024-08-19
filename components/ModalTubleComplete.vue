@@ -52,12 +52,12 @@ const formattedNetTime = computed(() => {
         <tr>
           <td></td>
           <td>
-            <PhTimer size="1em" color="currentColor" />&nbsp;{{
+            <PhTimer size="1em" color="currentColor" class="space-after" />{{
               $t("tuble.modal.statTitleTime")
             }}
           </td>
           <td>
-            <PhHandTap size="1em" color="currentColor" />&nbsp;{{
+            <PhHandTap size="1em" color="currentColor" class="space-after" />{{
               $t("tuble.modal.statTitleMoves")
             }}
           </td>

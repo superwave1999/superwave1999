@@ -224,6 +224,14 @@ div.popup.modalcontent > div.button-row > *:last-child {
   margin-right: 0;
 }
 
+.space-after {
+  margin-inline-end: 1em;
+}
+
+.space-before {
+  margin-inline-start: 1em;
+}
+
 /* Page transition */
 .page-enter-active,
 .page-leave-active {

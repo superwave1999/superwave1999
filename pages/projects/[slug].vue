@@ -22,7 +22,7 @@ watch(locale, async (newLocale) => {
   content = new ContentLoader(newLocale);
   post.value = await content.single(route.params.slug as string);
   surrounding.value = await content.surrounding(route.params.slug as string);
-  if (process.client) {
+  if (import.meta.client) {
     window.scrollTo(0, 0);
   }
 });
@@ -86,8 +86,7 @@ function refreshImageViewer() {
     <div class="w-100">
       <h1 class="w-auto-inline">{{ post.title }}</h1>
       <span v-if="post.startDate || post.endDate">
-        &nbsp;
-        <TextSeparator />
+        <TextSeparator class="space-before" />
         {{ post.startDate || ""
         }}{{ post.startDate && post.endDate ? " - " : ""
         }}{{ post.endDate ?? "" }}
@@ -97,25 +96,33 @@ function refreshImageViewer() {
     <HorizontalDivider v-if="hasAnyMeta" />
     <div v-if="hasAnyMeta" class="post-meta">
       <div v-if="post.infoPlatform">
-        <h4>Platform: <TextSeparator />{{ post.infoPlatform }}</h4>
+        <h4>
+          {{ $t("p_project.platform") }} <TextSeparator />{{
+            post.infoPlatform
+          }}
+        </h4>
       </div>
       <div v-if="post.infoStack" class="stack-box">
         <h4>
-          Stack:
+          {{ $t("p_project.stack") }}
           <TextSeparator />{{ post.infoStack }}
         </h4>
       </div>
       <div v-if="post.infoWebsite" class="link-box">
         <h4>
           <a :href="post.infoWebsite" target="_blank"
-            ><PhLink size="1em" color="currentColor" />&nbsp;Website</a
+            ><PhLink size="1em" color="currentColor" class="space-after" />{{
+              $t("p_project.website")
+            }}</a
           >
         </h4>
       </div>
       <div v-if="post.links && post.links.length" class="link-box">
         <h4 v-for="link of post.links" :key="link.href">
           <a :href="link.href" target="_blank"
-            ><PhLink size="1em" color="currentColor" />&nbsp;{{ link.title }}</a
+            ><PhLink size="1em" color="currentColor" class="space-after" />{{
+              link.title
+            }}</a
           >
         </h4>
       </div>
@@ -126,7 +133,7 @@ function refreshImageViewer() {
         class="post prev"
         :to="url(surrounding.prev)"
         ><h2>
-          <PhArrowLeft size="1em" color="currentColor" />&nbsp;{{
+          <PhArrowLeft size="1em" color="currentColor" class="space-after" />{{
             surrounding.prev.title
           }}
         </h2></NuxtLink
@@ -136,9 +143,11 @@ function refreshImageViewer() {
         class="post next"
         :to="url(surrounding.next)"
         ><h2>
-          {{ surrounding.next.title }}&nbsp;<PhArrowRight
+          {{ surrounding.next.title
+          }}<PhArrowRight
             size="1em"
             color="currentColor"
+            class="space-before"
           /></h2
       ></NuxtLink>
     </div>

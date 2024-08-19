@@ -33,18 +33,13 @@
   },
   "p_projects": {
     "headTitle": "Projects - Imanol Romera",
-    "heading": "Works",
-    "search": "Search",
-    "postImgAlt": "Post image",
-    "load": "Load more",
-    "notFound": "Nothing to be found here! Try a different search term."
+    "heading": "Works"
   },
   "p_project": {
     "headTitleSuffix": " - Imanol Romera",
     "website": "Website",
     "platform": "Platform",
-    "stack": "Stack",
-    "back": "Return to list"
+    "stack": "Stack"
   },
   "tuble": {
     "headTitle": "Tuble - Imanol Romera",

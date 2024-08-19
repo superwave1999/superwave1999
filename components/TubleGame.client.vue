@@ -162,14 +162,18 @@ onBeforeUnmount(() => {
   <SectionTitle class="title" :name="$t('p_index.btnTuble')" />
   <div class="stats">
     <h4>
-      <PhTimer size="1em" color="currentColor" />&nbsp;<TextSeparator />{{
-        timerStatus
-      }}
+      <PhTimer
+        size="1em"
+        color="currentColor"
+        class="space-after"
+      /><TextSeparator />{{ timerStatus }}
     </h4>
     <h4>
-      <PhHandTap size="1em" color="currentColor" />&nbsp;<TextSeparator />{{
-        vueTubleGame.moves
-      }}
+      <PhHandTap
+        size="1em"
+        color="currentColor"
+        class="space-after"
+      /><TextSeparator />{{ vueTubleGame.moves }}
     </h4>
     <EffectButton colour="--tuble" mini circle @click="openHelp"
       ><PhQuestion size="1em" color="currentColor"
