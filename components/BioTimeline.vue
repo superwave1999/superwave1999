@@ -61,12 +61,22 @@
     </div>
     <div class="entry">
       <p class="date">
+        2023
+        <TextSeparator />
+      </p>
+      <p class="text">
+        {{ $t("p_index.bio.n6")
+        }}<a class="company3" href="https://mralfred.com/">Mr. Alfred</a>.
+      </p>
+    </div>
+    <div class="entry">
+      <p class="date">
         2024
         <TextSeparator />
       </p>
       <p class="text">
         {{ $t("p_index.bio.n7")
-        }}<a class="company3" href="https://mralfred.com/">Mr. Alfred</a>.
+        }}<a class="company4" href="https://www.docplanner.com/">Docplanner</a>.
       </p>
     </div>
     <div class="v-decorator" />
@@ -121,5 +131,13 @@ a.company3 {
 
 a.company3:hover {
   color: var(--company3);
+}
+
+a.company4 {
+  text-decoration-color: var(--company4);
+}
+
+a.company4:hover {
+  color: var(--company4);
 }
 </style>
