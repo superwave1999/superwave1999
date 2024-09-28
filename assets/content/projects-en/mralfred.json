@@ -1,0 +1,9 @@
+{
+  "title": "Mr. Alfred",
+  "description": "SaaS to manage vacation rentals.",
+  "startDate": "2023",
+  "endDate": "2024",
+  "previewImage": "/content/projects/kalma-mp-cmp.jpg",
+  "infoPlatform": "Web, Mobile",
+  "infoStack": "Laravel, Vue, Angular, AWS Aurora"
+}
