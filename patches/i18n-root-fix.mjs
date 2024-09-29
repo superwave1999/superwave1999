@@ -25,7 +25,7 @@ const html = `
       let langCode = getCookie('${cookieKey}');
       if (!langCode) {
         langCode = navigator.language || navigator.userLanguage;
-        langCode = str.split(langCode)[0];
+        langCode = langCode.split('-')[0];
       }
 
       if (![${allowedLocales}].includes(langCode)) {
