@@ -19,7 +19,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate && npm run generate:redirect",
-    "generate:redirect": "node patches/apply.js",
+    "generate:redirect": "node patches/i18n-root-fix.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { type InputConfig } from "c12";
 import { type NuxtConfig } from "@nuxt/schema";
+import { cookieKey, defaultLocale, locales } from "./languages.config.mjs";
 
 const input: InputConfig<NuxtConfig> = {
   ssr: true,
@@ -69,28 +70,14 @@ const input: InputConfig<NuxtConfig> = {
   i18n: {
     skipSettingLocaleOnNavigate: true,
     vueI18n: "./i18n.config.ts",
-    locales: [
-      {
-        isCatchallLocale: true,
-        code: "en",
-        iso: "en-GB",
-        file: "en.json",
-        name: "English",
-      },
-      {
-        code: "es",
-        iso: "es-ES",
-        file: "es.json",
-        name: "Español",
-      },
-    ],
-    defaultLocale: "en",
+    locales,
+    defaultLocale,
     lazy: false,
     langDir: "i18n",
     strategy: "prefix",
     detectBrowserLanguage: {
       useCookie: true,
-      alwaysRedirect: true,
+      cookieKey,
       redirectOn: "root",
     },
     differentDomains: false,
