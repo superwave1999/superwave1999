@@ -5,5 +5,6 @@
   "endDate": "2024",
   "previewImage": "/content/projects/mralfred-cmp.jpg",
   "infoPlatform": "Web, Mobile",
-  "infoStack": "Laravel, Vue, Angular, AWS Aurora"
+  "infoStack": "Laravel, Vue, Angular, AWS Aurora",
+  "infoWebsite": "https://mralfred.com/"
 }
