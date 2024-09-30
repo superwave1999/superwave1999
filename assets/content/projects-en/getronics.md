@@ -1,4 +1,4 @@
-![Kalma marketplace](/content/projects/kalma-mp.jpg)
+![Dashboard](/content/projects/getronics.jpg)
 
 A management and distribution tool for government subsidies granted to the electricity and gas consumers of Spain.
 

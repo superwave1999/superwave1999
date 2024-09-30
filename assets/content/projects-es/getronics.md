@@ -1,4 +1,4 @@
-![Kalma marketplace](/content/projects/kalma-mp.jpg)
+![Panel](/content/projects/getronics.jpg)
 
 Esta es una herramienta de gestión y reparto de subvenciones entre el consumidor y las comercializadoras de los suministros de electricidad y gas de España.
 
