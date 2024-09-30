@@ -3,7 +3,7 @@
   "description": "SaaS para la gestión de apartamentos turísticos.",
   "startDate": "2023",
   "endDate": "2024",
-  "previewImage": "/content/projects/kalma-mp-cmp.jpg",
+  "previewImage": "/content/projects/mralfred-cmp.jpg",
   "infoPlatform": "Web, Móvil",
   "infoStack": "Laravel, Vue, Angular, AWS Aurora"
 }

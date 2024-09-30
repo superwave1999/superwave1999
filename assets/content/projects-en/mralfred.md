@@ -1,4 +1,4 @@
-![Kalma marketplace](/content/projects/kalma-mp.jpg)
+![Banner](/content/projects/mralfred.jpg)
 
 Mr. Alfred is a B2B SaaS B2B based in Dubai that helps manage vacation rentals.
 
