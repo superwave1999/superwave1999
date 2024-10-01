@@ -29,6 +29,7 @@
   "devDependencies": {
     "@fontsource/courier-prime": "^5.1.0",
     "@fontsource/mulish": "^5.1.0",
+    "@nuxt/eslint": "^0.5.7",
     "@nuxtjs/color-mode": "^3.5.1",
     "@nuxtjs/i18n": "^8.5.5",
     "@nuxtjs/robots": "^4.1.7",
