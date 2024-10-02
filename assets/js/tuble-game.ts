@@ -25,12 +25,8 @@ export default class TubleGame {
     if (!this.loadFromStorage()) {
       // Generate new map
       const layoutSeed = await newHash(this.dateString);
-      const modifierSeed = await newHash(
-        `${this.dateString} MODIFIER`,
-      );
-      const rotationSeed = await newHash(
-        `${this.dateString} ROTOR`,
-      );
+      const modifierSeed = await newHash(`${this.dateString} MODIFIER`);
+      const rotationSeed = await newHash(`${this.dateString} ROTOR`);
       const tubleBuilder = new TubleBuilder(
         6,
         layoutSeed,
@@ -143,7 +139,7 @@ export default class TubleGame {
         }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
-        console.error("Error parsing saved Tuble state!")
+        console.error("Error parsing saved Tuble state!");
       }
     }
     return false;

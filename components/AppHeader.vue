@@ -36,9 +36,9 @@ const themeIconColour = computed(() => {
 
 function toggleColorMode() {
   if (colorMode.value === "light") {
-    colorMode.preference = "dark"
+    colorMode.preference = "dark";
   } else {
-    colorMode.preference = "light"
+    colorMode.preference = "light";
   }
 }
 </script>

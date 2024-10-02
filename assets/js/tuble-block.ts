@@ -48,9 +48,9 @@ export default class TubleBlock {
     }
     if (fun !== -1) {
       if (!isSecond) {
-        this.setFirstConnection(fun)
+        this.setFirstConnection(fun);
       } else {
-        this.setSecondConnection(fun)
+        this.setSecondConnection(fun);
       }
     }
   }

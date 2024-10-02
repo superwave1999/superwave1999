@@ -76,8 +76,7 @@ export default class TubleValidator {
         !this.coordsAreWithinLimits(coords) || // out of bounds
         (!isFirstBlock &&
           !activeBlock.isConnectedFrom(<[number, number]>prevCoords)) || // Not first endpoint and connection is invalid
-        (troddenPath.length !== 0 &&
-          includesArray(coords, troddenPath)) // Not first and connected to already onto itself
+        (troddenPath.length !== 0 && includesArray(coords, troddenPath)) // Not first and connected to already onto itself
       ) {
         return false; // Map is not connected
       }

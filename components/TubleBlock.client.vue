@@ -11,7 +11,7 @@ const props = defineProps({
   isFrozenGame: { type: Boolean, required: true },
 });
 const properties = props.properties as TubleBlock;
-const typeIcons: { [index: string]: {icon: Component, colour: string} } = {
+const typeIcons: { [index: string]: { icon: Component; colour: string } } = {
   a: { icon: PhTimer, colour: "#518229" }, // Time benefit
   b: { icon: PhHandTap, colour: "#518229" }, // Moves benefit
   x: { icon: PhTimer, colour: "#b31552" }, // Time penalty

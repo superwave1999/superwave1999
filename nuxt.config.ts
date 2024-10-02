@@ -4,7 +4,7 @@ import { type NuxtConfig } from "@nuxt/schema";
 import { cookieKey, defaultLocale, locales } from "./languages.config.mjs";
 
 const input: InputConfig<NuxtConfig> = {
-  devtools: { enabled: import.meta.env.MODE !== 'production' },
+  devtools: { enabled: import.meta.env.MODE !== "production" },
   ssr: true,
   compatibilityDate: "2024-07-09",
   app: {
@@ -54,7 +54,7 @@ const input: InputConfig<NuxtConfig> = {
     "nuxt-site-config",
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
-    '@nuxt/eslint',
+    "@nuxt/eslint",
   ],
   plugins: ["@/plugins/vue-final-modal.ts"],
   colorMode: {

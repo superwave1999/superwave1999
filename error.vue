@@ -10,7 +10,7 @@ const handleError = () => clearError({ redirect: localePath("/") });
 <template>
   <div class="fade-in">
     <ErrorCode :code="error?.statusCode || 404" />
-    <br>
+    <br >
     <h2>{{ $t("err.top") }}</h2>
     <ButtonRow>
       <EffectButton

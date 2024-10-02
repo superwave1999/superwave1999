@@ -35,7 +35,8 @@ export default class ContentLoader {
     });
     const posts = await Promise.all(
       filteredMetadata.map(async ([path, resolver]) => {
-        const fileContents: ContentDefinitionMetadata = await resolver() as ContentDefinitionMetadata;
+        const fileContents: ContentDefinitionMetadata =
+          (await resolver()) as ContentDefinitionMetadata;
         return {
           title: fileContents.title,
           description: fileContents.description,
@@ -79,7 +80,7 @@ export default class ContentLoader {
       `@/assets/content/projects-${this.lang}/${slug}.md?raw`
     );
     const obj: Content = {
-      ...meta.default as ContentDefinitionMetadata,
+      ...(meta.default as ContentDefinitionMetadata),
       content: new showdown.Converter().makeHtml(content.default),
     };
     return obj;
