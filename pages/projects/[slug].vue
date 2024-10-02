@@ -17,21 +17,22 @@ defineI18nRoute({
 const { locale, t } = useI18n();
 const route = useRoute();
 
-const post: Ref<Content | null> = ref(null);
-const surrounding: Ref<ContentSurrounding | null> = ref(null);
-
-watch(
-  locale,
-  async (newLocale) => {
-    const content = new ContentLoader(newLocale);
-    post.value = await content.single(route.params.slug as string);
-    surrounding.value = await content.surrounding(route.params.slug as string);
-    if (import.meta.client) {
-      window.scrollTo(0, 0);
-    }
-  },
-  { immediate: true },
+const content = new ContentLoader(locale.value);
+const post: Ref<Content> = ref(
+  await content.single(route.params.slug as string),
 );
+const surrounding: Ref<ContentSurrounding> = ref(
+  await content.surrounding(route.params.slug as string),
+);
+
+watch(locale, async (newLocale) => {
+  const content = new ContentLoader(newLocale);
+  post.value = await content.single(route.params.slug as string);
+  surrounding.value = await content.surrounding(route.params.slug as string);
+  if (import.meta.client) {
+    window.scrollTo(0, 0);
+  }
+});
 
 onMounted(refreshImageViewer);
 

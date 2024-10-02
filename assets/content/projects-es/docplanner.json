@@ -1,0 +1,9 @@
+{
+  "title": "Docplanner",
+  "description": "La mayor plataforma sanitaria del mundo.",
+  "endDate": "2024",
+  "previewImage": "/content/projects/dp-cmp.jpg",
+  "infoPlatform": "Web, Móvil",
+  "infoStack": "MariaDB, Symfony, Vue",
+  "infoWebsite": "https://www.docplanner.com/"
+}
