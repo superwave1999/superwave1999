@@ -1,0 +1,1 @@
+const t="Crispythings",s="A Wordpress blog installation.",e="2021",i="/content/projects/crispy-cmp.jpg",n="Web",o="Wordpress",c="https://crispythings.es/",r={title:t,description:s,endDate:e,previewImage:i,infoPlatform:n,infoStack:o,infoWebsite:c};export{r as default,s as description,e as endDate,n as infoPlatform,o as infoStack,c as infoWebsite,i as previewImage,t as title};
