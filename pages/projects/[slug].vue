@@ -207,7 +207,6 @@ div.post-meta {
 
 /* Blog post styles */
 .nuxt-content {
-  text-align: justify;
   font-family: var(--font-thin);
   font-size: 0.9em;
 }
