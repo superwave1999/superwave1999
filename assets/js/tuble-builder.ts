@@ -1,5 +1,5 @@
 import TubleBlock, { NO_CONNECTION, TYPE_ENDPOINT } from "./tuble-block";
-import TubleFunctions from "assets/js/tuble-functions";
+import { includesArray, overflow } from "assets/js/tuble-functions";
 
 export default class TubleBuilder {
   private readonly mapSize: number = 6;
@@ -74,7 +74,7 @@ export default class TubleBuilder {
     const mustFinishOnEdge = true;
     let coords =
       this.creatorEdgeCoords[
-        TubleFunctions.overflow(
+        overflow(
           this.creatorEdgeCoords.length - 1,
           this.getValidPathSeedNumber(),
         )
@@ -98,7 +98,7 @@ export default class TubleBuilder {
         // Valid path available -> continue
         coords =
           coordinateCandidates[
-            TubleFunctions.overflow(
+            overflow(
               coordinateCandidates.length - 1,
               this.getValidPathSeedNumber(),
             )
@@ -119,7 +119,7 @@ export default class TubleBuilder {
     return coordOptions.filter(
       (testCoords: [number, number]) =>
         this.coordsAreWithinLimits(testCoords) &&
-        !TubleFunctions.includesArray(testCoords, this.validPath), // Only options within map borders, and not been stepped on
+        !includesArray(testCoords, this.validPath), // Only options within map borders, and not been stepped on
     );
   }
 
@@ -145,10 +145,7 @@ export default class TubleBuilder {
       return this.rewindPathUntilValid();
     } else {
       return coordinateCandidates[
-        TubleFunctions.overflow(
-          coordinateCandidates.length - 1,
-          this.getValidPathSeedNumber(),
-        )
+        overflow(coordinateCandidates.length - 1, this.getValidPathSeedNumber())
       ];
     }
   }
