@@ -2,7 +2,7 @@
 
 Mr. Alfred es un SaaS B2B con sede en Dubai para ayudar en la gestión de apartamentos turísticos.
 
-Sincroniza información con las principales OTAs como Booking, Expedia y AirBnB y recibe reservas de éstas.
+Sincroniza información con las principales OTAs como Booking, Expedia y Airbnb y recibe reservas de estas.
 
 Incluye un asistente de bienvenida el cual desarrollé desde cero y aplicaciones móviles para el propietario y el personal de limpieza.
 

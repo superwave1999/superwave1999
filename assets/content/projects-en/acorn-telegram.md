@@ -6,4 +6,4 @@ Once these turnips reach a decent price in a players' island, this person create
 
 When the list is created and is forwarded to a group (with the bot as a member), other users can enter the queue.
 
-As these users leave the hosts' island with their turnips, they (should) mark themselves as "Visited".
+As these users leave the hosts' island with their turnips, they (should) mark themselves as “Visited”.

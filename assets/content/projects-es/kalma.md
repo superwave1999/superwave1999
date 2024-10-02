@@ -8,9 +8,9 @@ La información de los pedidos se puede descargar como una hoja de cálculo, y e
 
 Los productos se actualizan mediante una tarea periódica diariamente.
 
-El API soporta múltiples tiendas, una siendo el propio Kalma, y los demás siendo gestionados por los clientes de Kalma.
+La API soporta múltiples tiendas, una siendo el propio Kalma, y las demás siendo gestionadas por los clientes de Kalma.
 
-El frontend se puede configurar para que use diferentes temas y estructuras según los ajustes de la tienda.
+El front-end se puede configurar para que use diferentes temas y estructuras según los ajustes de la tienda.
 
 ![Proceso de pago](/content/projects/kalma-ck.jpg)
 

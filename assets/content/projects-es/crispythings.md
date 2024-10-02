@@ -1,5 +1,5 @@
 ![Página home](/content/projects/crispy.jpg)
 
-Una instalación sencilla de Wordpress que utiliza su funcionalidad de blog al máximo potencial.
+Una instalación sencilla de WordPress que utiliza su funcionalidad de blog al máximo potencial.
 
-Se ha necesitado instalar un plugin adicional para mostrar los productos Etsy de la clienta en una página aparte.
+Se ha necesitado instalar un plug-in adicional para mostrar los productos Etsy de la clienta en una página aparte.
