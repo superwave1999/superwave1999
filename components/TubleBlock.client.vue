@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PhHandTap, PhTimer } from "@phosphor-icons/vue";
 import equal from "array-equal";
-import TubleBlock from "assets/js/tuble-block";
+import type TubleBlock from "assets/js/tuble-block";
 
 const emit = defineEmits(["select"]);
 const props = defineProps({
@@ -11,7 +11,7 @@ const props = defineProps({
   isFrozenGame: { type: Boolean, required: true },
 });
 const properties = props.properties as TubleBlock;
-const typeIcons: { [index: string]: any } = {
+const typeIcons: { [index: string]: {icon: Component, colour: string} } = {
   a: { icon: PhTimer, colour: "#518229" }, // Time benefit
   b: { icon: PhHandTap, colour: "#518229" }, // Moves benefit
   x: { icon: PhTimer, colour: "#b31552" }, // Time penalty
@@ -136,7 +136,7 @@ function setActiveBlock() {
       />
     </svg>
     <div v-if="overlayIcon" class="icon">
-      <component :is="overlayIcon" size="1em" color="currentColor"></component>
+      <component :is="overlayIcon" size="1em" color="currentColor" />
     </div>
   </div>
 </template>

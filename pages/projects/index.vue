@@ -15,7 +15,7 @@ useHead({
 const posts = ref(await new ContentLoader(locale.value).list());
 watch(locale, async (newLocale) => {
   posts.value = await new ContentLoader(newLocale).list();
-  if (process.client) {
+  if (import.meta.client) {
     window.scrollTo(0, 0);
   }
 });

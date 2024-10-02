@@ -11,7 +11,7 @@ import {
 } from "@phosphor-icons/vue";
 import equal from "array-equal";
 import TubleGame from "assets/js/tuble-game";
-import TubleValidator from "assets/js/tuble-validator";
+import type TubleValidator from "assets/js/tuble-validator";
 import ModalAlert from "@/components/ModalAlert.vue";
 import ModalTubleComplete from "@/components/ModalTubleComplete.vue";
 import ModalTubleHelp from "@/components/ModalTubleHelp.vue";
@@ -28,15 +28,15 @@ const timerStatus = ref("--:--");
 if (tubleGame.isFrozen) {
   timerStatus.value = String(tubleGame.getTime());
 }
-let timerProcess: any = null;
+let timerProcess: number | null = null;
 watch(vueTubleGame.timeLog, (newValue) => {
   if (newValue.length % 2 !== 0) {
     timerStatus.value = String(vueTubleGame.getTime());
-    timerProcess = setInterval(() => {
+    timerProcess = window.setInterval(() => {
       timerStatus.value = String(vueTubleGame.getTime());
     }, 1000);
   } else if (timerProcess) {
-    clearInterval(timerProcess);
+    window.clearInterval(timerProcess);
     timerStatus.value = String(vueTubleGame.getTime());
   }
 });
@@ -194,7 +194,7 @@ onBeforeUnmount(() => {
           :is-modifiable="item.isFrontendModifiable()"
           :is-frozen-game="vueTubleGame.isFrozen"
           @select="(e) => vueTubleGame.actionSelectBlock(e)"
-        ></TubleBlock>
+        />
       </td>
     </tr>
   </table>
@@ -212,7 +212,7 @@ onBeforeUnmount(() => {
       :text="$t('tuble.hud.submit')"
       :disabled="vueTubleGame.isFrozen"
       @click="validate"
-    ></EffectButton>
+    />
     <EffectButton
       id="action-rotate-right"
       colour="--tuble"

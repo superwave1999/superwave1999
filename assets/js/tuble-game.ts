@@ -1,7 +1,7 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { type Dayjs } from "dayjs";
 import TubleBlock, { NO_CONNECTION } from "assets/js/tuble-block";
 import TubleValidator from "assets/js/tuble-validator";
-import TubleFunctions from "assets/js/tuble-functions";
+import { newHash } from "assets/js/tuble-functions";
 import TubleBuilder from "assets/js/tuble-builder";
 
 export default class TubleGame {
@@ -24,11 +24,11 @@ export default class TubleGame {
   public async build() {
     if (!this.loadFromStorage()) {
       // Generate new map
-      const layoutSeed = await TubleFunctions.newHash(this.dateString);
-      const modifierSeed = await TubleFunctions.newHash(
+      const layoutSeed = await newHash(this.dateString);
+      const modifierSeed = await newHash(
         `${this.dateString} MODIFIER`,
       );
-      const rotationSeed = await TubleFunctions.newHash(
+      const rotationSeed = await newHash(
         `${this.dateString} ROTOR`,
       );
       const tubleBuilder = new TubleBuilder(
@@ -134,14 +134,17 @@ export default class TubleGame {
           this.isFrozen = true;
           this.timeLog = obj.time;
           this.moves = obj.moves;
-          this.map = obj.map.map((x: any[], valueX: number) =>
-            x.map((y: any, valueY: number) =>
+          this.map = obj.map.map((x: TubleBlock[], valueX: number) =>
+            x.map((y: TubleBlock, valueY: number) =>
               new TubleBlock(valueX, valueY).load(y),
             ),
           );
           return true;
         }
-      } catch (e) {}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (e) {
+        console.error("Error parsing saved Tuble state!")
+      }
     }
     return false;
   }

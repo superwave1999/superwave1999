@@ -15,7 +15,7 @@ const url = computed(() => {
 
 <template>
   <NuxtLink class="post" :to="url">
-    <img :src="post.previewImage" :alt="post.title" />
+    <img :src="post.previewImage" :alt="post.title">
     <div class="post-text">
       <h2>{{ post.title }}</h2>
       <p>{{ post.description }}</p>

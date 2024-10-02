@@ -3,6 +3,9 @@ import { PhLink, PhArrowLeft, PhArrowRight } from "@phosphor-icons/vue";
 import Viewer from "viewerjs";
 import "viewerjs/dist/viewer.css";
 import ContentLoader from "assets/js/content-loader";
+import type ContentExcerpt from "~/assets/js/types/content-excerpt";
+import type Content from "~/assets/js/types/content";
+import type ContentSurrounding from "~/assets/js/types/content-surrounding";
 
 defineI18nRoute({
   paths: {
@@ -14,18 +17,17 @@ defineI18nRoute({
 const { locale, t } = useI18n();
 const route = useRoute();
 
-let content = new ContentLoader(locale.value);
-const post = ref(await content.single(route.params.slug as string));
-const surrounding = ref(await content.surrounding(route.params.slug as string));
+const post: Ref<Content | null> = ref(null);
+const surrounding: Ref<ContentSurrounding | null> = ref(null);
 
 watch(locale, async (newLocale) => {
-  content = new ContentLoader(newLocale);
+  const content = new ContentLoader(newLocale);
   post.value = await content.single(route.params.slug as string);
   surrounding.value = await content.surrounding(route.params.slug as string);
   if (import.meta.client) {
     window.scrollTo(0, 0);
   }
-});
+}, {immediate: true});
 
 onMounted(refreshImageViewer);
 
@@ -48,11 +50,11 @@ const hasAnyMeta = computed(() => {
 });
 
 useHead({
-  title: `${post.value.title}${t("p_project.headTitleSuffix")}`,
-  meta: [{ name: "description", content: post.value.description }],
+  title: `${post.value!.title}${t("p_project.headTitleSuffix")}`,
+  meta: [{ name: "description", content: post.value!.description }],
 });
 
-function url(post: any) {
+function url(post: ContentExcerpt) {
   if (!post) {
     return "";
   }
@@ -67,7 +69,7 @@ function refreshImageViewer() {
   if (imageViewer) {
     imageViewer.destroy();
   }
-  imageViewer = new Viewer(document.getElementById("nuxt-content"), {
+  imageViewer = new Viewer(document.getElementById("nuxt-content")!, {
     inline: false,
     loading: true,
     loop: true,
@@ -92,7 +94,9 @@ function refreshImageViewer() {
         }}{{ post.endDate ?? "" }}
       </span>
     </div>
+    <!-- eslint-disable vue/no-v-html -->
     <div id="nuxt-content" class="nuxt-content" v-html="post.content" />
+    <!-- eslint-enable -->
     <HorizontalDivider v-if="hasAnyMeta" />
     <div v-if="hasAnyMeta" class="post-meta">
       <div v-if="post.infoPlatform">

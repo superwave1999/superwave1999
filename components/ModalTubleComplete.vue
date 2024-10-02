@@ -2,7 +2,7 @@
 import { VueFinalModal } from "vue-final-modal";
 import { PhHandTap, PhTimer } from "@phosphor-icons/vue";
 import dayjs from "dayjs";
-import TubleValidator from "assets/js/tuble-validator";
+import type TubleValidator from "assets/js/tuble-validator";
 
 const props = defineProps<{
   title?: string;
@@ -50,7 +50,7 @@ const formattedNetTime = computed(() => {
     <table>
       <thead>
         <tr>
-          <td></td>
+          <td />
           <td>
             <PhTimer size="1em" color="currentColor" class="space-after" />{{
               $t("tuble.modal.statTitleTime")
@@ -99,7 +99,7 @@ const formattedNetTime = computed(() => {
         colour="--accent"
         mini
         @click="emit('confirm')"
-      ></EffectButton>
+      />
     </div>
   </VueFinalModal>
 </template>

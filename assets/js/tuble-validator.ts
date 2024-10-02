@@ -1,4 +1,4 @@
-import TubleBlock, {
+import {
   NO_CONNECTION,
   TYPE_BENEFIT_MOVES,
   TYPE_BENEFIT_TIME,
@@ -6,7 +6,8 @@ import TubleBlock, {
   TYPE_PENALTY_MOVES,
   TYPE_PENALTY_TIME,
 } from "assets/js/tuble-block";
-import TubleFunctions from "assets/js/tuble-functions";
+import { includesArray } from "assets/js/tuble-functions";
+import type TubleBlock from "assets/js/tuble-block";
 
 export default class TubleValidator {
   public timeMs;
@@ -76,7 +77,7 @@ export default class TubleValidator {
         (!isFirstBlock &&
           !activeBlock.isConnectedFrom(<[number, number]>prevCoords)) || // Not first endpoint and connection is invalid
         (troddenPath.length !== 0 &&
-          TubleFunctions.includesArray(coords, troddenPath)) // Not first and connected to already onto itself
+          includesArray(coords, troddenPath)) // Not first and connected to already onto itself
       ) {
         return false; // Map is not connected
       }

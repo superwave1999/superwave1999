@@ -47,7 +47,11 @@ export default class TubleBlock {
       fun = 2;
     }
     if (fun !== -1) {
-      !isSecond ? this.setFirstConnection(fun) : this.setSecondConnection(fun);
+      if (!isSecond) {
+        this.setFirstConnection(fun)
+      } else {
+        this.setSecondConnection(fun)
+      }
     }
   }
 
@@ -163,8 +167,7 @@ export default class TubleBlock {
     if (existingCoordsToAvoid === null) {
       return candidates[0];
     }
-    // @ts-ignore
-    return candidates.find((coords) => !equal(coords, existingCoordsToAvoid));
+    return candidates.find((coords) => !equal(coords, existingCoordsToAvoid))!;
   }
 
   public isConnectedFrom(prevCoords: [number, number]): boolean {
@@ -175,7 +178,7 @@ export default class TubleBlock {
     return candidates.findIndex((coords) => equal(coords, prevCoords)) !== -1;
   }
 
-  public load(saved: any) {
+  public load(saved: TubleBlock) {
     this.type = saved.type;
     this.connections = saved.connections;
     return this;

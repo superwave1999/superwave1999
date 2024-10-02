@@ -21,10 +21,10 @@
     "generate:redirect": "node patches/i18n-root-fix.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:js": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint": "npm rum lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js --fix"
+    "lintfix": "prettier --write --list-different . && eslint . --fix"
   },
   "devDependencies": {
     "@fontsource/courier-prime": "^5.1.0",
@@ -40,9 +40,12 @@
     "@types/showdown": "^2.0.6",
     "array-equal": "^1.0.2",
     "dayjs": "^1.11.13",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "nuxt": "^3.13.2",
     "nuxt-site-config": "^2.2.18",
     "nuxt-site-config-kit": "^2.2.18",
+    "prettier": "^3.3.3",
     "random-seed-weighted-chooser": "^1.1.10",
     "romans": "^2.0.16",
     "showdown": "^2.1.0",

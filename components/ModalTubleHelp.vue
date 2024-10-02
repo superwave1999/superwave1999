@@ -225,7 +225,7 @@ const active = false;
         colour="--accent"
         mini
         @click="emit('confirm')"
-      ></EffectButton>
+      />
     </div>
   </VueFinalModal>
 </template>

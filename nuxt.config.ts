@@ -48,7 +48,6 @@ const input: InputConfig<NuxtConfig> = {
       ],
     },
   },
-  // @ts-ignore - Typescript doesn't like this variable
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
@@ -62,7 +61,6 @@ const input: InputConfig<NuxtConfig> = {
     preference: "system",
     fallback: "dark",
   },
-  // @ts-ignore - Typescript doesn't like this variable
   css: [
     "vue-final-modal/style.css",
     "@/assets/css/global.css",
