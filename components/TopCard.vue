@@ -7,7 +7,7 @@
     <img
       src="https://avatars.githubusercontent.com/u/37277561"
       :alt="$t('topcard.name')"
-    >
+    />
   </div>
 </template>
 

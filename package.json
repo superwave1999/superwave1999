@@ -24,7 +24,7 @@
     "lint:js": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint": "npm rum lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && eslint . --fix"
+    "lintfix": "eslint . --fix && prettier --write --list-different . "
   },
   "devDependencies": {
     "@fontsource/courier-prime": "^5.1.0",
