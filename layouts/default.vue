@@ -3,9 +3,9 @@ import { ModalsContainer } from "vue-final-modal";
 const { finalizePendingLocaleChange } = useI18n();
 
 const head = useLocaleHead({
-  addDirAttribute: true,
-  identifierAttribute: "id",
-  addSeoAttributes: true,
+  dir: true,
+  key: "id",
+  seo: true,
 });
 
 const onBeforeEnter = async () => {
