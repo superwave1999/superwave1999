@@ -27,8 +27,8 @@
     "lintfix": "eslint . --fix && prettier --write --list-different . "
   },
   "devDependencies": {
-    "@fontsource/courier-prime": "^5.1.0",
-    "@fontsource/mulish": "^5.1.0",
+    "@fontsource/courier-prime": "^5.1.1",
+    "@fontsource/mulish": "^5.1.1",
     "@nuxt/eslint": "^0.5.7",
     "@nuxtjs/color-mode": "^3.5.1",
     "@nuxtjs/i18n": "^8.5.5",
@@ -47,9 +47,9 @@
     "nuxt-site-config-kit": "^2.2.18",
     "prettier": "^3.3.3",
     "random-seed-weighted-chooser": "^1.1.10",
-    "romans": "^2.0.16",
+    "romans": "^3.0.0",
     "showdown": "^2.1.0",
-    "viewerjs": "^1.11.6",
+    "viewerjs": "^1.11.7",
     "vue-final-modal": "^4.5.5"
   }
 }
