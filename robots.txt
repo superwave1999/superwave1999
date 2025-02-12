@@ -1,0 +1,26 @@
+# START nuxt-robots (indexable)
+User-agent: *
+Disallow: 
+
+# Block AI Crawlers
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: cohere-ai
+User-agent: Diffbot
+User-agent: FacebookBot
+User-agent: Google-Extended
+User-agent: ImagesiftBot
+User-agent: PerplexityBot
+User-agent: OmigiliBot
+User-agent: Omigili
+Disallow: /
+Disallow: /en/
+Disallow: /es/
+
+Sitemap: https://www.iromera.com/sitemap_index.xml
+# END nuxt-robots
