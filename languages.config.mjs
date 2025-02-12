@@ -2,13 +2,13 @@ export const locales = [
   {
     isCatchallLocale: true,
     code: "en",
-    locale: "en-GB",
+    language: "en-GB",
     file: "en.json",
     name: "English",
   },
   {
     code: "es",
-    locale: "es-ES",
+    language: "es-ES",
     file: "es.json",
     name: "Español",
   },

@@ -98,6 +98,9 @@ const input: InputConfig<NuxtConfig> = {
   vite: {
     assetsInclude: ["**/*.md"],
   },
+  robots: {
+    blockAiBots: true,
+  },
 };
 
 export default defineNuxtConfig(input);
