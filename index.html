@@ -1,0 +1,29 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      function getCookie(name) {
+        var re = new RegExp(name + "=([^;]+)");
+        var value = re.exec(document.cookie);
+        return (value != null) ? unescape(value[1]) : null;
+      };
+
+      let langCode = getCookie('i18n_redirected');
+      if (!langCode) {
+        langCode = navigator.language || navigator.userLanguage;
+        langCode = langCode.split('-')[0];
+      }
+
+      if (!['en','es'].includes(langCode)) {
+        langCode = 'en';
+      }
+
+      window.location.href = "/" + langCode;
+    </script>
+  </head>
+  <body>
+    If you are not redirected automatically, <a href="/en">click here</a>.
+  </body>
+</html>
