@@ -32,7 +32,7 @@ const html = `
         langCode = '${defaultLocale}';
       }
 
-      window.location.href = "/" + langCode + "/";
+      window.location.href = "/" + langCode;
     </script>
   </head>
   <body>
